@@ -12,5 +12,5 @@ Denne posten er en del av en lengre serie poster om språkmodeller og problemer 
 Her er også noe matte $$10x + y = 10$$.
 
 
-![bilde-beskrivelse](/assets/images/2025-03-28/OpenAI_Tokenizer_2048+2048_marked.png)
+![Desktop View](/assets/images/2025-03-28/OpenAI_Tokenizer_2048+2048_marked.png)
 _Her er en caption til bildet_
