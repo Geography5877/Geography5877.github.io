@@ -71,7 +71,7 @@ tre pluss tre = [4086, 633, 1824, 4360]\\
 tre store tre = [4086, 4897, 4360]\\
 den er laget av tre = [1660, 1111, 139108, 1452, 4360]\\
 treplanke = [4086, 528, 29147]\\
-trett = [4086, 1037]\\
+trett = [4086, 1037]
 
 Som vi kan se brukes tokenene 4086 og 4360 til å representere "tre" og " tre" respektivt. Ved første øyekast kan det se ut som om tokenizeren, lar konteksten bestemme om vi snakker om tallet 3 eller et tre. Den koder derfor ikke tallet tre og et tre forskjellig. Problemet oppstår når vi ser videre de siste to eksemplene. Også her er "tre" biten av ordet kodet som tokenet 4086, men nå er det ikke lenger tvetydig hva vi refererer til. I ordet treplanke er det utvedydig at vi refererer til materialet tre. Ordet 3planke gir ingen mening for oss, så her har tokenizationen introdusert ekstra usikkerhet som vi mennesker ikke opplever når vi leser tekst. I ordet "trett" er situasjonen enda verre. Her brukes fortsatt 4086 til å representere tre-biten av ordet, men her er det hverken tallet 3 eller treverk vi refererer til. Tokenizationen har alstå introdusert enda mer usikkerhet. Det blir nå opp til modellen å forstå ut ifra konteksten om vi snakker om tallet 3, treverk eller om vi snakker om noe helt urelatert som tretthet. Videre kan også ordet trett tolkes forskjellig utifra konteksten (er noen trøtte eller snakker vi om et tretthetsbrudd?).
 
@@ -83,7 +83,7 @@ Dagens mest populære språkmodeller er alle bygget på Transformer modellen (As
 ## Kontekstvinduet har begrenset størrelse
 En transformer kan kun prossesere et begrenset antall tokens. Bakgrunnen for dette kommer av at det største fremskrittet introdusert i transformer modellen, nemlig "attention mekanismen". Vi skal ikke se på hvordan denne mekanismen fungerer her. Vi skal i stedet nøye oss med å påpeke at en del av denne mekanismen er å beregne hvor viktig hvert token er hvor hvert eneste annet token i en sekvens. Som konsekvens av dette, inneholder enhver attention mekanisme en matrise av størrelse $$n^2$$, hvor $$n$$ er antallet tokens i sekvensen som behandles. 
 
-$$\begin{bmatrix} \text{Hunden} & 0.90 & 0.09 & 0.10 \\ \text{drakk} & 0.10 & 0.50 & 0.50 \\ \text{vann} & 0.30 & 0.40 & 0.40 \\ \text{ } \text{Hunden} & \text{drakk} &\text{vann} \end{bmatrix}$$
+$$\begin{bmatrix} \text{Hunden} & 0.90 & 0.09 & 0.10 \\ \text{drakk} & 0.10 & 0.50 & 0.50 \\ \text{vann} & 0.30 & 0.40 & 0.40 \\ \text{ } &\text{Hunden} & \text{drakk} &\text{vann} \end{bmatrix}$$
 
 I eksempelet over, ser vi en fiktiv attention beregning for setningen "Hunden drakk vann". Vi ser at matrisen inneholder $9 = 3^2$ tall. Ettersom vi med dagens hardware har begrenset lagringsplass på våre GPUer er det begrenset hvor store matriser vi kan håndtere. Vi er derfor tvunget til å begrense antallet tokens som prosseseres til enhver tid til et antall vi kan håndtere uten å gå tom for minne. Måten vi gjør dette på, er at vi konstruerer et vindu hvor alle tokens som er inne i vinduet prosseseres, mens alle tokens som er utenfor ikke blir prossesert. Vi lar deretter dette vinduet skli over alle tokens i teksten vår, for å prossesere hele teksten. Dette vinduet er det vi kaller _kontekstvinduet_ i en språkmodell.
 
