@@ -67,11 +67,11 @@ Det er et veldig lignende problem en språkmodell står overfor når den skal l�
 Det er ikke kun i matematikken tokenization kan by på problemer. I de fleste språk har vi ord som staves likt, men har forskjellig betydning. Et norsk eksempel er "tre". Ordet tre kan representere tallet 3, et tre og det kan kanskje diskuteres om det konseptuelt også er en tredje ting vi tenker på når vi sier _tre_verk (jeg er ingen lingvist, så jeg skal ikke påstå noe her).
 
 I en språkmodell blir imidlertid ordet tre representert av det samme tokenet. Uavhengig av om konteksten tilsier at vi snakker om tallet 3, et tre, at noe er laget av tre eller til og med om "tre" bare er en del av et ord. Under lister jeg opp 5 setninger med deres korresponderende tokens:
-tre pluss tre = [4086, 633, 1824, 4360]
-tre store tre = [4086, 4897, 4360]
-den er laget av tre = [1660, 1111, 139108, 1452, 4360]
-treplanke = [4086, 528, 29147]
-trett = [4086, 1037]
+tre pluss tre = [4086, 633, 1824, 4360]\\
+tre store tre = [4086, 4897, 4360]\\
+den er laget av tre = [1660, 1111, 139108, 1452, 4360]\\
+treplanke = [4086, 528, 29147]\\
+trett = [4086, 1037]\\
 
 Som vi kan se brukes tokenene 4086 og 4360 til å representere "tre" og " tre" respektivt. Ved første øyekast kan det se ut som om tokenizeren, lar konteksten bestemme om vi snakker om tallet 3 eller et tre. Den koder derfor ikke tallet tre og et tre forskjellig. Problemet oppstår når vi ser videre de siste to eksemplene. Også her er "tre" biten av ordet kodet som tokenet 4086, men nå er det ikke lenger tvetydig hva vi refererer til. I ordet treplanke er det utvedydig at vi refererer til materialet tre. Ordet 3planke gir ingen mening for oss, så her har tokenizationen introdusert ekstra usikkerhet som vi mennesker ikke opplever når vi leser tekst. I ordet "trett" er situasjonen enda verre. Her brukes fortsatt 4086 til å representere tre-biten av ordet, men her er det hverken tallet 3 eller treverk vi refererer til. Tokenizationen har alstå introdusert enda mer usikkerhet. Det blir nå opp til modellen å forstå ut ifra konteksten om vi snakker om tallet 3, treverk eller om vi snakker om noe helt urelatert som tretthet. Videre kan også ordet trett tolkes forskjellig utifra konteksten (er noen trøtte eller snakker vi om et tretthetsbrudd?).
 
@@ -83,12 +83,9 @@ Dagens mest populære språkmodeller er alle bygget på Transformer modellen (As
 ## Kontekstvinduet har begrenset størrelse
 En transformer kan kun prossesere et begrenset antall tokens. Bakgrunnen for dette kommer av at det største fremskrittet introdusert i transformer modellen, nemlig "attention mekanismen". Vi skal ikke se på hvordan denne mekanismen fungerer her. Vi skal i stedet nøye oss med å påpeke at en del av denne mekanismen er å beregne hvor viktig hvert token er hvor hvert eneste annet token i en sekvens. Som konsekvens av dette, inneholder enhver attention mekanisme en matrise av størrelse $$n^2$$, hvor $$n$$ er antallet tokens i sekvensen som behandles. 
 
-Hunden 0.90    0.09   0.10
-drakk  0.10    0.50   0.40
-vann   0.30    0.40   0.40
-      Hunden  drakk   vann
+$$\begin{bmatrix} \text{Hunden} & 0.90 & 0.09 & 0.10 \\ \text{drakk} & 0.10 & 0.50 & 0.50 \\ \text{vann} & 0.30 & 0.40 & 0.40 \\ \text{ } \text{Hunden} & \text{drakk} &\text{vann} \end{bmatrix}$$
 
-I eksempelet over, ser vi en fiktiv attention beregning for setningen "Hunden drakk vann". Vi ser at matrisen $$\begin{bmatrix} \text{Hunden} & 0.90 & 0.09 & 0.10 \\ \text{drakk} & 0.10 & 0.50 & 0.50 \\ \text{vann} & 0.30 & 0.40 & 0.40 \\ \text{Hunden} & \text{drakk} &\text{vann} \end{bmatrix}$$ inneholder $9 = 3^2$ tall. Ettersom vi med dagens hardware har begrenset lagringsplass på våre GPUer er det begrenset hvor store matriser vi kan håndtere. Vi er derfor tvunget til å begrense antallet tokens som prosseseres til enhver tid til et antall vi kan håndtere uten å gå tom for minne. Måten vi gjør dette på, er at vi konstruerer et vindu hvor alle tokens som er inne i vinduet prosseseres, mens alle tokens som er utenfor ikke blir prossesert. Vi lar deretter dette vinduet skli over alle tokens i teksten vår, for å prossesere hele teksten. Dette vinduet er det vi kaller _kontekstvinduet_ i en språkmodell.
+I eksempelet over, ser vi en fiktiv attention beregning for setningen "Hunden drakk vann". Vi ser at matrisen inneholder $9 = 3^2$ tall. Ettersom vi med dagens hardware har begrenset lagringsplass på våre GPUer er det begrenset hvor store matriser vi kan håndtere. Vi er derfor tvunget til å begrense antallet tokens som prosseseres til enhver tid til et antall vi kan håndtere uten å gå tom for minne. Måten vi gjør dette på, er at vi konstruerer et vindu hvor alle tokens som er inne i vinduet prosseseres, mens alle tokens som er utenfor ikke blir prossesert. Vi lar deretter dette vinduet skli over alle tokens i teksten vår, for å prossesere hele teksten. Dette vinduet er det vi kaller _kontekstvinduet_ i en språkmodell.
 
 Desverre er det slik at vi ikke kan huske tokenene som allerede er prossesert. Så i det øyeblikket et token faller ut av tokenvinduet, er det ikke lenger med å påvirker svaret til språkmodellen i det hele tatt. Så om vi deler en tekst med en språkmodell, hvor vi ønsker at modellen skal svare oss på spørsmål angående teksten, må vi først sørge for at teksten vår ikke er for stor til å få plass i kontekstvinduet. La oss igjen se på eksempelet "Hunden drakk vann". Hvis modellen vår har et kontekstvindu som tilsvarer to ord, vil ikke modellen vite hvem som drakk vannet, ettersom "Hunden" falt ut av kontekstvinduet, idet "vann" komm inn i kontekstvinduet. Hvis vi så spør modellen hvem som drakk vannet, vil den ikke vite svaret. Den vil alikevell forsøke å svare, men vil nå måtte gjette basert på statistikk over norsk språk. Den vil derfor kanskje svare "Han" eller "Hun". Dette skyldes et annet, urelatert, problem med språkmodeller vi skal se nærmere på i en senere post.
 
