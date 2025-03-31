@@ -66,7 +66,7 @@ Det er et veldig lignende problem en språkmodell står overfor når den skal l�
 ### Tekst kan misforstås
 Det er ikke kun i matematikken tokenization kan by på problemer. I de fleste språk har vi ord som staves likt, men har forskjellig betydning. Et norsk eksempel er "tre". Ordet tre kan representere tallet 3, et tre og det kan kanskje diskuteres om det konseptuelt også er en tredje ting vi tenker på når vi sier _tre_verk (jeg er ingen lingvist, så jeg skal ikke påstå noe her).
 
-I en språkmodell blir imidlertid ordet tre representert av det samme tokenet. Uavhengig av om konteksten tilsier at vi snakker om tallet 3, et tre, at noe er laget av tre eller til og med om "tre" bare er en del av et ord. Under lister jeg opp 5 setninger med deres korresponderende tokens:
+I en språkmodell blir imidlertid ordet tre representert av det samme tokenet. Uavhengig av om konteksten tilsier at vi snakker om tallet 3, et tre, at noe er laget av tre eller til og med om "tre" bare er en del av et ord. Under lister jeg opp 5 setninger med deres korresponderende tokens:\\
 tre pluss tre = [4086, 633, 1824, 4360]\\
 tre store tre = [4086, 4897, 4360]\\
 den er laget av tre = [1660, 1111, 139108, 1452, 4360]\\
