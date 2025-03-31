@@ -4,7 +4,7 @@ date: 2025-03-25 06:58:00 +0200
 categories: [Språkmodeller og deres utfordringer]
 tags: [llm]     # TAG names should always be lowercase
 math: true
-description: I denne posten vil vi se på hvordan en samtale ser ut fra en språkmodel's perspektiv.
+description: I denne posten vil vi se på hvordan en samtale ser ut fra en språkmodels perspektiv.
 media_subpath: /assets/images/2025-03-28/
 ---
 
@@ -24,9 +24,9 @@ _Fargene på teksten indikerer hvilke deler av teksten som resulterer i separate
 
 Vi kan også få se tokenene direkte:
 ![text](OpenAI_Tokenizer_text_to_vec.png)
-_Her ser vi tokene som korresponderer med teksten vår._
+_Her ser vi tokenene som korresponderer med teksten vår._
 
-Det er altså en slik sekvens med tokens en språkmodell "leser" og ikke vår tekst direkte. Disse tokene kan vi gjøre matriseoperasjoner på og språkmodellen er derfor i stand til å prosessere dem.
+Det er altså en slik sekvens med tokens en språkmodell "leser" og ikke vår tekst direkte. Disse tokenene kan vi gjøre matriseoperasjoner på og språkmodellen er derfor i stand til å prosessere dem.
 
 Akkurat hvordan tokens blir generert fra tekst varierer fra modell til modell, men så lenge vi er konsekvente i måten vi gjør det på for en gitt modell vil ikke det by på noen problemer.
 
