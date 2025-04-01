@@ -88,12 +88,12 @@ Hva er sannsynligheten for at et svar med lengde $n$ er korrekt, om vi antar at 
 
 $$
 \begin{equation}
-P(\text{riktig setning}) = (1-S)^n
+P(\text{riktig setning}) = S^n
 \label{eq:prob-wrong}
 \end{equation}
 $$
 
-Hvis vi skal generere en tekst med 100 ord og har en sannsynlighet for å velge riktig ord på 99.999% får vi følgende: $$P(\text{riktig setning}) = (1.0-\frac{99.999\%}{100.0\%})^{100} \approx 0.0\%$$. Altså er det tilnærmet 0.0% sannsynlighet for at vi generer den helt riktige teksten, selv med en ekstremt høy sannsynlighet for å velge riktig ord i hvert forsøk. Her skal det sies, at det vi anser som riktig tekst er en ord-for-ord riktig tekst. Om vi løsner opp kravet litt og kun krever at teksten skal ha samme betydning som den vi mener er riktig, er sannsynligheten for at modellen klarer det mye større.
+Hvis vi skal generere en tekst med 1000 ord og har en sannsynlighet for å velge riktig ord på 99.9% får vi følgende: $$P(\text{riktig setning}) = (\frac{99.9\%}{100.0\%})^{1000} \approx 36.8\%$$. Altså er det tilnærmet 37% sannsynlighet for at vi generer den helt riktige teksten, selv med en ekstremt høy sannsynlighet for å velge riktig ord i hvert forsøk.
 
 Men husk at modellen vår er i en feedback loop. Det betyr at sannsynligheten for å velge feil ord ikke er uavhengig i hvert steg, slik vi la til grunn for beregningen over. Sannsynlighetsfordelingen for ord påvirkes av de tidligere ordene som ble generert, siden disse nå er en del av teksten som brukes for å generere neste ord. Så om vi velger feil ord et sted i teksten, vil neste ord ha større sannsynlighet for feil enn om vi ikke hadde valgt feil ord. Ordet etter der vil ha enda større sannsynlighet osv. Dette fører til at vi, selv med vårt løsnede krav for hva vi anser som en riktig setning, vil oppleve at sannsynligheten for at teksten vår blir feil øker eksponentielt med lengden av teksten.
 
