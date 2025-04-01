@@ -100,6 +100,7 @@ Dette er et stort problem som stammer helt tilbake til hvordan vi trente modelle
 
 Ettersom alle dagens språkmodeller er trent på denne måten, lider også alle av slike biaser. Vi har heller enda ingen god måte å løse det på. Foreløpig er det eneste man gjør å trene på ekstremt mye tekst, og satse på at vi får så mange forskjellige eksempler at modellen lærer seg noe som ligner på en rimelig sannsynlighetsfordeling. Personlig, tror jeg faktisk ikke vi vil være i stand til å løse det. Jeg tror rett og slett vi fundamentalt må endre måten vi trener modellene våre på, fra pre-training og hele veien opp.
 
+## Referanser
 [^spec-dec]: Leviathan, Y., Kalman, M., & Matias, Y. (2023, July). Fast inference from transformers via speculative decoding. In International Conference on Machine Learning (pp. 19274-19286). PMLR.
 [^temp-sampl]: Hinton, G., Vinyals, O., & Dean, J. (2015). Distilling the knowledge in a neural network. arXiv preprint arXiv:1503.02531.
-[^lecun]: https://www.youtube.com/watch?v=xnFmnU0Pp-8
+[^lecun]: Yann LeCun: https://www.youtube.com/watch?v=xnFmnU0Pp-8
