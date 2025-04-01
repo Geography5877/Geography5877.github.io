@@ -76,7 +76,7 @@ Ved å sette $\tau > 1.0$ får vi en "mykere" sannsynlighetsfordeling, som igjen
 
 ### Divergens, divergens, divergens
 Dette er imidlertid også en av forklaringene på hvorfor en språkmodell kan rote seg bort i helt feil svar en gang man stiller et spørsmål, men gi riktig svar, hvis man starter en ny samtale og stiller samme spørsmål. Siden vi noen ganger velger et annet ord enn det mest sannsynlige ordet, sett fra språkmodellens perspektiv, kan vi endre hele betydningen av det modellen "prøver" å svare. Vi kan se på det slik:
-1. For hvert nye ord, velger vi det mest sannsynlige ordet med en sannsynlighet $S$ og et annet ord med sannsynlighet $1-S$. $S$ styres av vår spesifikke metode for valg av ord fra en sannsynlighetsfordelign.
+1. For hvert nye ord, velger vi det mest sannsynlige ordet med en sannsynlighet $$S$$ og et annet ord med sannsynlighet $$1-S$$. $$S$$ styres av vår spesifikke metode for valg av ord fra en sannsynlighetsfordelign.
 2. Hver gang vi velger et annet ord enn det mest sannsynlige ordet, endrer vi "retningen" en setning tar i større eller mindre grad.
 3. Ettersom vi mater den nye setningen inn i språkmodellen for at den skal forutsi neste ord igjen, vil endringen i retning fra steg 2. også påvirke hvordan sannsynlighetsfordelingen for dette ordet vil se ut.
 
@@ -84,7 +84,7 @@ Når vi skal generere lange svar med mange ord ser vi at vi selv med en veldig h
 
 Det er også alltid en mulighet for at modellen inkluderer veldig merkelige ord i samlingen med de mest sannsynlige ordene for hver prediksjon. Dette kan bety at selv det mest sannsynlige ordet, ifølge modellen, ikke egentlig er et veldig sannsynlig ord i virkeligheten. Ettersom modellen er autoregressiv, så har kan den ikke gå tilbake og rette opp en tidligere feil. Den er rett og slett tvunget til å fortsette å generere ord basert på den setningen den allerede har skrevet. Har vi vært uheldig med tidligere ord i setningen, vil vi kunne få veldig rare svar i et tilfelle, men helt rimelige svar i neste chat. Denne effekten, der språkmodellen kan gi vidt forskjellige svar, gitt nøyaktig samme utgansgpunkt kaller vi _divergens_. 
 
-Hva er sannsynligheten for at et svar med lengde $n$ er korrekt, om vi antar at sannsynligheten for å velge et feil ord er uavhengig? Hvis vi igjen bruker sannsynligeheten for feil ord = $1-S$, kan vi uttrykke dette i \eqref{eq:prob-wrong} [^lecun].
+Hva er sannsynligheten for at et svar med lengde $n$ er korrekt, om vi antar at sannsynligheten for å velge et feil ord er uavhengig? Hvis vi igjen bruker sannsynligeheten for feil ord = $$1-S$$, kan vi uttrykke dette i \eqref{eq:prob-wrong} [^lecun].
 
 $$
 \begin{equation}
@@ -93,7 +93,7 @@ P(\text{riktig setning}) = (1-S)^n
 \end{equation}
 $$
 
-Hvis vi skal generere en setning med 100 ord og har en sannsynlighet for å velge riktig ord på 99.999% får vi følgende: $P(\text{riktig setning}) = (1-0.99999)^100 = 0.0$. Altså er det 0% sannsynlighet for at vi generer den helt riktige setningen, selv med en ekstremt høy sannsynlighet for å velge riktig ord i hvert forsøk. Her skal det sies, at det vi anser som riktig setning er en ord-for-ord riktig setning. Om vi løsner opp kravet litt og godtar at setningen har samme betydning, er sannsynligheten nok mye større. Men måten vi trener disse modellene på, bruker faktisk denne tilnærmingen til å beregne riktigheten av en setning.
+Hvis vi skal generere en setning med 100 ord og har en sannsynlighet for å velge riktig ord på 99.999% får vi følgende: $$P(\text{riktig setning}) = (1-\frac{99.999%}{100%})^100 = 0.0$$. Altså er det 0% sannsynlighet for at vi generer den helt riktige setningen, selv med en ekstremt høy sannsynlighet for å velge riktig ord i hvert forsøk. Her skal det sies, at det vi anser som riktig setning er en ord-for-ord riktig setning. Om vi løsner opp kravet litt og godtar at setningen har samme betydning, er sannsynligheten nok mye større. Men måten vi trener disse modellene på, bruker faktisk denne tilnærmingen til å beregne riktigheten av en setning.
 
 Dette er et stort problem som stammer helt tilbake til hvordan vi trente modellen i pre-training steget. Husk at i pre-training steget trente vi modellen til å forutsi neste ord. Men hvordan vet vi, som trener modellen, hva det mest sannsynlige ordet er? Vi kjenner jo hele setningen, så vi sier bare at det mest sannsynlige neste ordet, er det ordet som faktisk står som neste ord i setningen. Og ikke nok med det. Vi sier også at dette ordet har 100% sannsynlighet, og at ingen andre ord er sannsynlige i et hele tatt. Det er jo en veldig merkelig tilnærming. Gitt at vi for eksempel bruker setningen "Jeg gikk en tur på stien." som et treningseksempel. Vi fjerner ordet "stien" og modellens oppgave er å forutsi det mest sannsynlige ordet, gitt "Jeg gikk en tur på" som kontekst. Er det rimelig å si at "stien" er det eneste mulige alternativet her? Kan ikke "veien" eller "fortauet" eller en hel del andre ord også være ord med en viss sannsynlihet? Ved å trene modellen til kun å tro at "stien" er det eneste riktige ordet, lærer den ikke en reell sannsynlighetsfordeling over alle ordene i vokabularet sitt, men en svært "biased" fordeling som prioriterer norske sanger alt for høyt.
 
