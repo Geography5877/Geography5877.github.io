@@ -59,7 +59,7 @@ Vanligvis beregnes sannsynligheten for hvert ord $$x_i$$ ved hjelp av en softmax
 
 $$
 \begin{equation}
-\text{softmax}(x_i) = \frac{e^{x_i}}{\sum_j=1^ne^{x_j}}
+\text{softmax}(x_i) = \frac{e^{x_i}}{\sum^n_j=1e^{x_j}}
 \label{eq:softmax}
 \end{equation}
 $$
@@ -67,7 +67,7 @@ $$
 I temperature sampling legger vi til en ekstra parameter $\tau$ i denne ligningen, slik at vi får ligningen \eqref{eq:temperature-sampling}.
 $$
 \begin{equation}
-text{softmax}(x_i) = \frac{e^{x_i/\tau}}{\sum_j=1^ne^{x_j/\tau}}
+text{softmax}(x_i) = \frac{e^{x_i/\tau}}{\sum^n_j=1e^{x_j/\tau}}
 \label{eq:temperature-sampling}
 \end{equation}
 $$
