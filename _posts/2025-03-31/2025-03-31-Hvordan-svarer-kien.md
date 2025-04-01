@@ -88,12 +88,12 @@ Hva er sannsynligheten for at et svar med lengde $n$ er korrekt, om vi antar at 
 
 $$
 \begin{equation}
-P(\text{riktig setning}) = S^n
+P(\text{riktig tekst}) = S^n
 \label{eq:prob-wrong}
 \end{equation}
 $$
 
-Hvis vi skal generere en tekst med 1000 ord og har en sannsynlighet for å velge riktig ord på 99.9% får vi følgende: $$P(\text{riktig setning}) = (\frac{99.9\%}{100.0\%})^{1000} \approx 36.8\%$$. Altså er det tilnærmet 37% sannsynlighet for at vi generer den helt riktige teksten, selv med en ekstremt høy sannsynlighet for å velge riktig ord i hvert forsøk.
+Hvis vi skal generere en tekst med 250 ord. Da må vi først huske at hvert ord gjennomsnittlig tilsvarer rundt 4 tokens. La oss så si at modellen vår velger riktig token med en sannsynlighet på 99.9%. Da kan vi finne sannsynligheten for riktig tekst slik: $$P(\text{riktig tekst}) = (\frac{99.9\%}{100.0\%})^{250 \cdot 4} \approx 36.8\%$$. Altså er det tilnærmet 37% sannsynlighet for at vi generer den helt riktige teksten, selv med en ekstremt høy sannsynlighet for å velge riktig token i hvert forsøk.
 
 Men husk at modellen vår er i en feedback loop. Det betyr at sannsynligheten for å velge feil ord ikke er uavhengig i hvert steg, slik vi la til grunn for beregningen over. Sannsynlighetsfordelingen for ord påvirkes av de tidligere ordene som ble generert, siden disse nå er en del av teksten som brukes for å generere neste ord. Så om vi velger feil ord et sted i teksten, vil neste ord ha større sannsynlighet for feil enn om vi ikke hadde valgt feil ord. Ordet etter der vil ha enda større sannsynlighet osv. Dette fører til at vi vil oppleve at sannsynligheten for at teksten vår blir feil øker eksponentielt med lengden av teksten.
 
