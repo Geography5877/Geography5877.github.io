@@ -89,6 +89,7 @@ Hva er sannsynligheten for at et svar med lengde $n$ er korrekt, om vi antar at 
 $$
 \begin{equation}
 P(\text{riktig setning}) = (1-S)^n
+\label{eq:prob-wrong}
 \end{equation}
 $$
 
