@@ -50,7 +50,7 @@ Vi har nå en model som:
 - er høfflig og svarer på spørsmål (fine-tuning)
 - svarer på en måte som stemmer godt med menneskelige mål og ønsker (RLHF, alignment)
 
-Etter RLHF steget har vi faktisk fått den modellen som ligger bak alle ikkeresonerende språkmodeller som ChatGPT, Mistral og Claude. For resonerende modeller endrer man på RLHF steget eller legger til et nytt steg, som også lærer modellen å "resonere" før den gir sitt endelige svar.
+Etter RLHF steget har vi faktisk fått den modellen som ligger bak alle ikkeresonerende språkmodeller som ChatGPT, Mistral og Claude. Det som i størst grad skiller disse modellene fra hverandre er hvilke data de er trent på, hvor lenge de er trent og enkelte forskjeller i den underliggende modellarkitekturen. Men i grove trekk kan vi si at dette er oppskriften på å lage en en god språkmodell i dag.
 
 ### Vi velger ikke alltid det mest sannsynlige ordet
 Tidligere sa jeg at det at modellen velger det ordet med høyest prosentverdi når den forutsier neste ord i en sekvens. Det er en sannhet med modifikasjoner. La oss se nærmere på dette. Et problem med å velge det mest sannsynlige ordet hver gang, er at vi ofte ender opp med svar av lav kvalitet og gjenntakende tekst. Du kan teste dette ved å sette temperaturen til en språkmodell til 0.0. For å omgå dette gjør man i dag et probabilistisk utvalg blant det mest sannsynlige ordene. En av de mest vanlige metodene for dete kalles temperature sampling [^temp-sampl].
