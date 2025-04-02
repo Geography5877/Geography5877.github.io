@@ -25,6 +25,6 @@ Hallusinasjon er altså en merkelapp vi legger på teksten fra en språkmodell i
 
 ## Kan vi gjøre noe med hallusinasjoner?
 
-Husk at språkmodeller aldri eksplisitt lærer seg å skille mellom fakta og usannheter (<https://enklypesalt.com/posts/Hvordan-svarer-kien/#l%C3%A6rer-modellen-hva-som-er-sant>). Vi håper bare at den skal skjønne det ut ifra hvordan vi trener den. Med et slikt utgangspunkt er det ikke vanskelig å forstå at modellen kan introduserer større eller mindre avvik fra fakta fra tid til annen. Den har rett og slett aldri fått beskjed om at den skal være faktuell.
+Husk at språkmodeller aldri eksplisitt lærer seg å skille mellom fakta og usannheter (<https://enklypesalt.com/posts/Hvordan-svarer-kien/#l%C3%A6rer-modellen-hva-som-er-sant>). Vi håper bare at den skal skjønne det ut ifra hvordan vi trener den. Med et slikt utgangspunkt er det ikke vanskelig å forstå at modellen kan introduserer større eller mindre avvik fra fakta fra tid til annen. Den har rett og slett aldri fått beskjed om at den skal være faktuell og den vet ikke nødvendigvis engang hva det vil si å være faktuell.
 
 Hallusinasjoner stammer altså grunnleggende fra hvordan vi har trent språkmodellene våre. De er derfor ikke noe vi kan endre på uten å endre på hvordan vi trener modellene våre fra grunnen opp. Enn så lenge, er hallusinasjoner vi bare må leve med og ta med i betraktningen i alle applikasjoner hvor vi ønsker å bruke en språkmodell.
