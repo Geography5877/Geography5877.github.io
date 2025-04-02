@@ -7,7 +7,11 @@ math: true
 description: I denne posten vil vi se på hva som skiller modeller som kan resonnere fra andre språkmodeller og hvordan det kan påvirke resultatene vi får.
 media_subpath: /assets/images/2025-04-02/
 ---
-Denne posten er en del av en lengre serie poster om språkmodeller og problemer med disse. Jeg vil starte med å presisere at språkmodeller helt klart har sine bruksområder, men ettersom denne serien ser på problemene med språkmodeller kommer jeg til å fokusere på ulemper og problemer forbundet med hvordan språkmodeller fungerer i dag.
+<!-- markdownlint-capture -->
+<!-- markdownlint-disable -->
+> Denne posten er en del av en lengre serie poster om språkmodeller og problemer med disse. Jeg vil starte med å presisere at språkmodeller helt klart har sine bruksområder, men ettersom denne serien ser på problemene med språkmodeller kommer jeg til å fokusere på ulemper og problemer forbundet med hvordan språkmodeller fungerer i dag.
+{: .prompt-info }
+<!-- markdownlint-restore -->
 
 ## Hva er en resonnerende språkmodell?
 En resonnerende språkmodell er en språkmodell som er trent spesifikt for å generere "tankerekker" før den svarer på et spørsmål eller utfører en oppgave. Slike tankerekker er egentlig bare modellen som "snakker til seg selv", men de tjener et spesielt formål. De skal øke det vi kaller test time compute. Så hva er test time compute?
