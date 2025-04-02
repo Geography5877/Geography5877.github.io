@@ -7,7 +7,11 @@ math: true
 description: I denne posten vil vi se på hvordan en språkmodel er i stand til å skrive tekst
 media_subpath: /assets/images/2025-03-31/
 ---
-Denne posten er en del av en lengre serie poster om språkmodeller og problemer med disse. Jeg vil starte med å presisere at språkmodeller helt klart har sine bruksområder, men ettersom denne serien ser på problemene med språkmodeller kommer jeg til å fokusere på ulemper og problemer forbundet med hvordan språkmodeller fungerer i dag.
+<!-- markdownlint-capture -->
+<!-- markdownlint-disable -->
+> Denne posten er en del av en lengre serie poster om språkmodeller og problemer med disse. Jeg vil starte med å presisere at språkmodeller helt klart har sine bruksområder, men ettersom denne serien ser på problemene med språkmodeller kommer jeg til å fokusere på ulemper og problemer forbundet med hvordan språkmodeller fungerer i dag.
+{: .prompt-info }
+<!-- markdownlint-restore -->
 
 ## Hvordan kan en model skrive?
 Tidligere i denne serien har vi sett på hvordan språkmodeller kan lese tekst. I denne posten skal vi se nærmere på hvordan de kan gjøre det motsatte. Nemlig hvordan de genererer tekst.

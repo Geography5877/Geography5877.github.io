@@ -8,7 +8,11 @@ description: I denne posten vil vi se på hvorfor språkmodeller hallusinerer og
 media_subpath: /assets/images/2025-04-01/
 ---
 
-Denne posten er en del av en lengre serie poster om språkmodeller og problemer med disse. Jeg vil starte med å presisere at språkmodeller helt klart har sine bruksområder, men ettersom denne serien ser på problemene med språkmodeller kommer jeg til å fokusere på ulemper og problemer forbundet med hvordan språkmodeller fungerer i dag.
+<!-- markdownlint-capture -->
+<!-- markdownlint-disable -->
+> Denne posten er en del av en lengre serie poster om språkmodeller og problemer med disse. Jeg vil starte med å presisere at språkmodeller helt klart har sine bruksområder, men ettersom denne serien ser på problemene med språkmodeller kommer jeg til å fokusere på ulemper og problemer forbundet med hvordan språkmodeller fungerer i dag.
+{: .prompt-info }
+<!-- markdownlint-restore -->
 
 ## Hva er hallusinasjoner?
 Vi hører ofte at et av de største problemene med dagens språkmodeller er at de hallisunerer når det genererer svar på våre spørsmål. For de fleste er hallisunasjoner fra språkmodeller synonymt med at modellen gir feilaktige svar eller finner på nye "fakta". Men hva er et egentlig som skjer når en språkmodell hallisunerer?
