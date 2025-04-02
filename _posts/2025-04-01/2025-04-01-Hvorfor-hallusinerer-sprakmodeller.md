@@ -1,5 +1,5 @@
 ---
-title: Hvoror hallusinerer språkmodeller?
+title: Hvorfor hallusinerer språkmodeller?
 date: 2025-04-01 06:57:00 +0200
 categories: [Språkmodeller og deres utfordringer]
 tags: [llm]     # TAG names should always be lowercase
