@@ -94,7 +94,7 @@ Dette er imidlertid også en av forklaringene på hvorfor en språkmodell kan ro
 
 Har vi vært uheldig med tidligere ord i setningen vår, vil vi kunne få veldig rare svar i et forsøk, men helt rimelige svar i det neste. Denne effekten, der språkmodellen kan gi vidt forskjellige svar, gitt nøyaktig samme utgangspunkt kaller vi _divergens_. 
 
-Hva er sannsynligheten for at et svar med lengde $n$ er korrekt, om vi antar at sannsynligheten for å velge et feil ord er uavhengig? Hvis vi igjen bruker sannsynligheten for feil ord = $$1-S$$, kan vi uttrykke dette i \eqref{eq:prob-wrong} [^lecun].
+Hva er sannsynligheten for at et svar med lengde $n$ er korrekt, om vi antar at sannsynligheten for å velge et feil ord er uavhengig? Hvis vi igjen bruker sannsynligheten for riktig ord = $$S$$, kan vi uttrykke dette i \eqref{eq:prob-wrong} [^lecun].
 
 $$
 \begin{equation}
