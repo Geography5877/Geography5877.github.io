@@ -104,7 +104,7 @@ Her har vi en hel del merkelig formatert tekst. La oss se litt nærmere på denn
 
 Denne biten indikerer at det som føler er det man kaller en system prompt. I dette tilfellet, er innholdet i denne "\n\nCutting Knowledge Date: December 2023\n\n", etterfulgt av `<|eot_id|>`, som indikerer at system promptet har sluttet. Disse spesielle ordene `<|start_header_id|>`, `<|end_header_id|>`, `<|eot_id|>`, er spesielle ord, som konverteres til egne tokens. Disse tokenene har spesiell betydning i modellen. For eksempel er`<|start_header_id|>` og `<|end_header_id|>` tokens som brukes for å indikere at teksten mellom disse tokenene, viser hvem som "snakker" i påfølgende tekst. Deretter kommer innholdet fra den som snakker, i dette tilfellet "\n\nCutting Knowledge Date: December 2023\n\n". Til slutt kommer `<|eot_id|>`, som indikerer at personen er ferdig med å snakke.
 
-Den neste delen av teksten er deretter:\\
+Den neste delen av teksten er så:\\
 `<|start_header_id|>user<|end_header_id|>\n\nWhy is the sky blue?<|eot_id|>`
 
 Vi kan nå tolke dette til at det er "user" som snakker. User sier "\n\nWhy is the sky blue?". "\n\n" i dette tilfellet, er bare kode for "hopp to linjer ned". Dette brukes for at teksten skal bli finere når den printes i brukergrensesnittet til brukeren og har ingen betydning for språkmodellen.
