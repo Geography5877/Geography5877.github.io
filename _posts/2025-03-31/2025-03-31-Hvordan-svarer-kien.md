@@ -1,5 +1,5 @@
 ---
-title: Hvordan svarer KIen?
+title: Hvordan svarer en språkmodell?
 date: 2025-03-31 06:57:00 +0200
 categories: [Språkmodeller og deres utfordringer]
 tags: [llm]     # TAG names should always be lowercase

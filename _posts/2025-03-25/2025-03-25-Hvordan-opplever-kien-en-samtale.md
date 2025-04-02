@@ -1,5 +1,5 @@
 ---
-title: Hvordan Opplever KI'en en samtale?
+title: Hvordan opplever en språkmodell en samtale?
 date: 2025-03-25 06:58:00 +0200
 categories: [Språkmodeller og deres utfordringer]
 tags: [llm]     # TAG names should always be lowercase
