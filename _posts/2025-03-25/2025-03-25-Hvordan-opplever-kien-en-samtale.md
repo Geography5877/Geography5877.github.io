@@ -7,9 +7,11 @@ math: true
 description: I denne posten vil vi se på hvordan en samtale ser ut fra en språkmodels perspektiv.
 media_subpath: /assets/images/2025-03-28/
 ---
-
-Denne posten er en del av en lengre serie poster om språkmodeller og problemer med disse. Jeg vil starte med å presisere at språkmodeller helt klart har sine bruksområder, men ettersom denne serien ser på problemene med språkmodeller kommer jeg til å fokusere på ulemper og problemer forbundet med hvordan språkmodeller fungerer i dag.
-
+<!-- markdownlint-capture -->
+<!-- markdownlint-disable -->
+> Denne posten er en del av en lengre serie poster om språkmodeller og problemer med disse. Jeg vil starte med å presisere at språkmodeller helt klart har sine bruksområder, men ettersom denne serien ser på problemene med språkmodeller kommer jeg til å fokusere på ulemper og problemer forbundet med hvordan språkmodeller fungerer i dag.
+{: .prompt-info }
+<!-- markdownlint-restore -->
 
 ## Hvordan kan en maskin lese?
 La oss starte med et helt grunnleggende spørsmål. Når du skriver noe til en språkmodel, hvordan kan den "lese" hva du skriver? Språkmodellen har jo ikke øyne, så den kan ikke se hva du skriver på samme måte som vi mennesker gjør. Så hvordan er den i stand til å lese og forstå hva du har skrevet når den svarer deg?
