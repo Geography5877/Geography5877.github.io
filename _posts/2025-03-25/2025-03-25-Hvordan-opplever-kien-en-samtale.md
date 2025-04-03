@@ -2,7 +2,7 @@
 title: Hvordan opplever en språkmodell en samtale?
 date: 2025-03-25 06:58:00 +0200
 categories: [Språkmodeller og deres utfordringer]
-tags: [llm]     # TAG names should always be lowercase
+tags: [llm, tokenization, context-window]     # TAG names should always be lowercase
 math: true
 description: I denne posten vil vi se på hvordan en samtale ser ut fra en språkmodels perspektiv.
 media_subpath: /assets/images/2025-03-28/

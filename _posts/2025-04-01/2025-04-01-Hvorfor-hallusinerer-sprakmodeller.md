@@ -2,7 +2,7 @@
 title: Hvorfor hallusinerer språkmodeller?
 date: 2025-04-01 06:57:00 +0200
 categories: [Språkmodeller og deres utfordringer]
-tags: [llm]     # TAG names should always be lowercase
+tags: [llm, hallicunation]     # TAG names should always be lowercase
 math: true
 description: I denne posten vil vi se på hvorfor språkmodeller hallusinerer og hvorfor det er lite vi kan gjøre med det
 media_subpath: /assets/images/2025-04-01/

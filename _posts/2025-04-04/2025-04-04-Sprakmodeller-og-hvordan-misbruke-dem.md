@@ -2,7 +2,7 @@
 title: Middelmådige språkmodeller og hvordan misbruke dem
 date: 2025-04-04 06:57:00 +0200
 categories: [Språkmodeller og deres utfordringer]
-tags: [llm]     # TAG names should always be lowercase
+tags: [llm, prompt-injection, jailbreaking]     # TAG names should always be lowercase
 math: true
 description: I denne posten skal vi se hvordan språkmodeller enkelt kan lures til å svare på spørsmål den ikke skal, og hvordan de kan ruinere en bedrift.
 media_subpath: /assets/images/2025-04-04/

@@ -2,7 +2,7 @@
 title: Hvordan svarer en språkmodell?
 date: 2025-03-31 06:57:00 +0200
 categories: [Språkmodeller og deres utfordringer]
-tags: [llm]     # TAG names should always be lowercase
+tags: [llm, next-token-prediction, reinforcement-learning-from-human-feedback, autoregressive-llm, truth-evaluation]     # TAG names should always be lowercase
 math: true
 description: I denne posten vil vi se på hvordan en språkmodel er i stand til å skrive tekst
 media_subpath: /assets/images/2025-03-31/
