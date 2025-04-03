@@ -136,9 +136,8 @@ Foreløpig har vi bare sett lineære transformasjoner og en softmax i transforme
 Legg merke til at det i transformeren ikke er noen tilstand som må vedlikeholdes. Dette gjør at en transformer kan parallelliseres! Dette er antakelig hovedårsaken til at transformer arkitekturen er fundamentet i en hver språkmodell. Den kan trenes i parallell, noe som gjør at vi kan trene modellen på massive mengder tekst kjapt og effektivt.
 
 ## Transformeren er ikke en universell løsning
-Det kan jo nå virke som transformer modellen er en genial løsning på alle våre problemer. Slik er det dessverre ikke. Transformeren introduserer også sitt eget sett med begrensinger, som blir mer eller mindre viktige avhengig av hva vi ønsker å bruke språkmodellen til.
+Det kan jo nå virke som transformer modellen er en genial løsning på alle våre problemer. Slik er det dessverre ikke. Transformeren introduserer også sitt eget sett med begrensinger, som blir mer eller mindre viktige avhengig av hva vi ønsker å bruke språkmodellen til: \\
 
-### Kontekstvinduet i en transformer
 Vi har tidligere nevnt at kontekstvinduet og dets størrelse er [avgjørende for hva en språkmodell kan gjøre](https://enklypesalt.com/posts/Hvordan-opplever-kien-en-samtale/#kontekstvinduet). Nå som vi har en oversikt over hvordan attention beregnes, kan vi se litt nærmere på dette.
 
 Størrelsen på kontekstvinduet avgjøres nemlig av størrelsen på attention mappet vi beregnet tidligere. Hvor store attention maps vi kan få plass til på vårt hardware styrer hvor lange sekvenser vi kan behandle i språkmodellen vår. Vi ser at kontekstvinduet har størrelse $n^2$, der $n$ er tekstlengden. Vi må også huske at modellen vår også består av mange lag, der hvert lag har sitt eget attention map. Da ser vi at vi fort møter en hardwarebegrensning på hvor store individuelle attention maps vi får plass til, og dermed også hvor stort kontekstvindu vi kan ha.
