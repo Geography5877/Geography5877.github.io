@@ -106,7 +106,7 @@ $$
 
 og $d_k$ er en skaleringsfaktor.
 
-La oss starte med å beregne $QK^T$: \\
+La oss starte med å beregne $QK^T$:
 
 $$
 \begin{equation}
