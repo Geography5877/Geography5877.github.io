@@ -42,7 +42,7 @@ $$
 \end{equation}
 $$
 
-Her er $W^Q, W^K$ og $W^V$ matrisene jeg nevnte over, og $x$ er den opprinnelige tokeniserte teksten. La oss se et eksempel på en slik beregning. La oss si at vi starter med teksten: "2+2". Som vi har sett [tidligere](https://enklypesalt.com/posts/Hvordan-opplever-kien-en-samtale/#tokenization) blir denne teksten tokenisert til: \\
+Her er $W^Q, W^K$ og $W^V$ matrisene jeg nevnte over, og $x$ er den opprinnelige teksten, tokenisert og embedded. La oss se et eksempel på en slik beregning. La oss si at vi starter med teksten: "2+2". Som vi har sett [tidligere](https://enklypesalt.com/posts/Hvordan-opplever-kien-en-samtale/#tokenization) blir denne teksten tokenisert til: \\
 
 $\text{tokens} = \begin{bmatrix}17 & 10 & 17\end{bmatrix}$
 
