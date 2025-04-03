@@ -21,7 +21,7 @@ Den første ulempen er at for å trene et rekurrent nevralt nettverk, må man se
 Den andre ulempen er at rekurrente nevrale nettverk sliter med å lære seg sammenhenger som gjelder over lang tid. For å forstå det, må vi først innse at tilstanden nettverket vedlikeholder internt er av en begrenset størrelse, avhengig av vårt hardware, er det begrenset mye informasjon vi kan lagre i denne tilstanden. Når en sekvens med ord blir veldig lang, er det ikke plass i denne tilstanden til å holde styr på hvordan alt henger sammen. Resultatet er at vi så en tydelig nedgang i prestasjon jo lengre sekvensene nettverket prosesserte ble.
 
 ### Enter the Transformer
-I 2017 kom en banebrytende paper med tittelen "Attention is all you need"[^atten-is-all], fra Google Brain teamet. Dette paperet introduserte en ny type nevral nettverk arkitektur kalt en Transformer. Denne arkitekturen var ikke helt ulik andre arkitekturer på den tiden, men den introduserte et nytt konsept, nemlig å bruke en attention mekanisme til å styre flyten av informasjon i nettverket. La oss først se litt nærmere på denne arkitekturen:
+I 2017 kom en banebrytende paper med tittelen "Attention is all you need"[^atten-is-all], fra Google Brain teamet. Dette paperet introduserte en ny type nevral nettverk arkitektur kalt en Transformer. Transformer er forøvrig ordet bak T'en i ChatGPT, GPT4o og generelt GPT. Den er altså den fundamentale modellen i alle språkmodeller. Denne arkitekturen var ikke helt ulik andre arkitekturer på den tiden, men den introduserte et nytt konsept, nemlig å kun bruke en attention mekanisme til å styre flyten av informasjon i nettverket. La oss først se litt nærmere på denne arkitekturen:
 
 #### Attention?
 Attention er en operasjon som opererer på tre tensorer:
