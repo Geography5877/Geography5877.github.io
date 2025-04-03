@@ -31,6 +31,7 @@ Attention er en operasjon som opererer på tre vektorer:
 
 Alle disse tre vektorene er en lineær transformasjon av den opprinnelige teksten vår. Hvordan skjer dette? Jo, husk først at det første som skjer med teksten vår er at den blir [tokenized](https://enklypesalt.com/posts/Hvordan-opplever-kien-en-samtale/#tokenization). Den blir altså omgjort til en sekvens med tall. Det neste steget er at hvert token går gjennom en "embedding modell" som transformerer hvert token til en vektor. De lineære transformasjonene som skjer i $Q,K$ og $V$ skjer altså på embeddingen av hvert token. Den lineære operasjonen er rett og slett en matrisemultiplikasjon med denne sekvensen. Hver av $Q, K$ og $V$ har sin egen matrise, noe som gjør at denne operasjonen resulterer i tre separate og uavhengige transformasjoner av den opprinnelige sekvensen. Innholdet i disse matrisene er en del av det modellen lærer når vi trener. Rent matematisk kan vi formulere transformasjonen fra $x$ til $Q$, $K$ og $V$ som i \eqref{eq:QKV-weights}:
 
+$$
 \begin{equation}
 \begin{aligned}
 & Q = xW^Q \\
@@ -39,6 +40,7 @@ Alle disse tre vektorene er en lineær transformasjon av den opprinnelige tekste
 \end{aligned}
 \label{eq:QKV-weights}
 \end{equation}
+$$
 
 Her er $W^Q, W^K$ og $W^V$ matrisene jeg nevnte over, og $x$ er den opprinnelige tokeniserte teksten. La oss se et eksempel på en slik beregning. La oss si at vi starter med teksten: "2+2". Som vi har sett [tidligere](https://enklypesalt.com/posts/Hvordan-opplever-kien-en-samtale/#tokenization) blir denne teksten tokenisert til:\\
 
@@ -49,6 +51,7 @@ $x = \begin{bmatrix}1 & -3\end{bmatrix}, \begin{bmatrix 13 & -2 \end{bmatrix}, \
 
 La oss nå si at vi har matrisen: $W^Q = \begin{bmatrix}-1 & 1 \\ 2 & -1\end{bmatrix}$. Vi kan da beregne $Q$ slik:\\
 
+$$
 \begin{equation}
 \begin{aligned}
 Q = xW^Q &= \begin{bmatrix} 1 & -3\\ 13 & -2 \\ 1 & -3\end{bmatrix} \begin{bmatrix}-1 & 1 \\ 2 & -1\end{bmatrix}$\\
@@ -57,6 +60,7 @@ Q = xW^Q &= \begin{bmatrix} 1 & -3\\ 13 & -2 \\ 1 & -3\end{bmatrix} \begin{bmatr
 \end{aligned}
 \label{eq:Q-calc}
 \end{equation}
+$$
 
 La oss også si vi brukte samme metode for å finne: $K = \begin{bmatrix} -8 & -10 \\ 7 & 18 \\ -8 & 10\end{bmatrix}$ og $V = \begin{bmatrix} -10 & -8 \\ 18 & 7 \\ -10 & 8\end{bmatrix}$
 
@@ -64,15 +68,18 @@ La oss også si vi brukte samme metode for å finne: $K = \begin{bmatrix} -8 & -
 
 Neste steg i attention mekanismen er å beregne det vi kaller et "attention map". Dette er en $n \times n$ matrise som inneholder informasjon om hvordan hvert token i sekvensen vår skal relateres til alle andre tokens i den samme sekvensen. Her er $n$ lengden på sekvensen. Så hvordan beregner vi denne? Jo vi bruker $Q$ og $K$ fra tidligere \eqref{attention}:
 
+$$
 \begin{equation}
 {\text{AttentionMap}}(Q, K) = \text{softmax}(\frac{QK^{\top}}{\sqrt{d_k}})
 \label{eq:attention}
 \end{equation}
+$$
 
 Hvor: $\text{softmax}(x_i) = \frac{e^{x_i}}{\sum^n_{j=1}e^{x_j}}$ og $d_k$ er en skaleringsfaktor.
 
 La oss starte med å beregne $QK^T$:\\
 
+$$
 \begin{equation}
 \begin{aligned}
 QK^{\top}& =  \begin{bmatrix}-7 & 4 \\ -17 & 15 \\ -7 & 4\end{bmatrix}\begin{bmatrix}-8 & 7 & -8 \\ -10 & 18 & -10\end{bmatrix}\\
@@ -80,14 +87,18 @@ QK^{\top}& =  \begin{bmatrix}-7 & 4 \\ -17 & 15 \\ -7 & 4\end{bmatrix}\begin{bma
 &=\begin{bmatrix} 16 & 23 & 16 \\ -14 & 151 & -14 \\ 16 & 23 & 16\end{bmatrix}
 \end{aligned}
 \end{equation}
+$$
 
 Skaleringsfaktoren $d_k$ er størrelsen på vektorene vi får ut av embedding modellen. I vårt tilfelle er altså $d_k = 2$. Vi skalerer derfor $QK^{\top}$ slik:
 
+$$
 \begin{equation}
 \begin{bmatrix} 16 & 23 & 16 \\ -14 & 151 & -14 \\ 16 & 23 & 16\end{bmatrix}/\sqrt{2} = \begin{bmatrix} 11.31 & 16.26 & 11.31 \\ -9.90 & 106.77 & -9.90 \\ 11.31 & 16.26 & 11.31\end{bmatrix}
 \end{equation}
+$$
 
 Vi kan nå beregne attention mappet slik:\\
+$$
 \begin{equation}
 \begin{aligned}
 $\text{softmax}\left(\frac{QK^{\top}}{\sqrt{d_k}}\right)\\
@@ -95,6 +106,7 @@ $\text{softmax}\left(\frac{QK^{\top}}{\sqrt{d_k}}\right)\\
 &= \begin{bmatrix} 3.49\cdot 10^{-42} & 4.92 \cdot 10^{-51} & 3.49\cdot 10^{-42} \\ 2.14 \cdot 10^{-51} & 1.00 & 2.14 \cdot 10^{-51} \\ 3.49\cdot 10^{-42} & 4.92 \cdot 10^{-51} & 3.49\cdot 10^{-42}\end{bmatrix}
 \end{aligned}
 \end{equation}
+$$
 
 Hva er det vi har i denne matrisen? Jo, denne matrisen inneholder hvor viktig hvert token i teksten betyr for hvert av de andre tokenene i teksten. Vi har rett og slett beregnet hvor mye den første 2'eren bryr seg om + og den andre 2'eren, samt seg selv. Hvor mye + bryr seg om den første og den andre 2'eren osv. Vi kan nå multiplisere dette med $V$ for å transformere inputen vår $x$ med informasjon om hvor mye hvert token i $x$ betyr for hvert av de andre tokenene i teksten. Attention mekanismen vekter rett og slett hvert token med tanke på oppgaven den skal løse.
 
