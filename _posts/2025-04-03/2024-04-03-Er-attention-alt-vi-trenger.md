@@ -48,7 +48,13 @@ $\text{tokens} = \begin{bmatrix}17 & 10 & 17\end{bmatrix}$
 
 Vi sender denne så gjennom en embedding modell og får ut embeddingen av hvert token:\\
 $$
-x = \begin{bmatrix}1 & -3\end{bmatrix}, \begin{bmatrix 13 & -2 \end{bmatrix}, \begin{bmatrix}1 & -3\end{bmatrix}
+\begin{equation}
+\begin{aligned}
+x = &\begin{bmatrix}1 & -3\end{bmatrix} \\
+&\begin{bmatrix 13 & -2 \end{bmatrix} \\
+&\begin{bmatrix}1 & -3\end{bmatrix}
+\end{equation}
+\end{aligned}
 $$
 
 La oss nå si at vi har matrisen:
@@ -88,9 +94,11 @@ $$
 \end{equation}
 $$
 
-Hvor: 
+Hvor softmax er gitt av: 
 $$
+\begin{equation}
 \text{softmax}(x_i) = \frac{e^{x_i}}{\sum^n_{j=1}e^{x_j}}
+\end{equation}
 $$
 
 og $d_k$ er en skaleringsfaktor.
