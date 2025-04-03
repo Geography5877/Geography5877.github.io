@@ -50,9 +50,9 @@ Vi sender denne så gjennom en embedding modell og får ut embeddingen av hvert 
 $$
 \begin{equation}
 \begin{aligned}
-x = &\begin{bmatrix}1 & -3\end{bmatrix} \\
-&\begin{bmatrix 13 & -2 \end{bmatrix} \\
-&\begin{bmatrix}1 & -3\end{bmatrix}
+x = & \begin{bmatrix} 1 & -3\end{bmatrix} \\
+& \begin{bmatrix} 13 & -2 \end{bmatrix} \\
+& \begin{bmatrix} 1 & -3\end{bmatrix}
 \end{aligned}
 \end{equation}
 $$
