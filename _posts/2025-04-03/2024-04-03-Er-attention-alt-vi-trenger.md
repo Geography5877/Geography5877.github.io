@@ -24,7 +24,7 @@ Den andre ulempen er at rekurrente nevrale nettverk sliter med å lære seg samm
 I 2017 kom en banebrytende paper med tittelen "Attention is all you need"[^atten-is-all], fra Google Brain teamet. Dette paperet introduserte en ny type nevral nettverk arkitektur kalt en Transformer. Denne arkitekturen var ikke helt ulik andre arkitekturer på den tiden, men den introduserte et nytt konsept, nemlig å bruke en attention mekanisme til å styre flyten av informasjon i nettverket. La oss først se litt nærmere på denne arkitekturen:
 
 #### Attention?
-Attention er en operasjon som opererer på tre vektorer:
+Attention er en operasjon som opererer på tre tensorer:
 - $Q$
 - $K$
 - $V$
