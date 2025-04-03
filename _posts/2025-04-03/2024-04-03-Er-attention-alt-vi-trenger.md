@@ -136,8 +136,9 @@ Foreløpig har vi bare sett lineære transformasjoner og en softmax i transforme
 Legg merke til at det i transformeren ikke er noen tilstand som må vedlikeholdes. Dette gjør at en transformer kan parallelliseres! Dette er antakelig hovedårsaken til at transformer arkitekturen er fundamentet i en hver språkmodell. Den kan trenes i parallell, noe som gjør at vi kan trene modellen på massive mengder tekst kjapt og effektivt.
 
 ## Transformeren er ikke en universell løsning
-Det kan jo nå virke som transformer modellen er en genial løsning på alle våre problemer. Slik er det dessverre ikke. Transformeren introduserer også sitt eget sett med begrensinger, som blir mer eller mindre viktige avhengig av hva vi ønsker å bruke språkmodellen til: \\
+Det kan jo nå virke som transformer modellen er en genial løsning på alle våre problemer. Slik er det dessverre ikke. Transformeren introduserer også sitt eget sett med begrensinger, som blir mer eller mindre viktige avhengig av hva vi ønsker å bruke språkmodellen til.
 
+### Størrelsen på kontekstvinduet påvirker oppførselen
 Vi har tidligere nevnt at kontekstvinduet og dets størrelse er [avgjørende for hva en språkmodell kan gjøre](https://enklypesalt.com/posts/Hvordan-opplever-kien-en-samtale/#kontekstvinduet). Nå som vi har en oversikt over hvordan attention beregnes, kan vi se litt nærmere på dette.
 
 Størrelsen på kontekstvinduet avgjøres nemlig av størrelsen på attention mappet vi beregnet tidligere. Hvor store attention maps vi kan få plass til på vårt hardware styrer hvor lange sekvenser vi kan behandle i språkmodellen vår. Vi ser at kontekstvinduet har størrelse $n^2$, der $n$ er tekstlengden. Vi må også huske at modellen vår også består av mange lag, der hvert lag har sitt eget attention map. Da ser vi at vi fort møter en hardwarebegrensning på hvor store individuelle attention maps vi får plass til, og dermed også hvor stort kontekstvindu vi kan ha.
@@ -155,6 +156,7 @@ Heldigvis er kontekstvinduene i dagens språkmodeller veldig store. Så i de fle
 
 Eksempelet over omgås også enkelt ved å alltid kreve at system promptet er en del av kontekstvinduet. Eksempelet viser uansett hvordan en modell som ikke vedlikeholder en intern tilstand plutselig kan begynne å gjøre rare ting. 
 
+### Dynamsik attention er en utfordring i seg selv
 Det er imidlertid også mulig å oppleve at enkelte deler av en tekst i et kontekstvindu får feil mengde attention på grunn av tekst andre steder i kontekstvinduet. Husk at hvordan attention fordeles avgjøres av hvordan modellen er trent og av teksten som brukes for å beregne attention. All tekst i et kontekstvindu behandles helt likt. Uheldig tekst i kontekstvinduet vil derfor også farge hvordan ny tekst genereres, og dermed igjen farge kontekstvinduet ytterligere. Er vi litt uheldige, kan vi forandre modellens karakter fullstendig. Det kan rett og slett bli utrolig vanskelig å forstå hvorfor en språkmodell svarer slik den gjør, ettersom det til og med kan endre seg mellom spørsmål. Dette problemet er ikke like enkelt å omgå ettersom det er et fundamentalt problem introdusert av attention mekanismen. 
 
 Det finnes utallige eksempler på at en språkmodell oppfører seg på en uønsket måte[^nrk1][^nrk2]. _Man kan faktisk aldri vite om en språkmodell har havnet i en eller annen merkelig feedback loop hvor den farger sitt eget kontekstvindu i en uønsket retning._
