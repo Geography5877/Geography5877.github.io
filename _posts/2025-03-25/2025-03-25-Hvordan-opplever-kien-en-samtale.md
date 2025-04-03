@@ -83,7 +83,7 @@ Som følge av måten vi tokeniserer tekst på, er en språkmodell enda mer avhen
 Dagens mest populære språkmodeller er alle bygget på Transformer modellen[^atten-is-all]. Det er flere begrensninger med transformers for språkmodeller, men her skal vi fokusere på kontekstvinduet.
 
 ### Kontekstvinduet har begrenset størrelse
-En transformer kan kun prosessere et begrenset antall tokens. Bakgrunnen for dette kommer av at det største fremskrittet introdusert i transformer modellen, nemlig "attention mekanismen". Vi skal ikke se på hvordan denne mekanismen fungerer her. Vi skal i stedet nøye oss med å påpeke at en del av denne mekanismen er å beregne hvor viktig hvert token er hvor hvert eneste annet token i en sekvens. Som konsekvens av dette, inneholder enhver attention mekanisme en matrise av størrelse $$n^2$$, hvor $$n$$ er antallet tokens i sekvensen som behandles. 
+En transformer kan kun prosessere et begrenset antall tokens. Bakgrunnen for dette kommer av at det største fremskrittet introdusert i transformer modellen, nemlig "attention mekanismen". Vi skal ikke se på hvordan denne mekanismen fungerer her, men jeg har en egen [post](https://enklypesalt.com/posts/Er-attention-alt-vi-trenger/#attention) som ser på det nokså nøye. Vi skal i stedet nøye oss med å påpeke at en del av denne mekanismen er å beregne hvor viktig hvert token er hvor hvert eneste annet token i en sekvens. Som konsekvens av dette, inneholder enhver attention mekanisme en matrise av størrelse $$n^2$$, hvor $$n$$ er antallet tokens i sekvensen som behandles. 
 
 $$\begin{bmatrix} \text{Hunden} & 0.90 & 0.09 & 0.10 \\ \text{drakk} & 0.10 & 0.50 & 0.50 \\ \text{vann} & 0.30 & 0.40 & 0.40 \\ \text{ } &\text{Hunden} & \text{drakk} &\text{vann} \end{bmatrix}$$
 
