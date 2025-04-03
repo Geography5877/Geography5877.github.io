@@ -66,7 +66,7 @@ Vi kan da beregne $Q$ slik: \\
 $$
 \begin{equation}
 \begin{aligned}
-Q = xW^Q &= \begin{bmatrix} 1 & -3\\ 13 & -2 \\ 1 & -3\end{bmatrix} \begin{bmatrix}-1 & 1 \\ 2 & -1\end{bmatrix}$\\
+Q = xW^Q &= \begin{bmatrix} 1 & -3\\ 13 & -2 \\ 1 & -3\end{bmatrix} \begin{bmatrix}-1 & 1 \\ 2 & -1\end{bmatrix}\\
 &= \begin{bmatrix} -1\cdot 1 + 2 \cdot (-3) & 1 \cdot 1 + (-1)\cdot(-3) \\ (-1) \cdot 13 + 2 \cdot(-2) & 1 \cdot 13 + (-1) \cdot (-2) \\ -1\cdot 1 + 2 \cdot (-3) & 1 \cdot 1 + (-1)\cdot(-3)\end{bmatrix}\\
 &= \begin{bmatrix} -7 & 4 \\ -17 & 15 \\ -7 & 4\end{bmatrix}
 \end{aligned}
