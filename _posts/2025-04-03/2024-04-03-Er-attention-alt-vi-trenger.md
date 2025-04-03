@@ -158,7 +158,7 @@ Eksempelet over omgås også enkelt ved å alltid kreve at system promptet er en
 
 Det er imidlertid også mulig å oppleve at enkelte deler av en tekst i et kontekstvindu får feil mengde attention på grunn av tekst andre steder i kontekstvinduet. Husk at hvordan attention fordeles avgjøres av hvordan modellen er trent og av teksten som brukes for å beregne attention. All tekst i et kontekstvindu behandles helt likt. Uheldig tekst i kontekstvinduet vil derfor også farge hvordan ny tekst genereres, og dermed igjen farge kontekstvinduet ytterligere. Er vi litt uheldige, kan vi forandre modellens karakter fullstendig. Det kan rett og slett bli utrolig vanskelig å forstå hvorfor en språkmodell svarer slik den gjør, ettersom det til og med kan endre seg mellom spørsmål. Dette problemet er ikke like enkelt å omgå ettersom det er et fundamentalt problem introdusert av attention mekanismen. 
 
-Det finnes utallige eksempler på at en språkmodell oppfører seg på en uønsket måte. _Man kan faktisk aldri vite om en språkmodell har havnet i en eller annen merkelig feedback loop hvor den farger sitt eget kontekstvindu i en uønsket retning._
+Det finnes utallige eksempler på at en språkmodell oppfører seg på en uønsket måte[^nrk1][^nrk2]. _Man kan faktisk aldri vite om en språkmodell har havnet i en eller annen merkelig feedback loop hvor den farger sitt eget kontekstvindu i en uønsket retning._
 
 ## Referanser
 [^atten-is-all]: Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, and Illia Polosukhin. 2017. Attention is all you need. In Proceedings of the 31st International Conference on Neural Information Processing Systems (NIPS'17). Curran Associates Inc., Red Hook, NY, USA, 6000–6010
