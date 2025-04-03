@@ -74,7 +74,7 @@ Q = xW^Q &= \begin{bmatrix} 1 & -3\\ 13 & -2 \\ 1 & -3\end{bmatrix} \begin{bmatr
 \end{equation}
 $$
 
-La oss også si vi brukte samme metode for å finne: 
+La oss også si vi brukte samme metode for å finne: \\
 $$
 K = \begin{bmatrix} -8 & -10 \\ 7 & 18 \\ -8 & 10\end{bmatrix}
 $$ 
