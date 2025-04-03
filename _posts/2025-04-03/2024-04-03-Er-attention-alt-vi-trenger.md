@@ -2,7 +2,7 @@
 title: Er attention alt vi trenger?
 date: 2025-04-03 06:57:00 +0200
 categories: [Språkmodeller og deres utfordringer]
-tags: [llm, attention, dypdykk]     # TAG names should always be lowercase
+tags: [llm]     # TAG names should always be lowercase
 math: true
 description: I denne posten skal vi se på den viktigste byggesteinen i dagens språkmodeller: Attention mekanismen. Vi skal se hvordan den muliggjorde store språkmodeller og hvilke fordeler og ulemper den bringer med seg.
 media_subpath: /assets/images/2025-04-03/
