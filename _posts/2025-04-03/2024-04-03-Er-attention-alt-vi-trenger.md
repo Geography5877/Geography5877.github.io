@@ -53,8 +53,8 @@ $$
 x = &\begin{bmatrix}1 & -3\end{bmatrix} \\
 &\begin{bmatrix 13 & -2 \end{bmatrix} \\
 &\begin{bmatrix}1 & -3\end{bmatrix}
-\end{equation}
 \end{aligned}
+\end{equation}
 $$
 
 La oss nå si at vi har matrisen:
