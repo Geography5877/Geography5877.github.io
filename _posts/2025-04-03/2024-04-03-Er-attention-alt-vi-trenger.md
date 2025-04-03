@@ -42,7 +42,7 @@ $$
 \end{equation}
 $$
 
-Her er $W^Q, W^K$ og $W^V$ matrisene jeg nevnte over, og $x$ er den opprinnelige teksten, tokenisert og embedded. La oss se et eksempel på en slik beregning. La oss si at vi starter med teksten: "2+2". Som vi har sett [tidligere](https://enklypesalt.com/posts/Hvordan-opplever-kien-en-samtale/#tokenization) blir denne teksten tokenisert til: \\
+Her er $W^Q, W^K$ og $W^V$ matrisene jeg nevnte over, og $x$ er den opprinnelige teksten, tokenisert og embedded. La oss se et eksempel på en slik beregning. La oss si at vi starter med teksten: "2+2". Som vi har sett [tidligere](https://enklypesalt.com/posts/Hvordan-opplever-kien-en-samtale/#tokenization) blir denne teksten tokenisert til:
 
 $\text{tokens} = \begin{bmatrix}17 & 10 & 17\end{bmatrix}$
 
@@ -59,7 +59,9 @@ $$
 
 La oss nå si at vi har matrisen:
 $$
+\begin{equation}
 W^Q = \begin{bmatrix}-1 & 1 \\ 2 & -1\end{bmatrix}
+\end{equation}
 $$ 
 
 Vi kan da beregne $Q$ slik: \\
@@ -76,11 +78,12 @@ $$
 
 La oss også si vi brukte samme metode for å finne: \\
 $$
-K = \begin{bmatrix} -8 & -10 \\ 7 & 18 \\ -8 & 10\end{bmatrix}
-$$ 
-
-$$
-V = \begin{bmatrix} -10 & -8 \\ 18 & 7 \\ -10 & 8\end{bmatrix}
+\begin{equation}
+\begin{aligned}
+& K = \begin{bmatrix} -8 & -10 \\ 7 & 18 \\ -8 & 10\end{bmatrix}
+& V = \begin{bmatrix} -10 & -8 \\ 18 & 7 \\ -10 & 8\end{bmatrix}
+\end{aligned}
+\end{equation}
 $$
 
 
@@ -127,8 +130,7 @@ Vi kan nå beregne attention mappet slik:\\
 $$
 \begin{equation}
 \begin{aligned}
-$\text{softmax}\left(\frac{QK^{\top}}{\sqrt{d_k}}\right)\\
-&= \text{softmax}(\begin{bmatrix} 11.31 & 16.26 & 11.31 \\ -9.90 & 106.77 & -9.90 \\ 11.31 & 16.26 & 11.31\end{bmatrix})\\
+\text{softmax}\left(\frac{QK^{\top}}{\sqrt{d_k}}\right) & = \text{softmax}(\begin{bmatrix} 11.31 & 16.26 & 11.31 \\ -9.90 & 106.77 & -9.90 \\ 11.31 & 16.26 & 11.31\end{bmatrix})\\
 &= \begin{bmatrix} 3.49\cdot 10^{-42} & 4.92 \cdot 10^{-51} & 3.49\cdot 10^{-42} \\ 2.14 \cdot 10^{-51} & 1.00 & 2.14 \cdot 10^{-51} \\ 3.49\cdot 10^{-42} & 4.92 \cdot 10^{-51} & 3.49\cdot 10^{-42}\end{bmatrix}
 \end{aligned}
 \end{equation}
