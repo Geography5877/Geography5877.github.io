@@ -156,7 +156,7 @@ Heldigvis er kontekstvinduene i dagens språkmodeller veldig store. Så i de fle
 
 Eksempelet over omgås også enkelt ved å alltid kreve at system promptet er en del av kontekstvinduet. Eksempelet viser uansett hvordan en modell som ikke vedlikeholder en intern tilstand plutselig kan begynne å gjøre rare ting. 
 
-### Dynamsik attention er en utfordring i seg selv
+### Dynamisk attention er en utfordring i seg selv
 Det er imidlertid også mulig å oppleve at enkelte deler av en tekst i et kontekstvindu får feil mengde attention på grunn av tekst andre steder i kontekstvinduet. Husk at hvordan attention fordeles avgjøres av hvordan modellen er trent og av teksten som brukes for å beregne attention. All tekst i et kontekstvindu behandles helt likt. Uheldig tekst i kontekstvinduet vil derfor også farge hvordan ny tekst genereres, og dermed igjen farge kontekstvinduet ytterligere. Er vi litt uheldige, kan vi forandre modellens karakter fullstendig. Det kan rett og slett bli utrolig vanskelig å forstå hvorfor en språkmodell svarer slik den gjør, ettersom det til og med kan endre seg mellom spørsmål. Dette problemet er ikke like enkelt å omgå ettersom det er et fundamentalt problem introdusert av attention mekanismen. 
 
 Det finnes utallige eksempler på at en språkmodell oppfører seg på en uønsket måte[^nrk1][^nrk2]. _Man kan faktisk aldri vite om en språkmodell har havnet i en eller annen merkelig feedback loop hvor den farger sitt eget kontekstvindu i en uønsket retning._
