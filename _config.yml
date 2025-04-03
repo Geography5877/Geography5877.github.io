@@ -16,7 +16,7 @@ timezone:
 
 title: En Klype Salt # the main title
 
-tagline: En blog om ting jeg bryr meg om # it will display as the subtitle
+tagline: Dette er en blog om maskinlæring, statistikk og kunstig intelligens, med innslag av mine egne tanker. # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   Dette er en blog om maskinlæring, statistikk og kunstig intelligens, med innslag av mine egne tanker.
