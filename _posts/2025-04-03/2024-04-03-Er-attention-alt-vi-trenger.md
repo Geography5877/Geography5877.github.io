@@ -140,6 +140,7 @@ Nå har vi en matrise som sier noe om hvor viktige alle tokens er for hverandre 
 
 Vi finner det endelige resultatet av attention beregningen ved å beregne matriseproduktet mellom attention mappet og $V$:
 
+$$
 \begin{equation}
 \begin{aligned}
 \text{Attention}(Q,K,V) & = \text{attention map } V \\
@@ -147,6 +148,7 @@ Vi finner det endelige resultatet av attention beregningen ved å beregne matris
 & = \begin{bmatrix} 8.79 \cdot 10^{-39} & 3.39 \cdot 10^{-39} \\ 18 & 7 \\ 8.79 \cdot 10^{-39} & 3.39 \cdot 10^{-39}\end{bmatrix}
 \end{aligned}
 \end{equation}
+$$
 
 
 Legg merke til at hele beregnignen av attention mekanismen er dynamisk. Altså forandrer den seg hver gang vi teksten endrer seg. Som for eksempel når vi får et nytt token inn i sekvensen vår. 
