@@ -29,7 +29,7 @@ Attention er en operasjon som opererer på tre tensorer:
 - $K$
 - $V$
 
-Alle disse tre vektorene er en lineær transformasjon av den opprinnelige teksten vår. Hvordan skjer dette? Jo, husk først at det første som skjer med teksten vår er at den blir [tokenized](https://enklypesalt.com/posts/Hvordan-opplever-kien-en-samtale/#tokenization). Den blir altså omgjort til en sekvens med tall. Det neste steget er at hvert token går gjennom en "embedding modell" som transformerer hvert token til en vektor. De lineære transformasjonene som skjer i $Q,K$ og $V$ skjer altså på embeddingen av hvert token. Den lineære operasjonen er rett og slett en matrisemultiplikasjon med denne sekvensen. Hver av $Q, K$ og $V$ har sin egen matrise, noe som gjør at denne operasjonen resulterer i tre separate og uavhengige transformasjoner av den opprinnelige sekvensen. Innholdet i disse matrisene er en del av det modellen lærer når vi trener. Rent matematisk kan vi formulere transformasjonen fra $x$ til $Q$, $K$ og $V$ som i \eqref{eq:QKV-weights}:
+Alle disse tre vektorene er en lineær transformasjon av den opprinnelige teksten vår. Hvordan skjer dette? Jo, husk først at det første som skjer med teksten vår er at den blir [tokenisert](https://enklypesalt.com/posts/Hvordan-opplever-kien-en-samtale/#tokenization). Den blir altså omgjort til en sekvens med tall. Det neste steget er at hvert token går gjennom en "embedding modell" som transformerer hvert token til en vektor. De lineære transformasjonene som skjer i $Q,K$ og $V$ skjer altså på embeddingen av hvert token. Den lineære operasjonen er rett og slett en matrisemultiplikasjon med denne sekvensen. Hver av $Q, K$ og $V$ har sin egen matrise, noe som gjør at denne operasjonen resulterer i tre separate og uavhengige transformasjoner av den opprinnelige sekvensen. Innholdet i disse matrisene er en del av det modellen lærer når vi trener. Rent matematisk kan vi formulere transformasjonen fra $x$ til $Q$, $K$ og $V$ som i \eqref{eq:QKV-weights}:
 
 $$
 \begin{equation}
@@ -88,7 +88,7 @@ $$
 
 
 
-Neste steg i attention mekanismen er å beregne det vi kaller et "attention map". Dette er en $n \times n$ matrise som inneholder informasjon om hvordan hvert token i sekvensen vår skal relateres til alle andre tokens i den samme sekvensen. Her er $n$ lengden på sekvensen. Så hvordan beregner vi denne? Jo vi bruker $Q$ og $K$ fra tidligere \eqref{attention}:
+Neste steg i attention mekanismen er å beregne det vi kaller et "attention map". Dette er en $n \times n$ matrise som inneholder informasjon om hvordan hvert token i sekvensen vår skal relateres til alle andre tokens i den samme sekvensen. Her er $n$ lengden på sekvensen. Så hvordan kan vi finne en slik matrise? Jo det er bakgrunnen for hvorfor vi beregned $Q$ og $K$ tidligere. $Q$, $K$ og $V$ er alle en linær transformasjon av $x$. Vi kan på en måte si at de er hver sin tolkning av teksten vår. Vi kan derfor bruke disse tolkningene til å beregne hvor viktig alle token er for hverandre. Siden vi lærer $W^Q$, $W^K$ og $W^V$ underveis, når vi trener transformeren, vil disse matrisene lære seg å transformere teksten vår på en måte som gjør det så enkelt og effektivt som mulig å beregne nettopp hvor viktig alle token er for hverandre. For å beregne attention mappet bruker vi ligning \eqref{attention}:
 
 $$
 \begin{equation}
@@ -136,17 +136,27 @@ $$
 \end{equation}
 $$
 
-Hva er det vi har i denne matrisen? Jo, denne matrisen inneholder hvor viktig hvert token i teksten betyr for hvert av de andre tokenene i teksten. Vi har rett og slett beregnet hvor mye den første 2'eren bryr seg om "+" og den andre 2'eren, samt seg selv. Hvor mye "+" bryr seg om den første og den andre 2'eren osv. Vi kan nå multiplisere dette med $V$ for å transformere inputen vår $x$ med informasjon om hvor mye hvert token i $x$ betyr for hvert av de andre tokenene i teksten. Attention mekanismen vekter rett og slett hvert token med tanke på oppgaven den skal løse.
+Nå har vi en matrise som sier noe om hvor viktige alle tokens er for hverandre i hele teksten vår. Vi har rett og slett beregnet hvor mye den første 2'eren bryr seg om "+" og den andre 2'eren, samt seg selv. Hvor mye "+" bryr seg om den første og den andre 2'eren osv. Vi kan nå multiplisere dette med $V$ for å transformere inputen vår $x$ med informasjon om hvor mye hvert token i $x$ betyr for hvert av de andre tokenene i teksten. Attention mekanismen mappet gir oss en vekting av hvert token i forhold til alle andre tokens.
 
-Legg også merke til at denne beregningen er dynamisk. Altså forandrer den seg hver gang vi får en annen tekst. Som for eksempel når vi får et nytt token inn i sekvensen vår. 
+Vi finner det endelige resultatet av attention beregningen ved å beregne matriseproduktet mellom attention mappet og $V$:
+
+\begin{equation}
+\begin{aligned}
+\text{Attention}(Q,K,V) & = \text{attention map } V
+& =  \begin{bmatrix} 3.49\cdot 10^{-42} & 4.92 \cdot 10^{-51} & 3.49\cdot 10^{-42} \\ 2.14 \cdot 10^{-51} & 1.00 & 2.14 \cdot 10^{-51} \\ 3.49\cdot 10^{-42} & 4.92 \cdot 10^{-51} & 3.49\cdot 10^{-42}\end{bmatrix} \begin{bmatrix} -10 & -8 \\ 18 & 7 \\ -10 & 8\end{bmatrix}
+& = \begin{bmatrix} 8.79 \cdot 10^{-39} & 3.39 \cdot 10^{-39} \\ 18 & 7 \\ 8.79 \cdot 10^{-39} & 3.39 \cdot 10^{-39}\end{bmatrix}
+\end{aligned}
+\end{equation}
+
+Legg merke til at hele beregnignen av attention mekanismen er dynamisk. Altså forandrer den seg hver gang vi teksten endrer seg. Som for eksempel når vi får et nytt token inn i sekvensen vår. 
 
 #### Men er ikke en transformer et nevralt nettverk?
-Foreløpig har vi bare sett lineære transformasjoner og en softmax i transformer arkitekturen. Er ikke transformeren et nevralt nettverk? Jo det er den, den resterende delen av en transformer er ganske enkelt et helt vanlig nevralt nettverk som kjøres over alle de transformerte tokenene som kommer ut av attention mekanismen, token for token. En transformer flere lag, hvor hvert lag har en attention mekanisme og et slikt nevralt nettverk. Teksten vår mates gjennom alle lagene i transformeren før vi får neste token prediksjonen fra transformeren.
+Foreløpig har vi bare sett lineære transformasjoner og en softmax i transformer arkitekturen. Det er også her navnet Transformer kommer fra. Men er ikke transformeren et nevralt nettverk? Jo det er den, den resterende delen av en transformer er ganske enkelt et helt vanlig nevralt nettverk som kjøres over alle de transformerte tokenene som kommer ut av attention mekanismen, token for token. En transformer består vanligvis også av flere lag, hvor hvert lag har en attention mekanisme og et slikt nevralt nettverk. Teksten vår mates gjennom alle lagene i transformeren, lag for lag, før vi til slutt får neste token prediksjonen fra det siste laget i transformeren.
 
-Legg merke til at det i transformeren ikke er noen tilstand som må vedlikeholdes. Dette gjør at en transformer kan parallelliseres! Dette er antakelig hovedårsaken til at transformer arkitekturen er fundamentet i en hver språkmodell. Den kan trenes i parallell, noe som gjør at vi kan trene modellen på massive mengder tekst kjapt og effektivt.
+Legg også merke til at det i transformeren ikke er noen tilstand som må vedlikeholdes. Dette gjør at en transformer kan parallelliseres! Dette er hovedårsaken til at transformer arkitekturen er fundamentet i en hver språkmodell. Den kan trenes i parallell, noe som gjør at vi kan trene modellen på massive mengder tekst mye kjappere og mer effektivt enn et rekurrent nettverk.
 
 ## Transformeren er ikke en universell løsning
-Det kan jo nå virke som transformer modellen er en genial løsning på alle våre problemer. Slik er det dessverre ikke. Transformeren introduserer også sitt eget sett med begrensinger, som blir mer eller mindre viktige avhengig av hva vi ønsker å bruke språkmodellen til.
+Det kan jo nå virke som transformer modellen er en genial løsning på alle våre problemer. Slik er det dessverre ikke. Transformeren introduserer også sitt eget sett med begrensinger, som blir mer eller mindre viktige avhengig av hva vi ønsker å bruke den til. Transformeren brukes nemlig til mange forskjellige oppgaver, ikke bare språkmodellering. Men siden vi her ser spesifikt på språkmodellering, er det dette applikasjonsområdet vi skal se på videre.
 
 ### Størrelsen på kontekstvinduet påvirker oppførselen
 Vi har tidligere nevnt at kontekstvinduet og dets størrelse er [avgjørende for hva en språkmodell kan gjøre](https://enklypesalt.com/posts/Hvordan-opplever-kien-en-samtale/#kontekstvinduet). Nå som vi har en oversikt over hvordan attention beregnes, kan vi se litt nærmere på dette.
@@ -160,7 +170,7 @@ Har vi f.eks. et kontekstvindu med størrelse 5 ord, og teksten: "Hunden drikker
 I enkelte tilfeller kan dette fenomenet føre til veldig uforutsette konsekvenser. La oss se på et eksempel. Det er litt konstruert, men jeg tror det får frem poenget:\\
 Som du kanskje er kjent med, kan vi ofte skrive egne "System prompts" til modellen vår, der vi gir instruksjoner for hvordan den skal oppføre seg. La oss nå si at vi bruker system promptet: "Du er en hjelpsom assistent. Du må aldri foreslå uetiske handlinger og lovbrudd.". Som vi [tidligere har sett](https://enklypesalt.com/posts/Hvordan-opplever-kien-en-samtale/#hvordan-ser-en-samtale-egentlig-ut), blir system promptet inkludert i kontekst vinduet til modellen.
 
-Vi bruker nå modellen vår, den svarer villig på spørsmål og alt ser ut til å funke fint. Frem til vi, på ett eller annet tidspunkt, fyller kontekstvinduet slik at vi klipper av deler av system promptet og det som gjenstår er: "foreslå uetiske handlinger og lovbrudd". Dette vil drastisk endre modellens karakter og svar. Modellen vil nå mest sannsynlig starte å svare med anbefalinger vi ikke kan stå inne for. Ettersom attention beregnes dynamisk vil også disse nye, uetiske, svarene bli brukt til å informere hvordan modellen svarer videre. Ettersom den ser at man svarer uetisk og med lovbrudd, vil den fortsette med dette. Dette vil potensielt farge modellen for all fremtid, ettersom den kontinuerlig blir informert av hvordan den har svart tidligere. For å komme ut av dette, er eneste løsning å tømme kontekstvinduet, eller å starte en ny "samtale" med modellen.
+Vi bruker nå modellen vår, den svarer villig på spørsmål og alt ser ut til å funke fint. Frem til vi, på ett eller annet tidspunkt, fyller kontekstvinduet slik at vi klipper av deler av system promptet og det som gjenstår er: "foreslå uetiske handlinger og lovbrudd". Dette vil drastisk endre modellens karakter og svar. Modellen vil nå mest sannsynlig starte å svare med anbefalinger vi ikke kan stå inne for. Siden attention beregnes dynamisk vil også disse nye, uetiske, svarene bli brukt til å informere hvordan modellen svarer videre. Når modellen skal generere neste svar, ser den at den selv svarer uetisk og med forslag til lovbrudd. Da vil den fortsette med dette. Dette vil potensielt farge modellen for all fremtid, ettersom den kontinuerlig blir informert av hvordan den har svart tidligere. For å komme ut av dette, er eneste løsning å tømme kontekstvinduet, eller å starte en ny "samtale" med modellen.
 
 Heldigvis er kontekstvinduene i dagens språkmodeller veldig store. Så i de fleste tilfeller vil vi ikke oppleve at vi fyller kontekstvinduet med det første. Skal vi imidlertid prosessere mye tekst, som f.eks. når vi ønsker oss sammendrag av lengre tekst, eller stiller modellen spørsmål om innholdet i en lengre tekst, kan vi møte på dette problemet.
 
