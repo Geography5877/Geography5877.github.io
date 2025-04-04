@@ -142,8 +142,8 @@ Vi finner det endelige resultatet av attention beregningen ved å beregne matris
 
 \begin{equation}
 \begin{aligned}
-\text{Attention}(Q,K,V) & = \text{attention map } V
-& =  \begin{bmatrix} 3.49\cdot 10^{-42} & 4.92 \cdot 10^{-51} & 3.49\cdot 10^{-42} \\ 2.14 \cdot 10^{-51} & 1.00 & 2.14 \cdot 10^{-51} \\ 3.49\cdot 10^{-42} & 4.92 \cdot 10^{-51} & 3.49\cdot 10^{-42}\end{bmatrix} \begin{bmatrix} -10 & -8 \\ 18 & 7 \\ -10 & 8\end{bmatrix}
+\text{Attention}(Q,K,V) & = \text{attention map } V \\
+& =  \begin{bmatrix} 3.49\cdot 10^{-42} & 4.92 \cdot 10^{-51} & 3.49\cdot 10^{-42} \\ 2.14 \cdot 10^{-51} & 1.00 & 2.14 \cdot 10^{-51} \\ 3.49\cdot 10^{-42} & 4.92 \cdot 10^{-51} & 3.49\cdot 10^{-42}\end{bmatrix} \begin{bmatrix} -10 & -8 \\ 18 & 7 \\ -10 & 8\end{bmatrix} \\
 & = \begin{bmatrix} 8.79 \cdot 10^{-39} & 3.39 \cdot 10^{-39} \\ 18 & 7 \\ 8.79 \cdot 10^{-39} & 3.39 \cdot 10^{-39}\end{bmatrix}
 \end{aligned}
 \end{equation}
