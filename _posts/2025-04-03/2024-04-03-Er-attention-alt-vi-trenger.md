@@ -148,6 +148,7 @@ Vi finner det endelige resultatet av attention beregningen ved å beregne matris
 \end{aligned}
 \end{equation}
 
+
 Legg merke til at hele beregnignen av attention mekanismen er dynamisk. Altså forandrer den seg hver gang vi teksten endrer seg. Som for eksempel når vi får et nytt token inn i sekvensen vår. 
 
 #### Men er ikke en transformer et nevralt nettverk?
