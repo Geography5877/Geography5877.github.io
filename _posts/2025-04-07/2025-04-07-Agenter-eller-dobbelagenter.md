@@ -1,6 +1,6 @@
 ---
 title: Agenter eller dobbeltagenter
-date: 2025-04-04 06:57:00 +0200
+date: 2025-04-07 06:57:00 +0200
 categories: [Språkmodeller og deres utfordringer]
 tags: [llm, agenter]     # TAG names should always be lowercase
 math: true
@@ -27,5 +27,12 @@ Som vi har sett [tidligere](https://enklypesalt.com/posts/Hvordan-opplever-kien-
 
 I de aller fleste tilfeller er det til og med den samme modellen som får de forskjellige rollene. Som vi så i [en tidligere post](https://enklypesalt.com/posts/Hvordan-svarer-kien/#autoregressiv-spr%C3%A5kmodellering), mater vi all tekst inn på nytt, hver gang vi interagerer med en språkmodell. Det betyr at vi også mater inn system promptet på nytt hver gang. Så når vi snakker med forskjellige agenter er det egentlig den samme modellen som tar på seg en ny hatt eller parykk for å late som den nå er en helt annen modell. Ikke helt ulikt debatten i Team Antonsen:
 {% include embed/youtube.html id='1bXjw7qVqqg' %}
-#### Tool-use MCP
+
+#### Tool-use og MCP
+For å gi forskjellige agenter forskjellige egenskaper, utover hattene og parykkene jeg nevnte tidligere, kan vi gi dem tilgang til forskjellige verktøy. I tilfellet forskningsassistent, kan vi for eksempel gi agenten tilgang til å søke på Google Scholar og å lese forskningsartikler. For en bibliotekar ville det kanskje vært fornuftig å gi agenten tilgang til bibliotekets database over bøker, brukere og utlånsoversikt. Vi kan på denne måten begrense tilgangen på verktøy til enkelte agenter og dermed lage mer spesialiserte og kompetente agenter.
+
 #### Oppgavespesifikk trening
+For å ytterligere forbedre spesielle agenter, kan vi faktisk gjøre [fine-tuning](https://enklypesalt.com/posts/Hvordan-svarer-kien/#fine-tuning)
+
+### Koordinering og kommunikasjon
+
