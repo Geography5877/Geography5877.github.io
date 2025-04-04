@@ -43,7 +43,7 @@ Okay, så modellen kan forutsi neste ord i en sekvens, men hvordan kan vi gå de
 
 For å finne neste ord i denne teksten ser språkmodellen på hele den foregående teksten. Siden den akkurat har skrever "fordi" er det svært høy sannsynlighet for at neste token er et mellomrom. Modellen vil altså gi ut " " som mest sannsynlige neste token. Dette legges så på den eksisterende teksten. Deretter mates _hele_ den nye teksten inn i modellen på nytt for at den skal finne neste or igjen:
 
-`<|start_header_id|>system<|end_header_id|>\n\nCutting Knowledge Date: December 2023\n\n<|eot_id|><|start_header_id|>user<|end_header_id|>\n\nHvorfor er hunder alltid så glade?<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\nHunder er glade fordi     `
+`<|start_header_id|>system<|end_header_id|>\n\nCutting Knowledge Date: December 2023\n\n<|eot_id|><|start_header_id|>user<|end_header_id|>\n\nHvorfor er hunder alltid så glade?<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\nHunder er glade fordi (U+00B7)`
 
 Nå er kanskje det mest sannsynlige neste ordet "de". Modellen spytter derfor ut "de" og vi legger dette til teksten:
 
