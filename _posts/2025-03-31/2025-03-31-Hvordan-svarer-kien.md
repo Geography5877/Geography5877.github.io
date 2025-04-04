@@ -49,7 +49,7 @@ Nå er kanskje det mest sannsynlige neste ordet "de". Modellen spytter derfor ut
 
 `<|start_header_id|>system<|end_header_id|>\n\nCutting Knowledge Date: December 2023\n\n<|eot_id|><|start_header_id|>user<|end_header_id|>\n\nHvorfor er hunder alltid så glade?<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\nHunder er glade fordi de`
 
-Nå er igjen " " det mest sannsylige neste ordet. Så modellen velger " " og det blir lagt til teskten. Slik fortsetter det helt til modellen velger "<|eot_id|>" som mest sannsynlige token.
+Nå er igjen " " det mest sannsylige neste ordet. Så modellen velger " " og det blir lagt til teskten. Slik fortsetter det helt til modellen velger `<|eot_id|>` som mest sannsynlige token.
 
 Det fine med dette er at prosessen med å lage arbitrært lange sekvenser med ord er svært enkel og styres av modellen. Men det er også en ganske stor ulempe. Denne prosessen krever at hele teskten må mates gjennom modellen for hvert eneste ord som skal genereres. Som jeg nevnte tidligere, kreves det store modeller for å få en god forståelse av språk. Store modeller krever også mye energi ettersom det er mye regnekraft som må til for å beregne alle operasjonene som skjer inne i modellen. At vi nå krever at hele modellen må kjøres på hele sekvensen med ord, hver gang vi skal generere et nytt ord, betyr at språkmodeller i dag er enorme energisluk. Heldigvis forskes det på hvordan vi kan bruke teknikker som speculative decoding [^spec-dec] for å kunne generere flere ord på en gang, men vi er fortsatt langt unna å kunne kalle språkmodeller effektive, når det kommer til behov for regnekraft og energi.
 
