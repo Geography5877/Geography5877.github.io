@@ -65,3 +65,8 @@ Som jeg har kommet tilbake til flere ganger i denne [serien](https://enklypesalt
 [^nrk]: https://www.nrk.no/norge/chatgpt-ga-nrk-russisk-propaganda-og-loy-om-det-1.17336672
 [^morris]: https://en.wikipedia.org/wiki/Morris_worm
 [^copilot-attack]: https://embracethered.com/blog/posts/2024/m365-copilot-prompt-injection-tool-invocation-and-data-exfil-using-ascii-smuggling/
+
+## Endringslogg
+Under følger en endringslogg som visre hvilke deler av denne posten som er endret til hvilket tid. Enkle skrivefeil og den slags ting vil ikke bli logget, men jeg vil etterstrebe å logge alle meningsfulle endringer i posten.
+
+- 2025-04-05: Endringslogg

@@ -191,3 +191,8 @@ Det finnes utallige eksempler på at en språkmodell oppfører seg på en uønsk
 [^lstm]: Hochreiter, S., & Schmidhuber, J. (1997). Long short-term memory. Neural computation, 9(8), 1735-1780.
 [^nrk1]: https://www.nrk.no/norge/nordmann-klager-chatgpt-til-datatilsynet-1.17348958
 [^nrk2]: https://www.nrk.no/norge/chatgpt-ga-nrk-russisk-propaganda-og-loy-om-det-1.17336672
+
+## Endringslogg
+Under følger en endringslogg som visre hvilke deler av denne posten som er endret til hvilket tid. Enkle skrivefeil og den slags ting vil ikke bli logget, men jeg vil etterstrebe å logge alle meningsfulle endringer i posten.
+
+- 2025-04-05: Endringslogg

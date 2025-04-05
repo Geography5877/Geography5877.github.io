@@ -17,9 +17,9 @@ media_subpath: /assets/images/2025-03-28/
 La oss starte med et helt grunnleggende spørsmål. Når du skriver noe til en språkmodel, hvordan kan den "lese" hva du skriver? Språkmodellen har jo ikke øyne, så den kan ikke se hva du skriver på samme måte som vi mennesker gjør. Så hvordan er den i stand til å lese og forstå hva du har skrevet når den svarer deg?
 
 ### Tokenization
-Svaret på dette spørsmålet er at modellen ikke kan lese. Ihvertfall ikke på den måten vi mennesker gjør det. En språkmodel er, kort forklart, en lineær algebramaskin. Den maserer og transformerer tekst gjennom bruk av enkle lineære matriseoperasjoner. Men hvordan kan man gjøre matriseoperasjoner på ren tekst? Det kan vi ikke, så for å få det hele til å fungere må vi først transformere rå tekst til tall. Denne prosessen er det vi kaller "tokenization". Når vi skriver tekst til en språkmodel er det første som skjer at teksten vi skriver blir oversatt, eller "tokenized" til tall, slik at det er mulig for en maskin å gjøre matriseoperasjoner på den. Så hvordan ser slike token ut?
+Svaret på dette spørsmålet er at modellen ikke kan lese. I hvert fall ikke på den måten vi mennesker gjør det. En språkmodel er, kort forklart, en lineær algebramaskin. Den maserer og transformerer tekst gjennom bruk av enkle lineære matriseoperasjoner. Men hvordan kan man gjøre matriseoperasjoner på ren tekst? Det kan vi ikke, så for å få det hele til å fungere må vi først transformere rå tekst til tall. Denne prosessen er det vi kaller "tokenization". Når vi skriver tekst til en språkmodel er det første som skjer at teksten vi skriver blir oversatt, eller "tokenized" til tall, slik at det er mulig for en maskin å gjøre matriseoperasjoner på den. Så hvordan ser slike token ut?
 
-For å se det kan du besøke <https://platform.openai.com/tokenizer>. Her kan du skrive inn tekst og se hvordan teksten forandres til tokens. I bildet under ser vi et eksempel på dette. I tekstboksen har jeg skrevet teksten "Hei, hvor gammel er du?" og under får vi se hvilke deler av teksten som resulterer i egne tokens.
+For å se det kan du besøke <https://platform.openai.com/tokenizer> eller <https://tiktokenizer.vercel.app/>. Her kan du skrive inn tekst og se hvordan teksten forandres til tokens. I bildet under ser vi et eksempel på dette. I tekstboksen har jeg skrevet teksten "Hei, hvor gammel er du?" og under får vi se hvilke deler av teksten som resulterer i egne tokens.
 
 ![text](OpenAI_Tokenizer_marked_tokens.png)
 _Fargene på teksten indikerer hvilke deler av teksten som resulterer i separate tokens._
@@ -30,7 +30,7 @@ _Her ser vi tokenene som korresponderer med teksten vår._
 
 Det er altså en slik sekvens med tokens en språkmodell "leser" og ikke vår tekst direkte. Disse tokenene kan vi gjøre matriseoperasjoner på og språkmodellen er derfor i stand til å prosessere dem.
 
-Akkurat hvordan tokens blir generert fra tekst varierer fra modell til modell, men så lenge vi er konsekvente i måten vi gjør det på for en gitt modell vil ikke det by på noen problemer.
+Akkurat hvordan tokens blir generert fra tekst varierer fra modell til modell, men så lenge vi er konsekvente i måten vi gjør det på for en gitt modell vil ikke det by på noen problemer. Jeg vil anbefale deg å leke litt med de to tokenizer nettsidene jeg lenket over, for å få en bedre forståelse av hvordan ord og setninger resulterer i tokens.
 
 ### Tokenization fjerner mening
 At man fant ut hvordan man kunne transformere tekst til tall var et stort gjennombrudd i maskinlæring, ettersom vi endelig var i stand til å gjøre effektiv maskinlæring på språk. Det er imidlertid også flere baksider ved tokenization. 
@@ -77,10 +77,7 @@ trett = [4086, 1037]
 
 Som vi kan se, brukes tokenene 4086 og 4360 til å representere "tre" og " tre" respektivt. Ved første øyekast kan det se ut som om tokenizeren lar konteksten bestemme om vi snakker om tallet 3 eller et tre, slik vi gjør på norsk. Den koder derfor ikke tallet tre og et tre forskjellig. Problemet oppstår når vi ser videre de siste to eksemplene. Også her er "tre" biten av ordet kodet som tokenet 4086, men nå er det ikke lenger tvetydig hva vi refererer til. I ordet treplanke er det utvetydig at vi refererer til materialet tre. Ordet 3planke gir ingen mening for oss, så her har tokenizationen introdusert ekstra usikkerhet som vi mennesker ikke opplever når vi leser tekst. I ordet "trett" er situasjonen enda verre. Her brukes fortsatt 4086 til å representere tre-biten av ordet, men her er det hverken tallet 3 eller treverk vi refererer til. Tokenizationen har altså introdusert enda mer usikkerhet. Det blir nå opp til modellen å forstå av konteksten om vi snakker om tallet 3, treverk eller om vi snakker om noe helt urelatert som tretthet. Ordet trett har også litt forskjellig betydning basert på sin kontekst (er noen søvnige eller snakker vi f.eks om et tretthetsbrudd?).
 
-Som følge av måten vi tokeniserer tekst på, er en språkmodell enda mer avhengig av kontekst enn vi mennesker er når den skal tolke og forstå meningen i en tekst. Heldigvis finnes det måter å redusere problemet på.
-
-#### Kontekstuell embedding
-Etter vi har tokenisert teksten vår er neste steg å embedde tokenene. Dette er enkelt sagt en projeksering fra ett tall til en vektor av tall. Resultatet er at vi kan kode mer betydning for hvert token. Dette løser imidlertid ikke problemet med at teksten mister betydning ettersom embeddingen genereres av tokenene og ikke teksten. Vi kan derfor gjøre det vi kaller kontekstuell embedding. Da ser man ikke lenger bare på individuelle tokens når man embedder, men også tokenene rundt tokenet vi skal embedde. Vi forsøker altså å bruke konteksten rundt et token for bedre kode betydningen i hvert token. Med denne metoden vil embeddingen som korresponderer til ordet "tre" i setningen: "tallet tre, laget av tre" ha to forkjellige embedding vektorer. "tre" nummer en vil kode noe som ligger nærmere tallet 3 i embedding rommet, mens "tre" nummer to vil ligge nærmere treverk. Dette løser mye av problematikken jeg nevner over. Mattematikk er imidlertid fortsatt problematisk. Selv om vi snakker om kontinuerlige vektorer her, er det vanskelig å tro på at embedding metoden (vanligvis et nevralt nettverk) er i stand til å håndtere alle de forskjellige kontekstene tokenet som korresponderer til 204-delen av 2048, som over. 204 tokenet kan jo opptre i utallige kombinasjoner, så det er fortsatt de mest vanlige kombinasjonene vi kan ha relativt høy tillitt til at embedding metoden fanger konteksten korrekt. Det samme gjelder også språk til en viss grad. Selv om antallet permutasjoner her, er ferre enn med tall, er det alikevell enormt stort og embedding metoden er antakelig kun godt egnet på de mest vanlige kombinasjonene. Når vi beveger oss ut i uvanlige setninger, vil antakelig også kontekstuell embedding slite. Dette tar oss videre til neste element i hvordan en språkmodell "opplever" en samtale.
+Som følge av måten vi tokeniserer tekst på, er en språkmodell enda mer avhengig av kontekst enn vi mennesker er når den skal tolke og forstå meningen i en tekst. Dette tar oss videre til neste element i hvordan en språkmodell "opplever" en samtale.
 
 ## Kontekstvinduet
 Dagens mest populære språkmodeller er alle bygget på Transformer modellen[^atten-is-all]. Det er flere begrensninger med transformers for språkmodeller, men her skal vi fokusere på kontekstvinduet.
@@ -145,3 +142,8 @@ Det er dette som er den store illusjonen rundt språkmodeller. Ved hjelp av et e
 
 ## Referanser
 [^atten-is-all]: Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, and Illia Polosukhin. 2017. Attention is all you need. In Proceedings of the 31st International Conference on Neural Information Processing Systems (NIPS'17). Curran Associates Inc., Red Hook, NY, USA, 6000–6010
+
+## Endringslogg
+Under følger en endringslogg som visre hvilke deler av denne posten som er endret til hvilket tid. Enkle skrivefeil og den slags ting vil ikke bli logget, men jeg vil etterstrebe å logge alle meningsfulle endringer i posten.
+
+- 2025-04-05: Endringslogg
