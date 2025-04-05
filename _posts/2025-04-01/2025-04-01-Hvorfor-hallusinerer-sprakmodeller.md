@@ -34,6 +34,6 @@ Husk at språkmodeller aldri eksplisitt lærer seg å skille mellom [fakta og us
 Hallusinasjoner stammer altså grunnleggende fra hvordan vi har trent språkmodellene våre. De er derfor ikke noe vi kan endre på uten å endre på hvordan vi trener modellene våre fra grunnen opp. Enn så lenge, er hallusinasjoner noe vi bare må leve med og ta med i betraktningen i alle applikasjoner hvor vi ønsker å bruke en språkmodell.
 
 ## Endringslogg
-Under følger en endringslogg som visre hvilke deler av denne posten som er endret til hvilket tid. Enkle skrivefeil og den slags ting vil ikke bli logget, men jeg vil etterstrebe å logge alle meningsfulle endringer i posten.
+Under følger en endringslogg som viser hvilke deler av denne posten som er endret til hvilket tid. Enkle skrivefeil og den slags ting vil ikke bli logget, men jeg vil etterstrebe å logge alle meningsfulle endringer i posten.
 
 - 2025-04-05: Endringslogg

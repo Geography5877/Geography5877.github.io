@@ -61,6 +61,6 @@ La oss heller ikke glemme energikonsumpsjonen som kommer med all denne kommunika
 Og alt dette for å få et svar som har så mange og obskure feilkilder at vi må sette av egen tid kun for å etterprøve svaret vi får. Vi hører ofte at nevrale nettverk er "black box" systemer. Vel, agenter må i så fall være "black hole" systemer. Her forsvinner alt av explainability inn i et sluk av stokastisitet og divergens på en måte som vil gjøre det komplett umulig å forstå systemene, både når de oppfører seg riktig og når de oppfører seg feil. En av de mest lovende aspektene ved automatisering med datamaskiner var at de var deterministiske. Gitt samme input til et dataprogram fikk man alltid det samme svaret tilbake. I den retningen vi beveger oss i dag, med agenter og det som verre er, mister vi alt dette, og til hvilken pris? At vi brenner opp kloden i samme slengen?
 
 ## Endringslogg
-Under følger en endringslogg som visre hvilke deler av denne posten som er endret til hvilket tid. Enkle skrivefeil og den slags ting vil ikke bli logget, men jeg vil etterstrebe å logge alle meningsfulle endringer i posten.
+Under følger en endringslogg som viser hvilke deler av denne posten som er endret til hvilket tid. Enkle skrivefeil og den slags ting vil ikke bli logget, men jeg vil etterstrebe å logge alle meningsfulle endringer i posten.
 
 - 2025-04-05: Endringslogg
