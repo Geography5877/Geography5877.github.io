@@ -58,6 +58,12 @@ Så hva er problemet? Jo, ettersom vi tillater at Copilot leser fra bl.a Outlook
 
 Som jeg har kommet tilbake til flere ganger i denne [serien](https://enklypesalt.com/categories/spr%C3%A5kmodeller-og-deres-utfordringer/), stammer alle disse problemene fra hvordan språkmodellen er trent og hvordan den fungerer. Problemene er en feature, ikke en bug. De språkmodellene vi har tilgjengelige i dag er sårbare for trivielle angrep. De kan bruke verktøy, endre filer og mapper og spre propaganda. Nå får de også dypere og dypere integrasjon med din data, din digitale virkelighet og din hverdag. Er noe vi virkelig ønsker?
 
+
+## Endringslogg
+Under følger en endringslogg som visre hvilke deler av denne posten som er endret til hvilket tid. Enkle skrivefeil og den slags ting vil ikke bli logget, men jeg vil etterstrebe å logge alle meningsfulle endringer i posten.
+
+- 2025-04-05: Endringslogg
+
 ## Referanser
 [^tool1]: Qin, Y., Liang, S., Ye, Y., Zhu, K., Yan, L., Lu, Y., ... & Sun, M. (2023). Toolllm: Facilitating large language models to master 16000+ real-world apis. arXiv preprint arXiv:2307.16789.
 [^mcp]: https://modelcontextprotocol.io/introduction
@@ -65,8 +71,3 @@ Som jeg har kommet tilbake til flere ganger i denne [serien](https://enklypesalt
 [^nrk]: https://www.nrk.no/norge/chatgpt-ga-nrk-russisk-propaganda-og-loy-om-det-1.17336672
 [^morris]: https://en.wikipedia.org/wiki/Morris_worm
 [^copilot-attack]: https://embracethered.com/blog/posts/2024/m365-copilot-prompt-injection-tool-invocation-and-data-exfil-using-ascii-smuggling/
-
-## Endringslogg
-Under følger en endringslogg som visre hvilke deler av denne posten som er endret til hvilket tid. Enkle skrivefeil og den slags ting vil ikke bli logget, men jeg vil etterstrebe å logge alle meningsfulle endringer i posten.
-
-- 2025-04-05: Endringslogg

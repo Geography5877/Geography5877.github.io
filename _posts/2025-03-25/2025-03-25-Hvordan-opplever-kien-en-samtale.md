@@ -140,12 +140,13 @@ Hele chat brukergrensesnittet er en fasade som lurer deg til å tro at du snakke
 
 Det er dette som er den store illusjonen rundt språkmodeller. Ved hjelp av et enkelt chatgrensesnitt lar vi oss lure til å tro at vi snakker med en entitet som har tilgang til hele verdens informasjon og ønsker å svare på nettopp våre spørsmål. I realiteten forsøker språkmodellen å forfatte en fiktiv samtale, men mangler kontroll over en av partene i samtalen. Det er ikke nødvendigvis viktig at samtalen bare inneholder fakta, eller at all viktig informasjon inkluderes. Fra språkmodellens perspektiv er dette jo tross alt bare en fiktiv samtale. Den har ingen reelle konsekvenser. Ettersom vi mennesker til nå kun har opplevd å delta i samtaler mellom reelle, eksisterende parter, som også selv har oppfattelsen av at de er en del av en samtale, tilegner vi språkmodellen evner og kvaliteter den ikke har. Realiteten er: _Det finnes ingen samtale og du er alene i chatten._
 
-## Referanser
-[^atten-is-all]: Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, and Illia Polosukhin. 2017. Attention is all you need. In Proceedings of the 31st International Conference on Neural Information Processing Systems (NIPS'17). Curran Associates Inc., Red Hook, NY, USA, 6000–6010
-[^tiktoken]: https://github.com/openai/tiktoken
-[^sentencpiece]: https://github.com/google/sentencepiece
 
 ## Endringslogg
 Under følger en endringslogg som visre hvilke deler av denne posten som er endret til hvilket tid. Enkle skrivefeil og den slags ting vil ikke bli logget, men jeg vil etterstrebe å logge alle meningsfulle endringer i posten.
 
 - 2025-04-05: Endringslogg
+
+## Referanser
+[^atten-is-all]: Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, and Illia Polosukhin. 2017. Attention is all you need. In Proceedings of the 31st International Conference on Neural Information Processing Systems (NIPS'17). Curran Associates Inc., Red Hook, NY, USA, 6000–6010
+[^tiktoken]: https://github.com/openai/tiktoken
+[^sentencpiece]: https://github.com/google/sentencepiece
