@@ -132,7 +132,7 @@ Den oppmerksomme leseren har antakelig merket seg at sannhet og faktuell riktigh
 Svaret er ganske enkelt at vi ikke har muligheten til å sjekke sannhetsverdien i teksten modellen genererer. Grunnen til det er todelt. For det første, hvordan kan man automatisk sjekke at en tekst er sann? Vi har ingen robuste algoritmer som faktisk kan verifisere sannhetsverdien svarene fra en så generell modell som en språkmodell. Vi vil derfor i beste fall bare kunne gjøre en approksimasjon av sannhetsevaluering med f.eks. å holde en liste med gode kilder til sannhet, og deretter sjekke med denne listen, hvor mange av kildene som er enige med teksten modellen genererer. For det andre er slike faktasjekker uforholdsmessig dyre. De krever mye tid til søk og kildesammenstilling for å verifisere ett eneste faktautsagn. Som jeg nevnte i RLHF er det avgjørende at vi kan automatisere treningen og effektivisere hvert steg, ettersom vi må trene på en ekstrem mengde eksempler for å få en god modell. Det er rett og slett ikke økonomisk forsvarlig å gjøre en slik faktasjekking underveis i treningen i dag. Vi sier oss rett og slett fornøyde med å bruke en proxy for menneskelig feedback til å evaluere kvaliteten på et svar. Mer har vi ikke råd til.
 
 ## Endringslogg
-Under følger en endringslogg som visre hvilke deler av denne posten som er endret til hvilket tid. Enkle skrivefeil og den slags ting vil ikke bli logget, men jeg vil etterstrebe å logge alle meningsfulle endringer i posten.
+Under følger en endringslogg som viser hvilke deler av denne posten som er endret til hvilket tid. Enkle skrivefeil og den slags ting vil ikke bli logget, men jeg vil etterstrebe å logge alle meningsfulle endringer i posten.
 
 - 2025-04-05: Endringslogg
 

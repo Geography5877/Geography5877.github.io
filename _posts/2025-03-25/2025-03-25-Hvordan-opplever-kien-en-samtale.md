@@ -142,7 +142,7 @@ Det er dette som er den store illusjonen rundt språkmodeller. Ved hjelp av et e
 
 
 ## Endringslogg
-Under følger en endringslogg som visre hvilke deler av denne posten som er endret til hvilket tid. Enkle skrivefeil og den slags ting vil ikke bli logget, men jeg vil etterstrebe å logge alle meningsfulle endringer i posten.
+Under følger en endringslogg som viser hvilke deler av denne posten som er endret til hvilket tid. Enkle skrivefeil og den slags ting vil ikke bli logget, men jeg vil etterstrebe å logge alle meningsfulle endringer i posten.
 
 - 2025-04-05: Endringslogg
 
