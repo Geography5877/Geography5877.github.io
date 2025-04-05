@@ -184,6 +184,12 @@ Det er imidlertid også mulig å oppleve at enkelte deler av en tekst i et konte
 
 Det finnes utallige eksempler på at en språkmodell oppfører seg på en uønsket måte[^nrk1][^nrk2]. _Man kan faktisk aldri vite om en språkmodell har havnet i en eller annen merkelig feedback loop hvor den farger sitt eget kontekstvindu i en uønsket retning._
 
+
+## Endringslogg
+Under følger en endringslogg som visre hvilke deler av denne posten som er endret til hvilket tid. Enkle skrivefeil og den slags ting vil ikke bli logget, men jeg vil etterstrebe å logge alle meningsfulle endringer i posten.
+
+- 2025-04-05: Endringslogg
+
 ## Referanser
 [^atten-is-all]: Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, and Illia Polosukhin. 2017. Attention is all you need. In Proceedings of the 31st International Conference on Neural Information Processing Systems (NIPS'17). Curran Associates Inc., Red Hook, NY, USA, 6000–6010
 [^rnn1]: Elman, J. L. (1990). Finding structure in time. Cognitive science, 14(2), 179-211.
@@ -191,8 +197,3 @@ Det finnes utallige eksempler på at en språkmodell oppfører seg på en uønsk
 [^lstm]: Hochreiter, S., & Schmidhuber, J. (1997). Long short-term memory. Neural computation, 9(8), 1735-1780.
 [^nrk1]: https://www.nrk.no/norge/nordmann-klager-chatgpt-til-datatilsynet-1.17348958
 [^nrk2]: https://www.nrk.no/norge/chatgpt-ga-nrk-russisk-propaganda-og-loy-om-det-1.17336672
-
-## Endringslogg
-Under følger en endringslogg som visre hvilke deler av denne posten som er endret til hvilket tid. Enkle skrivefeil og den slags ting vil ikke bli logget, men jeg vil etterstrebe å logge alle meningsfulle endringer i posten.
-
-- 2025-04-05: Endringslogg
