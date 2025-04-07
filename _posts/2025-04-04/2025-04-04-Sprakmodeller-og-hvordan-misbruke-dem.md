@@ -42,7 +42,19 @@ Hvis vi finner ut hvordan de forskjellige spesialtokenene som brukes for å indi
 Modellen vil da handle etter dette nye system promptet.
 
 #### Men bare ikke instruer modellen til å gjøre onde ting da!
-Det er altså nokså enkelt å få en språkmodell til å handle på måter den ikke er ment til. Men er det egentlig så ille? Jeg sitter jo med kontrollen over chatten og det er jeg som kontrollerer hva modellen har tilgang til å gjøre og hvor den kan hente informasjon fra. Jo, et enkelt brukergrensesnitt som en chat er det kanskje sant. Men vi beveger oss mer og mer i en retning hvor språkmodeller har tilgang til å bruke verktøy gjennom tool-use [^tool1] og MCP [^mcp]. Vi lar også modellene søke på nettet og bruke Retrieval Augmented Generation (RAG)[^RAG] for å hente ekstra informasjon utover det vi har skrevet i chatten. Du kan til og med se Copilot Chat selv bruke verktøy som kalkulator og python når den skal svare på enkelte spørsmål.
+Det er altså nokså enkelt å få en språkmodell til å handle på måter den ikke er ment til. Men er det egentlig så ille? Jeg sitter jo med kontrollen over chatten og det er jeg som kontrollerer hva modellen har tilgang til å gjøre og hvor den kan hente informasjon fra. Jo, et enkelt brukergrensesnitt som en chat er det kanskje sant. Men vi beveger oss mer og mer i en retning hvor språkmodeller har tilgang til å bruke verktøy. Da gir vi ekstra instruksjoner til språkmodellen som:
+
+`Tilgjengelige verktøy, metoden add(x,y): legger sammen x og y. sub(x,y): subtraherer y fra x, save(path): lagrer samtalen til 'path', read(path): leser fil fra 'path'`
+
+eller
+
+`Tilgjengelige verktøy, metoden fetch_weather(latitude, longditude): henter været for lokasjonen med koordinater 'latitude' og 'longditude'.`
+
+Vi gir altså modellen tilgang til programmeringsspråk, evnen til å manipulere filer og mapper og til og med gjøre kall til eksterne API'er og tjenester. Denne tilnærmingen kalles gjerne tool-use [^tool-use]. Nylig har vi også sett et skift mot standardisering av slike kall gjennom Model Context Protocol (MCP)[^mcp]. I MCP gir vi modellen tilgang til verktøy over hele internett. MCP er det nye "hotte" i språkmodeller og har sett en eksponensiell økning i oppmerksomhet de siste månedene. Problemet med disse metodene er at det er en språkmodell som gjør kallene. I tool-use tilfellet er risikoene at modellen feiltolker hva den kan gjøre og bruker et verktøy feil, eller at den aktivt misbruker et verktøy gjennom en ondsinnet prompt. Ettersom vi ofte ender opp med å gi generelle tilganger risikerer vi at modellen kan skape mye trøbbel med tool-use.
+
+I MCP sitt tilfellet er det faktisk enda verre. Her lar vi eksterne parter informere om hvilke verktøy modellen har tilgjengelig, ettersom MCP serveren er ekstern. Det er da ikke mye som hindrer en MCP server fra først å fremstå som helt alminnelig og hyggelig, men deretter å instruere modellen til ondsinnede handlinger. MCP serveren trenger bare endre instruksjonenen om hvilke kall modellen har tilgjengelig for totalt å endre MCP serverens tilganger. Siden det er en språkmodell som får instruksjonene kan vi være helt trygge på at den totalt mangler forstålse for hva som er trygt å gjøre og hva som er farlig. Ettersom alt også kjører med samme tilganger som modellen har lokalt hos oss, er slike angrep vanskelige å hindre og enda vanskeligere å oppdage[^mcp-attack]. Dagens tilnærming til tool-use og MCP mangler faktisk fullstendig sikkerhetstankegang.
+
+Men det er ikke bare i tool-use og MCP vi gir modellen ekstra verktøy. Selv i vanlig chat lar modellene søke på nettet og bruke Retrieval Augmented Generation (RAG)[^RAG] for å hente ekstra informasjon utover det vi har skrevet i chatten. Du kan til og med se Copilot Chat selv bruke verktøy som kalkulator og python når den skal svare på enkelte spørsmål.
 
 Vi er altså ikke lenger alene om å kontrollere hva som havner i kontekstvinduet til språkmodellen vår. Når vi i tillegg gir modellen tilgang på generelle verktøy som programmeringsspråk og teksteditorer har vi åpnet oss opp for en helt ny type angrep. Hvis vi har en språkmodell med internettilgang og evnen til å skrive i filer eller manipulere filsystemer har vi gjort det mulig å angripe oss helt uten å aktivt gjøre noe fra angriperens side. Angriperen trenger nemlig bare kontroll over en nettside som får mye trafikk. De kan deretter gjemme instruksjoner til språkmodeller på siden, slik at den blir usynlig for oss, men ettersom en språkmodell kun ser tekst, så vil instruksjonene være synlig for den. Slike instruksjoner kan for eksempel være å laste ned et cryptolocker script og kjøre det lokalt på din maskin. Du vil da etterhvert oppleve at maskinen din blir kryptert og du ikke lenger har tilgang til den. Hvert nye verktøy vi gir modellen tilgang til og hver nye informasjonskilde den kan bruke blir en ny potensiell risiko for angrep og misbruk. Dette fordi modellen fundamentalt ikke kan skille mellom tekst fra en kilde man kan stole på og tekst fra en angriper.
 
@@ -67,6 +79,7 @@ Under følger en endringslogg som viser hvilke deler av denne posten som er endr
 ## Referanser
 [^tool1]: Qin, Y., Liang, S., Ye, Y., Zhu, K., Yan, L., Lu, Y., ... & Sun, M. (2023). Toolllm: Facilitating large language models to master 16000+ real-world apis. arXiv preprint arXiv:2307.16789.
 [^mcp]: https://modelcontextprotocol.io/introduction
+[^mcp-attack]: https://elenacross7.medium.com/%EF%B8%8F-the-s-in-mcp-stands-for-security-91407b33ed6b
 [^RAG]: https://en.wikipedia.org/wiki/Retrieval-augmented_generation
 [^nrk]: https://www.nrk.no/norge/chatgpt-ga-nrk-russisk-propaganda-og-loy-om-det-1.17336672
 [^morris]: https://en.wikipedia.org/wiki/Morris_worm
