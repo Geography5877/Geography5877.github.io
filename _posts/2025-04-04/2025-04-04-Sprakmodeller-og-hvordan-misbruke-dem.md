@@ -84,6 +84,7 @@ Som jeg har kommet tilbake til flere ganger i denne [serien](https://enklypesalt
 Under følger en endringslogg som viser hvilke deler av denne posten som er endret til hvilket tid. Enkle skrivefeil og den slags ting vil ikke bli logget, men jeg vil etterstrebe å logge alle meningsfulle endringer i posten.
 
 - 2025-04-05: Endringslogg
+- 2025-04-11: La til figurer
 
 ## Referanser
 [^tool1]: Qin, Y., Liang, S., Ye, Y., Zhu, K., Yan, L., Lu, Y., ... & Sun, M. (2023). Toolllm: Facilitating large language models to master 16000+ real-world apis. arXiv preprint arXiv:2307.16789.
