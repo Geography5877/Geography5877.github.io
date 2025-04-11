@@ -67,3 +67,4 @@ Og alt dette for å få et svar som har så mange og obskure feilkilder at vi m�
 Under følger en endringslogg som viser hvilke deler av denne posten som er endret til hvilket tid. Enkle skrivefeil og den slags ting vil ikke bli logget, men jeg vil etterstrebe å logge alle meningsfulle endringer i posten.
 
 - 2025-04-05: Endringslogg
+- 2025-04-11: La til figurer
