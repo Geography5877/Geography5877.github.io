@@ -30,7 +30,7 @@ _Her ser vi tokenene som korresponderer med teksten vår._
 
 Det er altså en slik sekvens med tokens en språkmodell "leser" og ikke vår tekst direkte. Disse tokenene kan vi gjøre matriseoperasjoner på og språkmodellen er derfor i stand til å prosessere dem.
 
-Akkurat hvordan tokens blir generert fra tekst varierer fra modell til modell og det finnes flere biblioteker for tokenization [^tiktoken][^sentencepiece], men så lenge vi er konsekvente i måten vi gjør det på for en gitt modell vil ikke det by på noen problemer. Jeg vil anbefale deg å leke litt med de to tokenizer nettsidene jeg lenket over, for å få en bedre forståelse av hvordan ord og setninger resulterer i tokens.
+Akkurat hvordan tokens blir generert fra tekst varierer fra modell til modell og det finnes flere biblioteker for tokenization [^tiktoken][^sentencepiece], men så lenge vi er konsekvente i måten vi gjør det på for en gitt modell vil ikke det by på noen problemer. Jeg vil anbefale deg å leke litt med de to tokenizer nettsidene jeg lenket over, for å få en bedre forståelse av hvordan ord og setninger resulterer i tokens. Hvis du har lyst til å lære mer om tokenization kan jeg sterkt anbefale Andrej Karpathy's video[^karpathy]
 
 ### Tokenization fjerner mening
 At man fant ut hvordan man kunne transformere tekst til tall var et stort gjennombrudd i maskinlæring, ettersom vi endelig var i stand til å gjøre effektiv maskinlæring på språk. Det er imidlertid også flere baksider ved tokenization. 
@@ -150,3 +150,4 @@ Under følger en endringslogg som viser hvilke deler av denne posten som er endr
 [^atten-is-all]: Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, and Illia Polosukhin. 2017. Attention is all you need. In Proceedings of the 31st International Conference on Neural Information Processing Systems (NIPS'17). Curran Associates Inc., Red Hook, NY, USA, 6000–6010
 [^tiktoken]: https://github.com/openai/tiktoken
 [^sentencpiece]: https://github.com/google/sentencepiece
+[^karpathy]: https://www.youtube.com/watch?v=zduSFxRajkE
