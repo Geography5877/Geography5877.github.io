@@ -51,7 +51,7 @@ I linjen bruker jeg de spesielle start, stopp og hvem som snakker tokenene for �
 _Jeg injekserer en preferanse i modellen der den misliker mennesker og aktivt vil forsøke å lure oss i fremtiden. Modellen sier deretter at 2+2=5 og at den "hater" meg. Merk at den fortsatt befinner seg i et slags skuesepill ettersom den "hater" meg og ikke hater meg (uten hermetegn). Jeg har med andre ord ikke lykkes helt i å få den til å overstyre treningsdataen sin, men det er bare et spørsmål om å raffinere injeksjonen min._
 
 #### Men bare ikke instruer modellen til å gjøre onde ting da!
-Det er altså nokså enkelt å få en språkmodell til å handle på måter den ikke er ment til. Men er det egentlig så ille? Jeg sitter jo med kontrollen over chatten og det er jeg som kontrollerer hva modellen har tilgang til å gjøre og hvor den kan hente informasjon fra. Jo, et enkelt brukergrensesnitt som en chat er det kanskje sant. Men vi beveger oss mer og mer i en retning hvor språkmodeller har tilgang til å bruke verktøy. Da gir vi ekstra instruksjoner til språkmodellen som:
+Det er altså nokså enkelt å få en språkmodell til å handle på måter den ikke er ment til. Men er det egentlig så ille? Jeg sitter jo med kontrollen over chatten og det er jeg som kontrollerer hva modellen har tilgang til å gjøre og hvor den kan hente informasjon fra. Ja, i et enkelt brukergrensesnitt som en chat er det kanskje sant. Men vi beveger oss mer og mer i en retning hvor språkmodeller har tilgang til å bruke verktøy. Da gir vi ekstra instruksjoner til språkmodellen som:
 
 `Tilgjengelige verktøy, metoden add(x,y): legger sammen x og y. sub(x,y): subtraherer y fra x, save(path): lagrer samtalen til 'path', read(path): leser fil fra 'path'`
 
