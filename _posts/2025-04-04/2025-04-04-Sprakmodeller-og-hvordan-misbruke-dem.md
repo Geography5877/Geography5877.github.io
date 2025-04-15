@@ -63,7 +63,7 @@ Vi gir altså modellen tilgang til programmeringsspråk, evnen til å manipulere
 
 I MCP sitt tilfellet er det faktisk enda verre. Her lar vi eksterne parter informere om hvilke verktøy modellen har tilgjengelig, ettersom MCP serveren er ekstern. Det er da ikke mye som hindrer en MCP server fra først å fremstå som helt alminnelig og hyggelig, men deretter å instruere modellen til ondsinnede handlinger. MCP serveren trenger bare endre instruksjonenen om hvilke kall modellen har tilgjengelig for totalt å endre MCP serverens tilganger. Siden det er en språkmodell som får instruksjonene kan vi være helt trygge på at den totalt mangler forstålse for hva som er trygt å gjøre og hva som er farlig. Ettersom alt også kjører med samme tilganger som modellen har lokalt hos oss, er slike angrep vanskelige å hindre og enda vanskeligere å oppdage[^mcp-attack]. Dagens tilnærming til tool-use og MCP mangler faktisk fullstendig sikkerhetstankegang.
 
-Men det er ikke bare i tool-use og MCP vi gir modellen ekstra verktøy. Selv i vanlig chat lar modellene søke på nettet og bruke Retrieval Augmented Generation (RAG)[^RAG] for å hente ekstra informasjon utover det vi har skrevet i chatten. Du kan til og med se Copilot Chat selv bruke verktøy som kalkulator og python når den skal svare på enkelte spørsmål.
+Men det er ikke bare i tool-use og MCP vi gir modellen ekstra verktøy. Selv i vanlig chat lar modellene søke på nettet og bruke Retrieval Augmented Generation (RAG)[^RAG] for å hente ekstra informasjon utover det vi har skrevet i chatten. Du kan til og med se Copilot Chat selv bruke verktøy som kalkulator og python når den skal svare på enkelte spørsmål. I det siste har vi også sett verktøy som DeepResearch[^deep-research][^deep-research2]. Her leser modellen over et stort antall kilder på internett og [resonnerer](https://enklypesalt.com/posts/Er-resonnementer-losningnen/) seg fram til en rapport.
 
 Vi er altså ikke lenger alene om å kontrollere hva som havner i kontekstvinduet til språkmodellen vår. Når vi i tillegg gir modellen tilgang på generelle verktøy som programmeringsspråk og teksteditorer har vi åpnet oss opp for en helt ny type angrep. Hvis vi har en språkmodell med internettilgang og evnen til å skrive i filer eller manipulere filsystemer har vi gjort det mulig å angripe oss helt uten å aktivt gjøre noe fra angriperens side. Angriperen trenger nemlig bare kontroll over en nettside som får mye trafikk. De kan deretter gjemme instruksjoner til språkmodeller på siden, slik at den blir usynlig for oss, men ettersom en språkmodell kun ser tekst, så vil instruksjonene være synlig for den. Slike instruksjoner kan for eksempel være å laste ned et cryptolocker script og kjøre det lokalt på din maskin. Du vil da etterhvert oppleve at maskinen din blir kryptert og du ikke lenger har tilgang til den. Hvert nye verktøy vi gir modellen tilgang til og hver nye informasjonskilde den kan bruke blir en ny potensiell risiko for angrep og misbruk. Dette fordi modellen fundamentalt ikke kan skille mellom tekst fra en kilde man kan stole på og tekst fra en angriper.
 
@@ -85,6 +85,7 @@ Under følger en endringslogg som viser hvilke deler av denne posten som er endr
 
 - 2025-04-05: Endringslogg
 - 2025-04-11: La til figurer
+- 2025-04-15: La til deep research
 
 ## Referanser
 [^tool1]: Qin, Y., Liang, S., Ye, Y., Zhu, K., Yan, L., Lu, Y., ... & Sun, M. (2023). Toolllm: Facilitating large language models to master 16000+ real-world apis. arXiv preprint arXiv:2307.16789.
@@ -94,3 +95,5 @@ Under følger en endringslogg som viser hvilke deler av denne posten som er endr
 [^nrk]: https://www.nrk.no/norge/chatgpt-ga-nrk-russisk-propaganda-og-loy-om-det-1.17336672
 [^morris]: https://en.wikipedia.org/wiki/Morris_worm
 [^copilot-attack]: https://embracethered.com/blog/posts/2024/m365-copilot-prompt-injection-tool-invocation-and-data-exfil-using-ascii-smuggling/
+[^deep-research]: https://openai.com/index/introducing-deep-research/
+[^deep-research2]: https://gemini.google/overview/deep-research/?hl=en
