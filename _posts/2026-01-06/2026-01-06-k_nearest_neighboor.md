@@ -73,5 +73,16 @@ Vi kan også plotte dataen for å se hvordan den "ser ut". Under plotter jeg vek
 ![text](k_nearest_dataset.png)
 _Vi plotter vekt mot høyde for å se om vi ser tendenser til sammenhenger._
 
+Gjennom ren inspeksjon kan det se ut som at jo mer man veier jo høyere er man. Akkurat slik vi tenkte oss frem til tidligere! Men dette er jo bare et plott og vi får jo bare en viss formening om at vekt henger sammen med høyde. Det hadde vært veldig fint om vi var kunne kvantisere dette på en mer objektiv måte. En måte der vi ser på hvordan vekt og høyde varierer sammen. Det hadde jo vært gull! Men før vi kan gjøre det for to variabler (høyde og vekt), trenger vi en måte å måle hvordan en enkelt variabel varierer. En måte å gjøre dette på er å se på hvor mye variabelen varierer fra gjennomsnittet sitt.
+
+La oss ta vekt som et eksempel. Vi kan si noe om hvor mye vektmålingene våre varierer ved å se på hvor langt de er unna den gjennomsnittlige vekten. La oss kalle gjennomsnittsvekten $\bar{V}$ og den $i$-te vektmålingen $V_i$. Da kan vi beregne hvor mye vekten i dataen vår varierer slik:
+$$
+\begin{equation}
+\frac{1}{n}\sum^n_{i=1} V_i - \bar{V}
+\end{equation}
+$$
+
+
+
 ## Endringslogg
 Under følger en endringslogg som viser hvilke deler av denne posten som er endret til hvilket tid. Enkle skrivefeil og den slags ting vil ikke bli logget, men jeg vil etterstrebe å logge alle meningsfulle endringer i posten.
