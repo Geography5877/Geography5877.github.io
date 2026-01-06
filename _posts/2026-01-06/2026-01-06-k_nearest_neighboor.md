@@ -1,5 +1,5 @@
 ---
-title: Prediksjon
+title: Kunnskapsfjellet
 date: 2026-01-06 06:57:00 +0200
 categories: [Maskinlæring og statistikk]
 tags: [prediksjon, ml, statistikk]     # TAG names should always be lowercase
@@ -27,7 +27,15 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 
 # Define a custom colorblind friendly colormap
-custom_cmap = ListedColormap(['#e69f00', '#0072b2', '#cc79a7', '#f0e442', '#56b4e9', '#009e73', '#000000'])
+custom_cmap = ListedColormap([
+    '#e69f00',  
+    '#0072b2', 
+    '#cc79a7', 
+    '#f0e442', 
+    '#56b4e9', 
+    '#009e73', 
+    '#000000'
+])
 
 # Seed random generator for reproducibility
 rng = np.random.default_rng(42)
@@ -46,7 +54,8 @@ heights_f = weights_f + rng.normal(90, 10, n_samples//2)
 #is_male[n_samples//2:]-=1
 
 # Create dataframe from data
-df_w2h = pd.DataFrame({"height": np.concatenate([heights_m, heights_f]), "weight": np.concatenate([weights_m, weights_f])})
+df_w2h = pd.DataFrame({"height": np.concatenate([heights_m, heights_f]), 
+                       "weight": np.concatenate([weights_m, weights_f])})
 print(df_w2h.head())
 ```
 
@@ -59,6 +68,10 @@ Når vi kjører denne koden får vi generert et dataset og vi ser på noen eksem
 3  161.907731  89.405647
 4  155.726173  60.489648
 ```
+
+Vi kan også plotte dataen for å se hvordan den "ser ut". Under plotter jeg vekt langs x-aksen (horisontalen) og høyde langs y-aksen (vertikalen). Ser du noen sammenheng?
+![text](k_nearest_dataset.png)
+_Vi plotter vekt mot høyde for å se om vi ser tendenser til sammenhenger._
 
 ## Endringslogg
 Under følger en endringslogg som viser hvilke deler av denne posten som er endret til hvilket tid. Enkle skrivefeil og den slags ting vil ikke bli logget, men jeg vil etterstrebe å logge alle meningsfulle endringer i posten.
