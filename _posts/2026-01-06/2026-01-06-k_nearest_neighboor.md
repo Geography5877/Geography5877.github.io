@@ -1,5 +1,5 @@
 ---
-title: Kunnskapsfjellet
+title: Maskinlæringsfjellet
 date: 2026-01-06 06:57:00 +0200
 categories: [Maskinlæring og statistikk]
 tags: [prediksjon, ml, statistikk]     # TAG names should always be lowercase
@@ -78,9 +78,97 @@ Gjennom ren inspeksjon kan det se ut som at jo mer man veier jo høyere er man. 
 La oss ta vekt som et eksempel. Vi kan si noe om hvor mye vektmålingene våre varierer ved å se på hvor langt de er unna den gjennomsnittlige vekten. La oss kalle gjennomsnittsvekten $\bar{V}$ og den $i$-te vektmålingen $V_i$. Da kan vi beregne hvor mye vekten i dataen vår varierer slik:
 $$
 \begin{equation}
-\frac{1}{n}\sum^n_{i=1} V_i - \bar{V}
+"Var(V)" = \frac{1}{n}\sum^n_{i=1} V_i - \bar{V}
 \end{equation}
 $$
+
+Men vi får et problem her, hvis vi er riktig uheldig med $V_i$'ene våre, kan vi ende opp med at deler av summen er lik, men med forskjellig fortegn. De vil derfor utligne hverandre og ødelegge beregnigen vår. Heldigvis kan vi enkelt unngå dette ved å kvadrere summen slik:
+$$
+\begin{equation}
+Var(V) = \frac{1}{n}\sum^n_{i=1} (V_i - \bar{V})^2
+\end{equation}
+$$
+
+Deenne beregningen kalles faktisk varians i statistikken og brukes nettopp til å si noe om hvordan en variabel, vekt i dette tilfellet, varierer. La oss se hvordan vi kan beregne variansen til vekt i python:
+```python
+# Compute \bar{V}
+mean_w = sum(df_w2h.weight)/len(df_w2h)
+
+# Compute (V_i - \bar{V})^2
+deviations = [(wi - mean_w)**2 for wi in df_w2h.weight]
+
+# Compute variance
+variance = sum(deviations) / len(df_w2h)
+print(variance)
+```
+Ut får vi dette:
+```
+162.7917952074835
+```
+
+Heldigvis kan vi også bruke pandas til å hjelpe oss. Vi kan beregne variansen for hver kolonne i en pandas dataframe slik:
+```python
+df_w2h.var()
+```
+Og ut får vi:
+```
+height    538.813245
+weight    163.531758
+dtype: float64
+```
+
+Legg merke til at variansen som beregnes av pandas ikke er eksakt den samme verdien vi beregnet for hånd. Den er imidlertid veldig nær. Vi slår oss derfor til ro med dette i denne posten, men vit at det er grunner til at denne forskjellen oppstår.
+
+Okay, så vi er i stand til å finne et tall som sier oss noe om hvordan en variabel varierer, men hva med to variabler. Hvordan kan vi si noe om hvordan de varierer sammen? Jo, da kan vi benytte eksakt samme metode, men istedet for å kvadrere, så multipliserer vi variablene:
+$$
+\begin{equation}
+Cov(V, H) = \frac{1}{n}\sum^n_{i=1} (V_i - \bar{V})(H_i - \bar{H})
+\end{equation}
+$$
+
+Denne beregningen kalles kovarians i statistikken og sier oss nettopp hvordan to variabler varierer sammen, eller ko-varierer.
+
+I python kan vi beregne dette slik:
+```python
+df_w2h['weight'].cov(df_w2h['height'])
+```
+Som gir oss:
+```
+np.float64(215.11776578233534)
+```
+
+Altså er kovariansen mellom vekt og høyde 215.1777.... En positiv kovarians sier oss at når en variablel går opp, så går også den andre opp. Altså, jo tyngre man er, jo høyere vil man også være i dette datasettet. Men ett problem med kovarians er at vi ikke kan si så mye om sterk denne sammenhengen er. Hadde det ikke vært veldig greit om vi også kunne si noe om styrken mellom hvordan disse to variablene varierer? For eksempel at 1 indikerer perfekt sammenheng, -1 indikerer perfekt negativ sammenheng og at 0 indikerer ingen sammenheng.
+
+For å få til det, kan vi normalisere kovariansen, men hva bruker vi som normaliseringsfaktor? Jo, se tilbake til hvordan vi fant varians for en variabel. Legg merke til at vi kvadrerte summen for å unngå kanseleringer. Dette introduserte også en effekt der variansen er vanskelig å tolke, ettersom den eksisterer på en kvadrert skala. Hva om vi bare tar kvadratroten av resultatet?
+
+$$
+\begin{equation}
+\sigma(V) = \sqrt{Var(V)}
+\end{equation}
+$$
+
+Her er $\sigma(V)$ standardavviket til vekten. Fordelen med standardavvik over varians er at den eksisterer på samme størrelsesorden som variabelen vi jobber med. Så den er mye enklere å tolke.
+
+Nå kan vi også ta i bruk standardavviket i variablene våre for å normalisere kovarians til en [-1,  1] skala:
+
+$$
+\begin{equation}
+r = \frac{Cov(V, H)}{\sigma_V \sigma_H} 
+\end{equation}
+$$
+
+Her er $\sigma_V$ og $\sigma_H$ standardavviket til henholdsvis vekt og høyde i dataen vår. Dette tallet $r$ kalles korrelasjonen mellom de to variablene. I python kan vi beregne den slik:
+```python
+df_w2h['weight'].corr(df_w2h['height'])
+```
+
+```
+np.float64(0.7246963843238032)
+```
+
+Dette er et normalisert tall, hvor 1 ville vært en perfekt korrelasjon mellom vekt og høyde. Med 0.72 som korrelasjon her har vi altså sterk korrelasjon mellom vekt og høyde i vår data!
+
+
 
 
 
