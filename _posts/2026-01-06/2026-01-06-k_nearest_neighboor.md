@@ -204,7 +204,7 @@ r = \frac{Cov(V, H)}{\sigma_V \sigma_H}
 \end{equation}
 $$
 
-Her er $\sigma_V$ og $\sigma_H$ standardavviket til henholdsvis vekt og høyde i dataen vår.  Også denne beregningen brukes svært ofte i statistikken og har derfor også sitt eget navn. $r$ kalles korrelasjonen mellom de to variablene. I python kan vi beregne den slik:
+Her er $\sigma_V$ og $\sigma_H$ standardavviket til henholdsvis vekt og høyde i dataen vår.  Også denne beregningen brukes svært ofte i statistikken og har derfor også sitt eget navn. $r$ kalles korrelasjonen, eller korrelasjonskoeffisienten, mellom de to variablene. I python kan vi beregne den slik:
 ```python
 df_w2h['weight'].corr(df_w2h['height'])
 ```
