@@ -78,7 +78,7 @@ Gjennom ren inspeksjon kan det se ut som at jo mer man veier jo høyere er man. 
 La oss ta vekt som et eksempel. Vi kan si noe om hvor mye vektmålingene våre varierer ved å se på hvor langt de gjennomsnittlig er unna den gjennomsnittlige vekten. La oss kalle gjennomsnittsvekten i dataen vår $\bar{V} = \frac{1}{N}\sum^N_{i=1} V_i$ der den $i$-te vektmålingen er $V_i$ og det totale antallet målinger er $N$. Da kan vi beregne hvor mye vekten i dataen vår varierer slik:
 $$
 \begin{equation}
-\say{Var(V)} = \frac{1}{N}\sum^N_{i=1} V_i - \bar{V}
+'Var(V)' = \frac{1}{N}\sum^N_{i=1} V_i - \bar{V}
 \end{equation}
 $$
 
@@ -106,7 +106,7 @@ $$
 
 Vi kan nå beregne gjennomsnittlig vektavvik fra gjennomsnittsvekten slik:
 $$
-\say{Var(V)} = \frac{-1 + 0 + 1 + 0}{4} = 0
+'Var(V)' = \frac{-1 + 0 + 1 + 0}{4} = 0
 $$
 
 Men dette virker jo veldig rart. Hvordan kan gjennomsnittlig vektavvik fra gjennomsnittsvekten være 0 når vi har 2 som gjennomsnittsvekt og flere målinger som ikke er ekstakt 2? Grunnen til at dette skjer er hvordan vi beregner gjennomsnittlig avvik her. Vi har rett og slett vært uheldig med målingene våre, slik at de utligner hverandre når vi summerer dem. Legg merke til at de eneste vektmålingene våre som ikke er 2, er 1 og 3. Når vi trekker fra gjennomsnittet fra disse målingene får vi -1 og 1. Når vi så summerer dette, vil disse utligne hverandre og gi oss 0, så summen vår blir 0.
