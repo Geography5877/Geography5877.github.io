@@ -97,6 +97,7 @@ $$
 $$
 
 Vi kan deretter beregne avviket fra gjennomsnittsvekten for hver vektmåling slik:
+
 $$
 \begin{aligned}
 avvik(V_1) = 1 - 2 = -1 \\
@@ -122,6 +123,8 @@ avvik(V_3)^2 = (3 - 2)^2 = 1 \\
 avvik(V_4)^2 = (2 - 2)^2 = 0
 \end{aligned}
 $$
+
+Da får vi følgende gjennomnsittlig avvik fra jennomsnittsvekten:
 
 $$
 Var(V) = \frac{1 + 0 + 1 +0}{4} = 0.5
