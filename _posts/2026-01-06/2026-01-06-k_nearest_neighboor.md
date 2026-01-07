@@ -98,10 +98,12 @@ $$
 
 Vi kan deretter beregne avviket fra gjennomsnittsvekten for hver vektmåling slik:
 $$
+\begin{aligned}
 avvik(V_1) = 1 - 2 = -1 \\
 avvik(V_2) = 2 - 2 = 0 \\
 avvik(V_3) = 3 - 2 = 1 \\
 avvik(V_4) = 2 - 2 = 0
+\end{aligned}
 $$
 
 Vi kan nå beregne gjennomsnittlig vektavvik fra gjennomsnittsvekten slik:
@@ -113,10 +115,12 @@ Men dette virker jo veldig rart. Hvordan kan gjennomsnittlig vektavvik fra gjenn
 
 Dette er problematisk fordi måten vi beregner gjennomsnittlig avvik fra gjennomsnittet nå ikke reflekterer virkeligheten. Finnes det en måte vi kan unngå dette? Ja, heldigvis! Hvis vi tar en titt til, så legger vi merke til at grunnen til at vi får dette problemet er at fortegnet er motsatt for -1 og 1. Hvis vi bare kan kvitte oss med de motsatte fortegnene, så har vi jo ikke lenger dette problemet. En måte vi kan kvitte oss med fortegnet på er å kvadrere! Hvis vi kvadrerer etter vi har beregnet avviket fra en spesifik vektmåling fra gjennomsnittsvekten kan vi ikke ende opp med negative fortegn! La oss se hva som skjer når vi bruker denne tilnærmingen:
 $$
+\begin{aligned}
 avvik(V_1)^2 = (1 - 2)^2 = 1 \\
 avvik(V_2)^2 = (2 - 2)^2 = 0 \\
 avvik(V_3)^2 = (3 - 2)^2 = 1 \\
 avvik(V_4)^2 = (2 - 2)^2 = 0
+\end{aligned}
 $$
 
 $$
