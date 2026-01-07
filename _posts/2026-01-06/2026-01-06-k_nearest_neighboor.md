@@ -70,7 +70,7 @@ Når vi kjører denne koden får vi generert et dataset og vi ser på noen eksem
 ```
 
 Vi kan også plotte dataen for å se hvordan den "ser ut". Under plotter jeg vekt langs x-aksen (horisontalen) og høyde langs y-aksen (vertikalen). Ser du noen sammenheng?
-![text](weigth_height_dataset.png)
+![text](weight_height_dataset.png)
 _Vi plotter vekt mot høyde for å se om vi ser tendenser til sammenhenger._
 
 Gjennom ren inspeksjon kan det se ut som at jo mer man veier jo høyere er man. Akkurat slik vi tenkte oss frem til tidligere! Men dette er jo bare et plott og vi får jo bare en viss formening om at vekt henger sammen med høyde. Det hadde vært veldig fint om vi var kunne kvantisere dette på en mer objektiv måte. En måte der vi ser på hvordan vekt og høyde varierer sammen. Det hadde jo vært gull! Men før vi kan gjøre det for to variabler (høyde og vekt), trenger vi en måte å måle hvordan en enkelt variabel varierer. En måte å gjøre dette på er å se på hvor mye variabelen varierer fra gjennomsnittet sitt.
