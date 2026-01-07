@@ -75,21 +75,63 @@ _Vi plotter vekt mot høyde for å se om vi ser tendenser til sammenhenger._
 
 Gjennom ren inspeksjon kan det se ut som at jo mer man veier jo høyere er man. Akkurat slik vi tenkte oss frem til tidligere! Men dette er jo bare et plott og vi får jo bare en viss formening om at vekt henger sammen med høyde. Det hadde vært veldig fint om vi var kunne kvantisere dette på en mer objektiv måte. En måte der vi ser på hvordan vekt og høyde varierer sammen. Det hadde jo vært gull! Men før vi kan gjøre det for to variabler (høyde og vekt), trenger vi en måte å måle hvordan en enkelt variabel varierer. En måte å gjøre dette på er å se på hvor mye variabelen varierer fra gjennomsnittet sitt.
 
-La oss ta vekt som et eksempel. Vi kan si noe om hvor mye vektmålingene våre varierer ved å se på hvor langt de er unna den gjennomsnittlige vekten. La oss kalle gjennomsnittsvekten $\bar{V}$ og den $i$-te vektmålingen $V_i$. Da kan vi beregne hvor mye vekten i dataen vår varierer slik:
+La oss ta vekt som et eksempel. Vi kan si noe om hvor mye vektmålingene våre varierer ved å se på hvor langt de gjennomsnittlig er unna den gjennomsnittlige vekten. La oss kalle gjennomsnittsvekten i dataen vår $\bar{V} = \frac{1}{N}\sum^N_{i=1} V_i$ der den $i$-te vektmålingen er $V_i$ og det totale antallet målinger er $N$. Da kan vi beregne hvor mye vekten i dataen vår varierer slik:
 $$
 \begin{equation}
-"Var(V)" = \frac{1}{n}\sum^n_{i=1} V_i - \bar{V}
+\say{Var(V)} = \frac{1}{N}\sum^N_{i=1} V_i - \bar{V}
 \end{equation}
 $$
 
-Men vi får et problem her, hvis vi er riktig uheldig med $V_i$'ene våre, kan vi ende opp med at deler av summen er lik, men med forskjellig fortegn. De vil derfor utligne hverandre og ødelegge beregnigen vår. Heldigvis kan vi enkelt unngå dette ved å kvadrere summen slik:
+Det vi gjør er å beregne gjennomsnittlig vektavvik fra gjennomsnittsvekten. La oss se på et konkret eksempel for å gjøre ting litt klarere:
+
+La oss si vi har 4 vektmålinger:
+```
+1
+2
+3
+2
+```
+Vi finner da gjennomsnittsvekten slik:
+$$
+\bar{V} = \frac{1+2+3+2}{4} = 2
+$$
+
+Vi kan deretter beregne avviket fra gjennomsnittsvekten for hver vektmåling slik:
+$$
+avvik(V_1) = 1 - 2 = -1 \\
+avvik(V_2) = 2 - 2 = 0 \\
+avvik(V_3) = 3 - 2 = 1 \\
+avvik(V_4) = 2 - 2 = 0
+$$
+
+Vi kan nå beregne gjennomsnittlig vektavvik fra gjennomsnittsvekten slik:
+$$
+\say{Var(V)} = \frac{-1 + 0 + 1 + 0}{4} = 0
+$$
+
+Men dette virker jo veldig rart. Hvordan kan gjennomsnittlig vektavvik fra gjennomsnittsvekten være 0 når vi har 2 som gjennomsnittsvekt og flere målinger som ikke er ekstakt 2? Grunnen til at dette skjer er hvordan vi beregner gjennomsnittlig avvik her. Vi har rett og slett vært uheldig med målingene våre, slik at de utligner hverandre når vi summerer dem. Legg merke til at de eneste vektmålingene våre som ikke er 2, er 1 og 3. Når vi trekker fra gjennomsnittet fra disse målingene får vi -1 og 1. Når vi så summerer dette, vil disse utligne hverandre og gi oss 0, så summen vår blir 0.
+
+Dette er problematisk fordi måten vi beregner gjennomsnittlig avvik fra gjennomsnittet nå ikke reflekterer virkeligheten. Finnes det en måte vi kan unngå dette? Ja, heldigvis! Hvis vi tar en titt til, så legger vi merke til at grunnen til at vi får dette problemet er at fortegnet er motsatt for -1 og 1. Hvis vi bare kan kvitte oss med de motsatte fortegnene, så har vi jo ikke lenger dette problemet. En måte vi kan kvitte oss med fortegnet på er å kvadrere! Hvis vi kvadrerer etter vi har beregnet avviket fra en spesifik vektmåling fra gjennomsnittsvekten kan vi ikke ende opp med negative fortegn! La oss se hva som skjer når vi bruker denne tilnærmingen:
+$$
+avvik(V_1)^2 = (1 - 2)^2 = 1 \\
+avvik(V_2)^2 = (2 - 2)^2 = 0 \\
+avvik(V_3)^2 = (3 - 2)^2 = 1 \\
+avvik(V_4)^2 = (2 - 2)^2 = 0
+$$
+
+$$
+Var(V) = \frac{1 + 0 + 1 +0}{4} = 0.5
+$$
+
+Nå fikk vi et annet svar! Vi finner at gjennomsnittlig avvik fra gjennomsnittsvekten er 0.5. Dette virker mye mer rimelig! Denne måten å beregne gjennomsnittlig avvik fra gjennomsnittet på er faktisk så vanlig i statistikk at den har fått et eget navn. Vi kaller den variansen (variance) i dataen vår. Vi kan formulere den mer generelt slik:
+
 $$
 \begin{equation}
-Var(V) = \frac{1}{n}\sum^n_{i=1} (V_i - \bar{V})^2
+Var(V) = \frac{1}{N}\sum^N_{i=1} (V_i - \bar{V})^2
 \end{equation}
 $$
 
-Deenne beregningen kalles faktisk varians i statistikken og brukes nettopp til å si noe om hvordan en variabel, vekt i dette tilfellet, varierer. La oss se hvordan vi kan beregne variansen til vekt i python:
+La oss se hvordan vi kan beregne variansen til vekt i python:
 ```python
 # Compute \bar{V}
 mean_w = sum(df_w2h.weight)/len(df_w2h)
@@ -108,13 +150,11 @@ Ut får vi dette:
 
 Heldigvis kan vi også bruke pandas til å hjelpe oss. Vi kan beregne variansen for hver kolonne i en pandas dataframe slik:
 ```python
-df_w2h.var()
+df_w2h.weight.var()
 ```
 Og ut får vi:
 ```
-height    538.813245
-weight    163.531758
-dtype: float64
+163.53175791297207
 ```
 
 Legg merke til at variansen som beregnes av pandas ikke er eksakt den samme verdien vi beregnet for hånd. Den er imidlertid veldig nær. Vi slår oss derfor til ro med dette i denne posten, men vit at det er grunner til at denne forskjellen oppstår.
@@ -134,22 +174,22 @@ df_w2h['weight'].cov(df_w2h['height'])
 ```
 Som gir oss:
 ```
-np.float64(215.11776578233534)
+215.11776578233534
 ```
 
-Altså er kovariansen mellom vekt og høyde 215.1777.... En positiv kovarians sier oss at når en variablel går opp, så går også den andre opp. Altså, jo tyngre man er, jo høyere vil man også være i dette datasettet. Men ett problem med kovarians er at vi ikke kan si så mye om sterk denne sammenhengen er. Hadde det ikke vært veldig greit om vi også kunne si noe om styrken mellom hvordan disse to variablene varierer? For eksempel at 1 indikerer perfekt sammenheng, -1 indikerer perfekt negativ sammenheng og at 0 indikerer ingen sammenheng.
+Altså er kovariansen mellom vekt og høyde 215.1777.... En positiv kovarians sier oss at når en variablel går opp, så går også den andre opp. Altså, jo tyngre man er, jo høyere vil man også være i dette datasettet. Men ett problem med kovarians er at vi ikke kan si så mye hvor om sterk denne sammenhengen er. Er 215.1777... en stor kovarians? Det er faktisk litt uklart. Hadde det ikke vært veldig greit om vi også kunne si noe om styrken mellom hvordan disse to variablene varierer? For eksempel at 1 indikerer perfekt sammenheng, -1 indikerer perfekt negativ sammenheng og at 0 indikerer ingen sammenheng.
 
-For å få til det, kan vi normalisere kovariansen, men hva bruker vi som normaliseringsfaktor? Jo, se tilbake til hvordan vi fant varians for en variabel. Legg merke til at vi kvadrerte summen for å unngå kanseleringer. Dette introduserte også en effekt der variansen er vanskelig å tolke, ettersom den eksisterer på en kvadrert skala. Hva om vi bare tar kvadratroten av resultatet?
+For å få til det, kan vi normalisere kovariansen slik at den kun eksisterer på intervallet $[-1, 1]$, men hva bruker vi som normaliseringsfaktor for å få til det? Jo, se tilbake til hvordan vi fant varians for en variabel. Husk at vi kvadrerte summen for å unngå kanseleringer. Det var jo veldig effektivt for å fjerne problemet, men det introduserte også en utilsiktet effekt som gjorde variansen vanskelig å tolke, akkurat som kovarians. Er en varians på $163.531.... kg^2$  mye eller lite? Vektene vi har målt varierer jo sånn ca. mellom 50 og 100 kg. Hva er egentlig $kg^2$? Det er en ekkel størrelsesenhet å forholde seg til. Det vi egnetlig ønsker oss fra beregningen vår er jo et tall som beskriver hvor mye en variabel varierer på en måte vi intuitivt forstår. Helst på samme skala som dataen vår.  Kan vi bli kvitt denne kvadreringen på en måte? Ja, vi kan jo bare bruke inversoperasjonen for kvadrering, nemlig å ta kvadratroten:
 
 $$
 \begin{equation}
-\sigma(V) = \sqrt{Var(V)}
+\sigma_V = \sqrt{Var(V)}
 \end{equation}
 $$
 
-Her er $\sigma(V)$ standardavviket til vekten. Fordelen med standardavvik over varians er at den eksisterer på samme størrelsesorden som variabelen vi jobber med. Så den er mye enklere å tolke.
+Hvis vi gjør det får vi at $\sigma_V = \sqrt{163.5317...} = 12.7879...$. Denne beregningen brukes kanskje enda oftere i statistikk en varians og kalles standardavviket (standard deviation). Ved å beregne variabiliteten i dataen vår på denne måten, skjønner vi mye bedre hvordan den varierer fra gjennomsnittet. Vektmålingene våre rangerer altså fra rundt 50 kg til 100 kg, gjennomsnittsvekten vi har målt er $\bar{V} = 71.275 kg$ og den varierer i gjennomsnitt 12.7879... kg fra denne gjennomsnittsvekten.
 
-Nå kan vi også ta i bruk standardavviket i variablene våre for å normalisere kovarians til en [-1,  1] skala:
+Så hvordan bruker vi standardavviket til å fikse problemet vårt med kovarians? Jo, vi kan dele kovariansen på produktet av standardavviket til variablene våre:
 
 $$
 \begin{equation}
@@ -157,20 +197,18 @@ r = \frac{Cov(V, H)}{\sigma_V \sigma_H}
 \end{equation}
 $$
 
-Her er $\sigma_V$ og $\sigma_H$ standardavviket til henholdsvis vekt og høyde i dataen vår. Dette tallet $r$ kalles korrelasjonen mellom de to variablene. I python kan vi beregne den slik:
+Her er $\sigma_V$ og $\sigma_H$ standardavviket til henholdsvis vekt og høyde i dataen vår.  Også denne beregningen brukes svært ofte i statistikken og har derfor også sitt eget navn. $r$ kalles korrelasjonen mellom de to variablene. I python kan vi beregne den slik:
 ```python
 df_w2h['weight'].corr(df_w2h['height'])
 ```
 
 ```
-np.float64(0.7246963843238032)
+0.7246963843238032
 ```
 
-Dette er et normalisert tall, hvor 1 ville vært en perfekt korrelasjon mellom vekt og høyde. Med 0.72 som korrelasjon her har vi altså sterk korrelasjon mellom vekt og høyde i vår data!
+Dette er et normalisert tall, hvor 1 ville vært en perfekt positiv korrelasjon mellom vekt og høyde og -1 ville vært en perfekt negativ korrelasjon mellom vekt og høyde. Her har vi en korrelasjon på 0.72. Det er altså sterk positiv korrelasjon mellom vekt og høyde i vår data!
 
-
-
-
+Nå har vi allerde kommet ganske langt! Vi kan kvantifisere hvordan vekt og høyde endrer seg sammen og har funnet at det er en sammenheng der. Vi kan også si at denne sammenhengen er en sterk positiv sammenheng, så jo høyere man er jo mer veier man antakelig! Så hvordan bruker vi bruke korrelasjonen til å avgjøre om en person kan få lov til å ta karusellen vår, gitt at vi får målt personens vekt? Vel, det kan vi jo ikke... Korrelasjonen gir oss ingen god måte å si noe om hva en persons høyde er, gitt en vekten. For å kunne gjøre det, trenger vi en modell. Det er her min fascinasjon for statistikk og maskinlæring egentlig starter. Disse metodene lar oss bygge modeller vi kan bruke til å gjøre prediksjoner og komme med prognoser eller evaluere sammenhenger og til og med si noe om hva som forårsaker hva og til hvilken grad! Dette er noe vi mennesker gjør naturlig hele tiden. Vi gjør nesten alltid antakelser og handler basert på disse. Maskinlæring og statistikk lar oss gjøre det samme i et godt definert rammeverk, med matematisk robusthet og med en datamaskins regnekraft. De er rett og slett fantasiske verktøy og hjelpemidler som kan hjelpe oss til å gjøre bedre valg i våre liv. Så videre i denne serien skal vi se på hvordan vi bygger forskjellige typer modeller og bruker dem!
 
 ## Endringslogg
 Under følger en endringslogg som viser hvilke deler av denne posten som er endret til hvilket tid. Enkle skrivefeil og den slags ting vil ikke bli logget, men jeg vil etterstrebe å logge alle meningsfulle endringer i posten.
