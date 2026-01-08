@@ -4,9 +4,10 @@ date: 2026-01-06 06:57:00 +0200
 categories: [Maskinlæring og statistikk]
 tags: [prediksjon, ml, statistikk]     # TAG names should always be lowercase
 math: true
-description: I denne posten skal vi starte en ny serie der vi skal se på statistikk og maskinlæring og samtidig forhåpentligvis forstå hvordan disse metodene fungerer og hva de kan brukes til. Koden for denne posten finnes [her](https://github.com/haakom/enklypesalt/tree/main/2026-01-06_correlation) 
+description: I denne posten skal vi starte en ny serie der vi skal se på statistikk og maskinlæring og samtidig forhåpentligvis forstå hvordan disse metodene fungerer og hva de kan brukes til.  
 media_subpath: /assets/images/2026-01-06/
 ---
+
 <!-- markdownlint-capture -->
 
 Nå er det snart et år siden sist jeg postet på denne bloggen. Det har jeg endelig tenkt å gjøre noe med!
@@ -19,7 +20,7 @@ Det er jo mange forskjellige måter man kunne startet en slik serie. Det finnes 
 Jeg har fått mer og mer tro på at læring burde ta en lignende form. Vi mennesker kommuniserer ofte gjennom historier og vi deler også mye lærdom gjennom historiedeling. Jeg tror derfor at læring generelt kan være mer effektivt om vi kombinerer teori med historier for å både øke engasjementet rundt det vi lærer, men også forstå bedre hvorfor vi lærer det og hvordan man i første omgang fant ut av det. Det er ytterst sjeldent at en ny teknologi oppstår ut av det blå. De aller fleste vitenskapelige fremskritt kommer som et resultat av å bygge en liten ny bit oppå et fjell av eksisterende kunnskap. I denne serien har jeg lyst til å prøve å bestige dette fjellet gjennom gradvis å støte på nye utfordringer og deretter "gjennoppfinne" tilnærmingene som kan brukes for overkomme disse.
 
 ## Vårt første problem
-Så la oss starte på veien opp kunnskapsfjellet med en første utfordring. La oss se for oss at vi jobber som tivolivakt som slipper mennesker ombord på en karusell. Karusellen har et høydekrav for at en person skal få lov til å ta den, men vi har mistet målebåndet vårt. Det eneste verktøyet vi har tilgjengelig er en vekt. Kan vi bruke en persons vekt til å si oss noe om høyden til personen? For å svare på dette spørsmålet kan vi i første omgang bruke det vi kjenner om menneskekroppen fra før. Vi vet at jo høyere en person er, jo mer bein må det finnes i kroppen til personen. Det finnes rett og slett ofte mer av en person jo høyere personen er. Så det er jo et godt utgangspunkt. For å se nærmere på dette kan vi ta i bruk data. Under genererer jeg et datasett hvor vi har målt høyde og vekt for en rekke tilfeldig utvalgte mennesker. Vi har kun disse to målene og ingenting annet å gå ut ifra i dette datasettet:
+Så la oss starte på veien opp dette fjellet med en første utfordring. La oss se for oss at vi jobber som tivolivakt som slipper mennesker ombord på en karusell. Karusellen har et høydekrav for at en person skal få lov til å ta den, men vi har mistet målebåndet vårt. Det eneste verktøyet vi har tilgjengelig er en vekt. Kan vi bruke en persons vekt til å si oss noe om høyden til personen? For å svare på dette spørsmålet kan vi i første omgang bruke det vi kjenner om menneskekroppen fra før. Vi vet at jo høyere en person er, jo mer bein må det finnes i kroppen til personen. Det finnes rett og slett ofte mer av en person jo høyere personen er. Så det er jo et godt utgangspunkt. For å se nærmere på dette kan vi ta i bruk data. Under genererer jeg et datasett hvor vi har målt høyde og vekt for en rekke tilfeldig utvalgte mennesker. Vi har kun disse to målene og ingenting annet å gå ut ifra i dette datasettet:
 
 ```python
 import numpy as np
@@ -217,6 +218,8 @@ df_w2h['weight'].corr(df_w2h['height'])
 Dette er et normalisert tall, hvor 1 ville vært en perfekt positiv korrelasjon mellom vekt og høyde og -1 ville vært en perfekt negativ korrelasjon mellom vekt og høyde. Her har vi en korrelasjon på 0.72. Det er altså sterk positiv korrelasjon mellom vekt og høyde i vår data!
 
 Nå har vi allerede kommet ganske langt! Vi kan kvantifisere hvordan vekt og høyde endrer seg sammen og har funnet at det er en sammenheng der. Vi kan også si at denne sammenhengen er en sterk positiv sammenheng, så jo høyere man er jo mer veier man antakelig! Så hvordan bruker vi bruke korrelasjonen til å avgjøre om en person kan få lov til å ta karusellen vår, gitt at vi får målt personens vekt? Vel, det kan vi jo ikke... Korrelasjonen gir oss ingen god måte å si noe om hva en persons høyde er, gitt en vekten. For å kunne gjøre det, trenger vi en modell. Det er her min fascinasjon for statistikk og maskinlæring egentlig starter. Disse metodene lar oss bygge modeller vi kan bruke til å gjøre prediksjoner og komme med prognoser eller evaluere sammenhenger og til og med si noe om hva som forårsaker hva og til hvilken grad! Dette er noe vi mennesker gjør naturlig hele tiden. Vi gjør nesten alltid antakelser og handler basert på disse. Maskinlæring og statistikk lar oss gjøre det samme i et godt definert rammeverk, med matematisk robusthet og med en datamaskins regnekraft. De er rett og slett fantastiske verktøy og hjelpemidler som kan hjelpe oss til å gjøre bedre valg i våre liv. Så videre i denne serien skal vi se på hvordan vi bygger forskjellige typer modeller og bruker dem!
+
+Koden for denne posten finnes [her](https://github.com/haakom/enklypesalt/tree/main/2026-01-06_correlation).
 
 ## Endringslogg
 Under følger en endringslogg som viser hvilke deler av denne posten som er endret til hvilket tid. Enkle skrivefeil og den slags ting vil ikke bli logget, men jeg vil etterstrebe å logge alle meningsfulle endringer i posten.
