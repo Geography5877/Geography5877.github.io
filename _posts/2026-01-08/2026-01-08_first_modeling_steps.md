@@ -137,6 +137,7 @@ Altså bommer modellen i gjennomsnitt med rundt 19.1 cm i prediksjonene sine. De
 I modellen vår så langt, så ser vi kun på den nærmeste personen i datasettet vårt, men hva om vi er veldig uheldig og den nærmeste personen er unormalt lav eller unormalt høy for vekten sin. Da vil jo modellen predikere en unormalt lav eller høy verdi også. Hvis vi tar en titt på prediksjonene våre igjen, så ser vi at modellen gjøre et stort hopp mellom ca 75kg og 80kg. Her har vi nettopp et slikt tilfelle, der den nærmeste målingen vi har på litt over 75 kg er unormalt lav, mens den nærmeste målingen nært 80 kg er unormalt høy. Modellen tror med andre ord at en typisk person på 75kg er ca. 130 cm, mens om personen er bare 5 kg tyngre er den nesten 220 cm. Det kan umulig stemme. Hvordan kan vi unngå det? 
 
 En ting vi kan gjøre er jo å bruke flere enn en person fra datasettet vårt hver gang vi gjør en prediksjon. Hva om vi f.eks skriver om modellen slik at den bruker gjennomsnittshøyden av de 5 nærmeste vektmålingene som prediksjon. La oss se hva som skjer da:
+
 ![text](5_nearest_neighboors.png)
 _Her plotter vi modellen som bruker de 5 nærmeste målingene for prediksjon mot datasettet vårt._
 
