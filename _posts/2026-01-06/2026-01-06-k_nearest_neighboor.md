@@ -4,7 +4,7 @@ date: 2026-01-06 06:57:00 +0200
 categories: [Maskinlæring og statistikk]
 tags: [prediksjon, ml, statistikk]     # TAG names should always be lowercase
 math: true
-description: I denne posten skal vi starte en ny serie der vi skal se på statistikk og maskinlæring og samtidig forhåpentligvis forstå hvordan de fungerer og hva de kan brukes til. Koden for denne posten finnes [her](https://github.com/haakom/enklypesalt/tree/main/2026-01-06_correlation).
+description: I denne posten skal vi starte en ny serie der vi skal se på statistikk og maskinlæring og samtidig forhåpentligvis forstå hvordan disse metodene fungerer og hva de kan brukes til. Koden for denne posten finnes [her](https://github.com/haakom/enklypesalt/tree/main/2026-01-06_correlation).
 media_subpath: /assets/images/2026-01-06/
 ---
 
