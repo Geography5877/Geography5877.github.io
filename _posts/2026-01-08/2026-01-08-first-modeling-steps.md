@@ -1,8 +1,8 @@
 ---
-title: Våre første modeller
+title: Vår første modell
 date: 2026-01-08 06:57:00 +0200
 categories: [Maskinlæring og statistikk]
-tags: [prediksjon, ml, statistikk]     # TAG names should always be lowercase
+tags: [prediksjon, ml, statistikk, k-nearest neighboor]     # TAG names should always be lowercase
 math: true
 media_subpath: /assets/images/2026-01-08/
 ---
@@ -133,7 +133,7 @@ Som nå gir oss:
 
 Altså bommer modellen i gjennomsnitt med rundt 19.1 cm i prediksjonene sine. Det er jo ikke veldig ille, men kan vi forbedre det? Ja det tror jeg vi kan.
 
-## Forbedre modellen
+## La oss forbedre modellen vår
 I modellen vår så langt, så ser vi kun på den nærmeste personen i datasettet vårt, men hva om vi er veldig uheldig og den nærmeste personen er unormalt lav eller unormalt høy for vekten sin. Da vil jo modellen predikere en unormalt lav eller høy verdi også. Hvis vi tar en titt på prediksjonene våre igjen, så ser vi at modellen gjøre et stort hopp mellom ca 75kg og 80kg. Her har vi nettopp et slikt tilfelle, der den nærmeste målingen vi har på litt over 75 kg er unormalt lav, mens den nærmeste målingen nært 80 kg er unormalt høy. Modellen tror med andre ord at en typisk person på 75kg er ca. 130 cm, mens om personen er bare 5 kg tyngre er den nesten 220 cm. Det kan umulig stemme. Hvordan kan vi unngå det? 
 
 En ting vi kan gjøre er jo å bruke flere enn en person fra datasettet vårt hver gang vi gjør en prediksjon. Hva om vi f.eks skriver om modellen slik at den bruker gjennomsnittshøyden av de 5 nærmeste vektmålingene som prediksjon. La oss se hva som skjer da:
@@ -155,9 +155,81 @@ Og da får vi:
 16.9
 ```
 
-Så vi har fått en bedre modell!
+## $k$-nærmeste nabo ($k$-nearest neighboor)
+Så ved å øke antallet personer vi bruker fra datasettet vårt for hver prediksjon har vi klart å forbedre modellens prestasjon. Veldig kult! Så la oss igjen tenke litt på hva modellen vår gjør. For hver vektmåling modellens skal predikere en høyde, så lager den på en måte et nabolag av vektmålinger fra datasettet vårt. I dette nabolaget velger den de 5 nærmeste naboene og beregner gjennomsnittshøyden for disse 5 naboene. Dette blir høyden modellen predikerer for den nye vektmålingen. Vi kan generalisere denne modellen til å kunne bruke et arbitrært antall naboer for beregningen også. La oss kalle antallet naboer vi bruker $k$. Vi kan utvide koden vi har skrevet slik:
+```python
+def k_nearest_neighboor(dataset, new_weight: float= None, k: int = 1):
+    distances = []
 
+    # Calculate distance between our new weight measurement and all other weight measurements we have in our data
+    for idx, person in dataset.iterrows():
+        # For each person in our dataset, we calculate the distance to the new weight and we store the height of this person
+        distances.append(np.array([euclidian_distance(new_weight, person.weight), person.height]))
 
+    # Sort the list of distances calculated
+    distances.sort(key = lambda x: x[0])
+
+    # Select the five nearest measurements
+    k_nearest = np.concatenate([distances[:k]], axis=1)
+
+    # Return the height of the person in our dataset that has the closest weight to the one we measured
+    return np.mean(k_nearest[:,1])
+```
+
+Denne modellen bruker altså de $k$ nærmeste naboene for en ny vektmåling for å predikere høyden. Så modellene vi brukte tidligere med $k=1$ og $k=5$ er bare spesielle instanser av denne mer generelle modellen. Og som du kanskje har gjettet, så er dette en modell som ofte brukes i reelle applikasjoner! Det generelle navnet er $k$-nærmeste nabo ($k$-nearest neighboor). Dette er en overraskende god modell med tanke på hvor enkel den er. Og den er ofte en veldig god modell å starte fra når vi skal modellere et problem. Men den har også sine begrensinger. La oss se på hva som skjer når vi øker $k$:
+
+$k$ = 10:
+![text](k_nearest_neighboor_k=10.png)
+
+```
+score: 17.90
+```
+
+$k$ = 50:
+![text](k_nearest_neighboor_k=50.png)
+```
+score: 17.11
+```
+
+$k$ = 100:
+![text](k_nearest_neighboor_k=100.png)
+```
+score: 17.39
+```
+$k$ = 200:
+![text](k_nearest_neighboor_k=200.png)
+```
+score: 25.53
+```
+
+$k$ = 221 (alle datapunktene):
+![text](k_nearest_neighboor_k=221.png)
+```
+score: 25.53
+```
+
+Modellen blir ikke bedre av å øke $k$. Den blir faktisk verre og verre. Det vi ser er at modellen gradvis nærmer seg en flat linje som ligger nøyaktig på gjennomsnittshøyden i datasettet vårt. Vi kan også verifisere dette med kode:
+
+```python
+avg_height = np.round(df_w2h.height.mean(), 3)
+all_predictions_equal = True
+for i, prediction in enumerate(predictions):
+    if np.round(prediction, 3) != avg_height:
+        all_predictions_equal = False
+print(f'All precitions are equal to the dataset average height: {all_predictions_equal}')
+```
+
+Dette gir oss outputen:
+
+```
+All precitions are equal to the dataset average height: True
+```
+
+Så modellen ender til slutt opp med bare å predikere gjennomsnittshøyden i datasettet vårt for enhver vektmåling om vi setter $k$ til en for høy verdi. $k$ er altså noe vi må justere og tilpasse for å finne den beste versjonen av $k$-nærmeste nabo modellen. En annen ting vi kan justere i modellen vår er hvordan vi kombinerer naboene. I modellen vi har brukt her beregner vi gjennomsnittet av høyden til naboene våre og bruker det som prediksjon. Men det finnes mange andre måter å gjøre dette på. For eksempel, hvis vi havner i en situasjon hvor den femte naboen er mye lengre unna enn de fire andre naboene vi finner, er det kanskje urimelig å la den påvirke resultatet like mye som de andre fire. For å gjøre noe med det kunne vi for eksempel vektet bidraget til hver nabo basert på hvor langt unna den er. Dette er en av mange måter man kan utvide $k$-nærmeste nabo modellen for å tilpasse den forskjellige problemer vi møter på. Og det er en av de viktigste lærdommene jeg tror du kan trekke ut fra hele serien her. Alle modeller vi kommer til å se på har mange måter vi kan tilpasse dem vårt spesifikke problem på. Du vil ofte få resultater som generaliserer bedre til ny data om du tilpasser en enkel modell, enn om du hopper til en mer avansert model. Om du husker det når du selv skal modellere problemer tror jeg du allerede kommer langt! 
+
+Og her tror jeg vi sier stopp for denne posten. I neste post skal vi se på hvordan vi tilnærme oss karusellproblemet vårt med å bruke en annen modell. Så ikke vær redd. Vi har langt igjen før vi nærmer oss toppen av fjellet.
+
+## Kode
 Koden for denne posten finnes [her](https://github.com/haakom/enklypesalt/tree/main/2026-01-08_first_models).
 
 ## Endringslogg
