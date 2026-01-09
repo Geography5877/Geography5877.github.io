@@ -203,7 +203,7 @@ score: 25.53
 ```
 
 $k$ = 221 (alle datapunktene):
-![text](k_nearest_neighboor_k=221.png)
+![text](k_nearest_neighboors_k=221.png)
 ```
 score: 25.53
 ```
