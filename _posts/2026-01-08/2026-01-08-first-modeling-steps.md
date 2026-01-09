@@ -179,25 +179,25 @@ def k_nearest_neighboor(dataset, new_weight: float= None, k: int = 1):
 Denne modellen bruker altså de $k$ nærmeste naboene for en ny vektmåling for å predikere høyden. Så modellene vi brukte tidligere med $k=1$ og $k=5$ er bare spesielle instanser av denne mer generelle modellen. Og som du kanskje har gjettet, så er dette en modell som ofte brukes i reelle applikasjoner! Det generelle navnet er $k$-nærmeste nabo ($k$-nearest neighboor). Dette er en overraskende god modell med tanke på hvor enkel den er. Og den er ofte en veldig god modell å starte fra når vi skal modellere et problem. Men den har også sine begrensinger. La oss se på hva som skjer når vi øker $k$:
 
 $k$ = 10:
-![text](k_nearest_neighboor_k=10.png)
+![text](k_nearest_neighboors_k=10.png)
 
 ```
 score: 17.90
 ```
 
 $k$ = 50:
-![text](k_nearest_neighboor_k=50.png)
+![text](k_nearest_neighboors_k=50.png)
 ```
 score: 17.11
 ```
 
 $k$ = 100:
-![text](k_nearest_neighboor_k=100.png)
+![text](k_nearest_neighboors_k=100.png)
 ```
 score: 17.39
 ```
 $k$ = 200:
-![text](k_nearest_neighboor_k=200.png)
+![text](k_nearest_neighboors_k=200.png)
 ```
 score: 25.53
 ```
@@ -225,7 +225,7 @@ Dette gir oss outputen:
 All precitions are equal to the dataset average height: True
 ```
 
-Så modellen ender til slutt opp med bare å predikere gjennomsnittshøyden i datasettet vårt for enhver vektmåling om vi setter $k$ til en for høy verdi. $k$ er altså noe vi må justere og tilpasse for å finne den beste versjonen av $k$-nærmeste nabo modellen. En annen ting vi kan justere i modellen vår er hvordan vi kombinerer naboene. I modellen vi har brukt her beregner vi gjennomsnittet av høyden til naboene våre og bruker det som prediksjon. Men det finnes mange andre måter å gjøre dette på. For eksempel, hvis vi havner i en situasjon hvor den femte naboen er mye lengre unna enn de fire andre naboene vi finner, er det kanskje urimelig å la den påvirke resultatet like mye som de andre fire. For å gjøre noe med det kunne vi for eksempel vektet bidraget til hver nabo basert på hvor langt unna den er. Dette er en av mange måter man kan utvide $k$-nærmeste nabo modellen for å tilpasse den forskjellige problemer vi møter på. Og det er en av de viktigste lærdommene jeg tror du kan trekke ut fra hele serien her. Alle modeller vi kommer til å se på har mange måter vi kan tilpasse dem vårt spesifikke problem på. Du vil ofte få resultater som generaliserer bedre til ny data om du tilpasser en enkel modell, enn om du hopper til en mer avansert model. Om du husker det når du selv skal modellere problemer tror jeg du allerede kommer langt! 
+Så modellen ender til slutt opp med bare å predikere gjennomsnittshøyden i datasettet vårt for enhver vektmåling om vi setter $k$ til en for høy verdi. $k$ er altså noe vi må justere og tilpasse for å finne den beste versjonen av $k$-nærmeste nabo modellen. En annen ting vi kan justere i modellen vår er hvordan vi kombinerer naboene. I modellen vi har brukt her beregner vi gjennomsnittet av høyden til naboene våre og bruker det som prediksjon. Men det finnes mange andre måter å gjøre dette på. For eksempel, hvis vi havner i en situasjon hvor den femte naboen er mye lengre unna enn de fire andre naboene vi finner, er det kanskje urimelig å la den påvirke resultatet like mye som de andre fire. For å gjøre noe med det kunne vi for eksempel vektet bidraget til hver nabo basert på hvor langt unna den er. Dette er en av mange måter man kan utvide $k$-nærmeste nabo modellen for å tilpasse den forskjellige problemer vi møter på. Og det er en av de viktigste lærdommene jeg tror du kan trekke ut fra hele serien her. Alle modeller vi kommer til å se på har mange måter vi kan tilpasse dem vårt spesifikke problem på. Du vil ofte få resultater som generaliserer bedre til ny data om du tilpasser en enkel modell, enn om du hopper til en mer avansert modell. Om du husker det når du selv skal modellere problemer tror jeg du allerede kommer langt! 
 
 Og her tror jeg vi sier stopp for denne posten. I neste post skal vi se på hvordan vi tilnærme oss karusellproblemet vårt med å bruke en annen modell. Så ikke vær redd. Vi har langt igjen før vi nærmer oss toppen av fjellet.
 
