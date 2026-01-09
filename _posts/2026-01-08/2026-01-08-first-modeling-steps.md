@@ -47,7 +47,7 @@ def nearest_neighboor(new_weight: float= None):
     return distances[0][1]
 ```
 
-Over har jeg skrevet kode som gjør akkurat det vi ønsker. Vi kan nå visualisere resultatet fra denne koden. I bildet under kan vi se hvordan modellens prediksjoner (rød linje) passer med datasettet vårt.
+Over har jeg skrevet kode som gjør akkurat det vi ønsker. Vi kan nå visualisere resultatet fra denne koden. I bildet under kan vi se hvordan modellens prediksjoner (svart linje) passer med datasettet vårt.
 ![text](nearest_neighboor.png)
 _Her plotter vi modellens prediksjoner mot datasettet vårt._
 
