@@ -11,6 +11,7 @@ media_subpath: /assets/images/2026-01-10/
 I [forrige post](https://enklypesalt.com/posts/first-modeling-steps/) bygget vi vår første modell for å hjelpe oss å løse problemet med å finne ut hvem som får lov til å ta karusellen vår, gitt vekten deres. Vi utviklet en $k$-nærmeste nabo modell og utviklet en metrikk vi kunne bruke for å evaluere hvor godt modellen presterte ved hjelp av et sett med test-datapunkter. I denne posten skal vi se på en annen, svært vanlig modell fra statistikken, men la oss først gå over problemet vårt enda en gang: Som du sikkert nå husker, har vi rollen som en karuselloperatør i et tivoli. Karusellen vi opererer krever at alle som tar den er over en gitt minimumshøyde (160 cm), men vi har mistet målebåndet vårt og har kun en vekt som hjelpemiddel.
 
 La oss igjen se på dataen vår:
+
 ![text](weight_height_dataset.png)
 _Her plotter vi vekt (x-aksen) mot høyde (y-aksen)._
 
@@ -32,6 +33,7 @@ Før vi kan starte med å bygge en modell av en linje må vi ta en litt nærmere
 _To linjer går gjennom det samme punktet, men de er åpenbart ikke samme linje. Vi trenger derfor minst to punkter for å definere en linje._
 
 Men kan vi bruke flere enn to punkter? Ja selvfølgelig! Under har jeg tegnet en linje definert av tre punkter:
+
 ![text](three_linear_points.png)
 _Tre punkter kan definere samme linje._
 
@@ -74,6 +76,7 @@ $a$ er da stigningstallet vi definerte i stad. $x$ er hvor langt langs x-aksen v
 Okay, så nå har vi kommet et godt stykke på veien, vi har mange datapunkter og vi vet hvordan vi kan definere en linje. Men nå kommer neste store utfordring. Hvordan finner vi den linjen som best beskriver dataen vår? Eller sagt på en annen måte. Hvordan finner vi den beste modellen, gitt dataen vår og at modellen er en bein linje?
 
 Under har jeg tegnet tre linjer gjennom datasettet vårt. Hvilken av linjene passer dataen vår best?
+
 ![text](three_lines.png)
 _Tre linjer, men hvilken passer dataen best?._
 
@@ -89,7 +92,8 @@ Vi bruker også linjene:
 - $y_1 = 1x + 0.0 = x$
 - $y_2 = 0.66x + 0.5$
 
-Under ser du punktene og linjene plottet.
+Under ser du punktene og linjene plottet:
+
 ![text](best_fitting_line_1.png)
 _To linjer, men hvilken passer dataen best?._
 
@@ -103,6 +107,7 @@ def residual_between_point_and_line(point_x, point_y, line_a, line_b):
 ```
 
 Vi kan så kjøre denne koden for hver av linjene våre for å finne residualet for hvert punkt til hver av linjene. Under har jeg tegnet inn dette residualet:
+
 ![text](best_fitting_line_2.png)
 _To linjer og residualet mellom hvert punkt og hver av linjene. Residualet for den lilla linjen er en lilla stiplet linje, mens det er solid blå for den blå linjen._
 
@@ -239,6 +244,7 @@ Y = 1.61 + 0.34 X
 \end{equation}
 $$
 
+## Linær regressjon med "Ordinary Least Squares" (OLS):
 Dette var veldig tungvindt og mye styr for å finne en linje for fire datapunkter, jeg skal innrømme at jeg heller ikke orker å beregne dette for hånd. I stedet brukte jeg (WolframAlpha)[https://www.wolframalpha.com/] for å hjelpe meg. Men hvordan blir dette når vi har hundrevis av datapunkter? Da er ikke denne metoden med wolfram alpha så hjelpsom heller, siden vi må definere hele ligningssystemet med hundrevis av ligninger. Heldigvis, finnes det hjelpemidler som kan ta hele jobben for oss:
 
 ```python
