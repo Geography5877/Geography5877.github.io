@@ -103,7 +103,7 @@ def residual_between_point_and_line(point_x, point_y, line_a, line_b):
 ```
 
 Vi kan så kjøre denne koden for hver av linjene våre for å finne residualet for hvert punkt til hver av linjene. Under har jeg tegnet inn dette residualet:
-![text](best_fitting_line_1.png)
+![text](best_fitting_line_2.png)
 _To linjer og residualet mellom hvert punkt og hver av linjene. Residualet for den lilla linjen er en lilla stiplet linje, mens det er solid blå for den blå linjen._
 
 Får den blå linjen finner vi altså residualene:
