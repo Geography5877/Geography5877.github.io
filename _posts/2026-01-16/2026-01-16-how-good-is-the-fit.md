@@ -81,13 +81,13 @@ r_i = y_i - \hat{y}_i
 \end{equation}
 $$
 
-Der $\hat{y}_i$ er estimatet fra modellen vår. Dette kan vi skrive om, ved å bruke den generelle modell vår over, slik:
+Der $\hat{y}_i$ er estimatet fra modellen vår. Dette kan vi skrive om, ved å bruke den generelle modelln vår over, slik:
 $$
 \begin{equation}
-\begin{align}
+\begin{aligned}
 r_i = (f(x_i) + \epsilon_i)  - \hat{y}_i \\
 r_i = f(x_i) - \hat{y}_i + epsilon_i
-\end{align}
+\end{aligned}
 \end{equation}
 $$
 
