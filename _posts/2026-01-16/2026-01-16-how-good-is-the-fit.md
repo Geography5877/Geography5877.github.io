@@ -108,7 +108,7 @@ $$
 Vi kaller dette residual kvadratsummen (residual sum of squares) i statistikk. Men dette gir oss jo bare et tall som kan variere utrolig mye. Så det er veldig vanskelig å si hva en god residual kvadratsum er. Kan vi finne en måte å skalere dette tallet slik at det istedet ligger mellom $[0, 1]$ slik at 0 betyr at modellen er totalt feil og 1 betyr en perfekt modell. Ja det kan vi! Vi trenger først en måte å skalere residual kvadratsummen til $[0, 1]$. Det kan vi gjøre ved å dele det med den verst tenkelige residualsummen man kan se for seg. Men hva er den? Hvis vi ser for oss en modell som bare predikerer gjennomsnittshøyden for alle målingene våre, så har vi en veldig dårlig modell. Da er modellen definert slik:
 $$
 \begin{equation}
-y_i = \bar{y}
+\hat{y}_i = \bar{y}
 \end{equation}
 $$
 
