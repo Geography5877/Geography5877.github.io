@@ -86,7 +86,7 @@ $$
 \begin{equation}
 \begin{aligned}
 r_i = (f(x_i) + \epsilon_i)  - \hat{y}_i \\
-r_i = f(x_i) - \hat{y}_i + epsilon_i
+r_i = f(x_i) - \hat{y}_i + \epsilon_i
 \end{aligned}
 \end{equation}
 $$
