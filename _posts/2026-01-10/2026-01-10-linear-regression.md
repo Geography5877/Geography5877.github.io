@@ -366,7 +366,7 @@ Kurtosis:                       3.453   Cond. No.                         409.
 ==============================================================================
 ```
 
-Vi kan da bruke modellen vår til å gjøre prediksjoner og sammenligne prediksjonene med test-dataen vår for å beregne avstanden på samme måte som vi gjorde for $k$-nærmeste nabo modellen:
+Vi kan nå bruke modellen vår til å gjøre prediksjoner og sammenligne prediksjonene med test-dataen vår for å beregne avstanden på samme måte som vi gjorde for $k$-nærmeste nabo modellen. Men legg først merke til én ting. Koeffisientene har endret seg littegrann i forhold til hva vi fikk da vi brukte hele datasettet. Hvordan har det skjedd? Jo, husk at når vi finner den linjen som passer best til et sett med punkter, bruker vi hvert eneste punkt til å informere oss om hvor linjen skal ligge. Ettersom vi nå tok vekk 10% av punktene for å bruke dem som test-datasett, så har vi 10% ferre punkter å tilpasse linjen til. Det betyr at datasettet faktisk ser litt forskjellig ut uten disse punktene og derfor blir også linjen litt forskjellig. Legg imidlertid også merke til at forskjellen ikke er spesielt stor. Så la oss nå bruke denne modellen og se hvor bra den predikerer på test-datasettet vårt:
 
 ```python
 test_predictions = [73.71+1.30*wt[1].weight for wt in test_data.iterrows()]
