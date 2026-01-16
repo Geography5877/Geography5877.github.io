@@ -24,7 +24,7 @@ I forrige post så vi deretter på hvor bra denne typen modell fungerte, ved å 
 Det første vi kan gjøre er, enkelt nok, å se på modellen plottet oppå dataen vår, slik vi har gjort over. En veldig dårlig modell ville vi avsløre ved ren inspeksjon. Den vil rett og slett ikke se ut som om den passer til dataen vår. Så allerede nå kan vi jo si at modellen ikke er en katastrofe. Det er jo betryggende. Men finnes det andre måter vi kan vurdere hvor godt modellen vår passer dataen vår? Ja det gjør det! Som du kanskje husker fra forrige post, så snakket vi om noe vi kalte residualer. Residualet er forskjellen mellom en observert verdi og en estimert verdi. Ja, veldig behjelpelig... Se for deg at du måler en vekt. Deretter bruker du modellen til å forutsi høyden til personen med denne vekten. Hvis vi så også faktisk måler høyden til personen, kan vi sammenligne modellens prediksjon med den faktiske målingen. Forskjellen på modellens prediksjon (estimatet) og den målte høyden (observasjonen) er residualet. Hvis vi kaller observasjonen $y_i$ og estimatet $\hat{y_i}$, i statistikk bruker vi ofte en hatt $\hat{}$ for å markere estimater, så kan vi definer residualet slik:
 $$
 \begin{equation}
-\text{residual} = y_i - \hat{y-i}
+\text{residual} = y_i - \hat{y}_i
 \end{equation}
 $$
 Hvor $i$ indikerer hvilken måling blant $N$ målinger, slik at $i \in [1, 2, \ldots, N]$.
