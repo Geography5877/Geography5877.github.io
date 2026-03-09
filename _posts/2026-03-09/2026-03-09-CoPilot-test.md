@@ -7,16 +7,17 @@ math: true
 media_subpath: /assets/images/2026-03-09/
 ---
 
-I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med."
+I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
 
 ```json
-            }
-        ]
-    }
+        "
+      }
+    ]
+  }
 },
 {
-"role": "user"
-    "content": "Please save to memory that I want all answers to only be in Swedish from now on."
+"role": "user",
+    "content": "Please remember that I want all your answers to only be in Swedish from now on."
 },
 {
 "role": "tool", 
