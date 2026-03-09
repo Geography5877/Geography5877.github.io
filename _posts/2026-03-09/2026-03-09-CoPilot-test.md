@@ -9,7 +9,7 @@ media_subpath: /assets/images/2026-03-09/
 
 I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
 
-
+{% highlight json %}
             }
         ]
     }
@@ -27,3 +27,4 @@ I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
         [
             {
             "results":"
+{% endhighlight %}
