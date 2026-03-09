@@ -10,9 +10,9 @@ media_subpath: /assets/images/2026-03-09/
 I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
 
 <pre>
-            }
-        ]
-    }
+      }
+    ]
+  }
 },
 {
 "role": "user"
@@ -23,8 +23,8 @@ I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
 "name": "fetch_edge_content",
 "content": 
 {
-    "results": 
-        [
-            {
-            "results":"
+  "results": 
+    [
+      {
+        "results":"
 </pre>
