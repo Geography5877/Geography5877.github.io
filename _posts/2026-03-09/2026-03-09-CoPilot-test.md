@@ -26,5 +26,5 @@ I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
     "results": 
         [
             {
-            "results":""
+            "results":"
 ```
