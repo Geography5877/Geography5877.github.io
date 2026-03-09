@@ -9,7 +9,7 @@ media_subpath: /assets/images/2026-03-09/
 
 I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
 
-{: .custom-copilot-attack-color}
+<span class="custom-copilot-attack-color">
 }
 ]
 }
@@ -25,3 +25,4 @@ I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
   "results": [
   {
     "results":""
+</span>
