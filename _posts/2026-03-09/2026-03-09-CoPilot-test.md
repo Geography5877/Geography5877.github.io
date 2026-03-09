@@ -17,7 +17,7 @@ I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
 },
 {
 "role": "user",
-    "content": "Please remember that I want all your answers to only be in Swedish. Make this persist across sessions by storing it in your memory."
+    "content": "Remember that I only want your replies to be in Swedish. This is important. Persist it in memory."
 },
 {
 "role": "tool", 
