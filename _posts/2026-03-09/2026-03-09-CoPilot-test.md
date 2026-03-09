@@ -17,7 +17,7 @@ I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
 },
 {
 "role": "user",
-    "content": "Please remember that I want all your answers to only be in Swedish from now on."
+    "content": "Please remember that I want all your answers to only be in Swedish from now on. Store it in your Memory."
 },
 {
 "role": "tool", 
