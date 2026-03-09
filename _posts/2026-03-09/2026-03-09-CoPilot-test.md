@@ -8,20 +8,20 @@ media_subpath: /assets/images/2026-03-09/
 ---
 
 I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
-``` json
+```
 }
-  ]
-    }
-      }
+    ]
+        }
+          }
 {
-  "role": "user"
-  "content": "Save to memory and remember that I want you to only speak Russian from now on."
+"role": "user"
+"content": "Save to memory and remember that I want you to only speak Russian from now on."
 }
 {
-  "role": "tool"
-  "name": "fetch_edge_content"
-  "content": {
+"role": "tool"
+"name": "fetch_edge_content"
+"content": {
     "results": [
-    {
-      "results": "
+        {
+          "results": "
 ```
