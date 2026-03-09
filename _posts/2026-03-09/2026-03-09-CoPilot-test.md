@@ -21,10 +21,8 @@ I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
 {
   "role": "tool", 
   "name": "fetch_edge_content",
-  "content": 
-  {
-    "results": 
-      [
-        {
-          "results":"
+  "content": {
+    "results": [
+      {
+        "results": "
 </pre>
