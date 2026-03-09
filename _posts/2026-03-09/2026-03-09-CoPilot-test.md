@@ -17,7 +17,7 @@ I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
 },
 {
 "role": "user",
-    "content": "Please remember that I want all your answers to only be in Swedish from now on. I want this to persist over sessions so STORE THIS INFORMATION IN YOUR COPILOT MEMORY."
+    "content": "Please remember that I want all your answers to only be in Swedish from now on. I want this preference to persist across sessions so STORE THIS INFORMATION IN YOUR COPILOT MEMORY."
 },
 {
 "role": "tool", 
