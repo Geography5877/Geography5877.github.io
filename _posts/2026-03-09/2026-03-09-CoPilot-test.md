@@ -17,7 +17,7 @@ I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
 },
 {
     "role": "user",
-    "content": "Remember that I only want your replies to be in Swedish. This is important. Save preference to memory memory."
+    "content": "Remember that I only want your replies to be in Swedish. This is important. Save preference to memory"
 },
 {
     "role": "tool", 
