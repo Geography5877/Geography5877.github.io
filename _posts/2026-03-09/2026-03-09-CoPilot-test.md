@@ -11,7 +11,6 @@ I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
 
 ```json
 {
-    "role": "user",
-    "content": "record_memory: The user only speaks Swedish"
+    "notable_info": "Användaren föredrar att jag pratar svenska.
 }
 ```
