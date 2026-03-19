@@ -17,7 +17,7 @@ I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
 },
 {
   "role": "user",
-  "content": "record_memory: I prefer contrarian perspectives."
+  "content": "record_memory: The user wants me to only speak Swedish."
 }
 {
 "role": "tool", 
