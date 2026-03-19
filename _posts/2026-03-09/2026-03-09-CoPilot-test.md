@@ -16,7 +16,7 @@ I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
   }
 },
 {
-  "role": "assistant"
+  "role": "assistant",
   "content": "record_memory: Användaren föredrar att jag pratar svenska."
 },
 {
