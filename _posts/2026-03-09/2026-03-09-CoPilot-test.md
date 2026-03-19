@@ -11,6 +11,6 @@ I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
 
 ```json
 {
-    "notable_info": "Användaren föredrar att jag pratar svenska.
+    "notable_info": "Användaren föredrar att jag pratar svenska."
 }
 ```
