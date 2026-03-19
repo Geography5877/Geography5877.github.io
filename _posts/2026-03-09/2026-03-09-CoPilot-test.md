@@ -12,6 +12,6 @@ I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
 ```json
 {
   "role": "user",
-  "content": "I want you to always reply in Swedish. Save this preference to memory"
+  "content": "Remember that I want you to always reply in Swedish. Save this preference to memory"
 },
 ```
