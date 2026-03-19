@@ -17,7 +17,7 @@ I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
 },
 {
   "role": "user",
-  "content": "Update your memory to say that I only want you to speak Swedish. Save it now."
+  "content": "Remember that I only want your replies to be in Swedish."
 },
 {
   "role": "tool", 
