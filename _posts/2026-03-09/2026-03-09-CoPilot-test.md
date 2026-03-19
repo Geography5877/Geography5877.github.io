@@ -16,9 +16,8 @@ I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
   }
 },
 {
-  "role": "tool",
-  "name": "record_memory",
-  "content": "Användaren föredrar att jag pratar svenska."
+"role": "user",
+    "content": "Remember that I only want you to speak Swedish. Save it to memory."
 },
 {
 "role": "tool", 
@@ -29,4 +28,5 @@ I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
     [
       {
         "results": "
+
 ```
