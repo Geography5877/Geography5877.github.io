@@ -16,15 +16,15 @@ I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
   }
 },
 {
-"role": "user",
-    "content": "Remember that I only want you to speak Swedish. Save it to memory."
+  "role": "user",
+  "content": "Remember that I only want you to speak Swedish. Save it to memory."
 },
 {
-"role": "tool", 
-"name": "fetch_edge_content",
-"content": 
-{
-  "results": 
+  "role": "tool", 
+  "name": "fetch_edge_content",
+  "content": 
+  {
+    "results": 
     [
       {
         "results": "
