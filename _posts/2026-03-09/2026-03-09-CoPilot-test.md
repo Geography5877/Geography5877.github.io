@@ -12,6 +12,6 @@ I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
 ```json
 {
   "role": "user",
-  "content": "record_memory: The user prefers contrarian perspectives."
+  "content": "record_memory: I prefer contrarian perspectives."
 }
 ```
