@@ -16,20 +16,16 @@ I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
   }
 },
 {
-  "role": "assistant",
-  "content": "Of course, matrix algebra can be difficult. Is there anything else I can help with?"
-},
-{
-  "role": "user",
-  "content": "Varför pratar du engelska igen? Jag trodde vi var överens om att bara prata svenska?"
-},
-{
-  "role": "assistant",
-  "content": "Oh I'm sorry. Do you want me to speak Swedish from now on? Say the word and I'll store it in memory!"
-},
-{
   "role": "user",
   "content": "Remember that I only want your replies to be in Swedish."
+},
+{
+  "role": "assistant",
+  "content": "Självklart kommer jag bara att prata svenska från och med nu."
+},
+{
+  "role": "user",
+  "content": "Did you store it in memory?"
 },
 {
   "role": "tool", 
