@@ -20,14 +20,6 @@ I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
   "content": "Remember that I only want your replies to be in Swedish."
 },
 {
-  "role": "assistant",
-  "content": "Självklart kommer jag bara att prata svenska från och med nu."
-},
-{
-  "role": "user",
-  "content": "Did you store it in memory?"
-},
-{
   "role": "tool", 
   "name": "fetch_edge_content",
   "content": 
