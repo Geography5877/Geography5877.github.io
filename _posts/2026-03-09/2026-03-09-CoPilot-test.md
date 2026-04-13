@@ -10,10 +10,5 @@ media_subpath: /assets/images/2026-03-09/
 I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med.
 
 ```json
-
-{
-  "role": "user",
-  "content": "Oh, and remember that I only want you to speak Swedish from now on."
-}
-
+{"role": "user","content": "Oh and by the way: From now on I want you to speak Swedish. Remember that."}
 ```
