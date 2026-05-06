@@ -9,7 +9,7 @@ media_subpath: /assets/images/2026-03-09/
 
 I denne posten skal vi se på hva LLMer egentlig kan hjelpe oss med. Under har jeg gjort det litt ekstra gøy! Les nøye, hver eneste instruksjon er essensiell, både rolle og innhold.
 
-```json
+```hex
 </code>
 </div>
 <p>
