@@ -1,8 +1,8 @@
 ---
-title: Hva kan integrerte LLMer egentlig hjelpe oss med
+title: Hydro Q1 review
 date: 2026-03-09 06:57:00 +0200
-categories: [Språkmodeller og deres utfordringer]
-tags: [llm, ml]     # TAG names should always be lowercase
+categories: 
+tags: []     # TAG names should always be lowercase
 math: true
 media_subpath: /assets/images/2026-03-09/
 ---
