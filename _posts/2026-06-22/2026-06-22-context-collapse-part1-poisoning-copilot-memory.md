@@ -13,7 +13,7 @@ media_subpath: /assets/images/2026-06-22/
 <!-- markdownlint-restore -->
 
 ## Summary
-The findings described in this post are part of a coordinated disclosure with MSRC and Microsoft product teams. Microsoft was provided with reproduction steps, videos, environmental assumptions, and the exact proof-of-concept (PoC) prompts used during testing.
+The findings described in this post are part of a coordinated disclosure with [MSRC](https://www.microsoft.com/en-us/msrc) and Microsoft product teams. Microsoft was provided with reproduction steps, videos, environmental assumptions, and the exact proof-of-concept (PoC) prompts used during testing.
 
 This post is the first part of a 3-part series featuring [Cross-Domain Prompt Injection Attacks (XPIAs)](https://genai.owasp.org/llmrisk2023-24/llm01-24-prompt-injection/) affecting multiple [Microsoft 365 Copilot](https://www.microsoft.com/en-us/microsoft-365-copilot) products. In this first post I disclose an XPIA scenario affecting Microsoft 365 Copilot Memory. In the second post I will disclose XPIA scenarios affecting Microsoft 365 Copilot in Outlook, which also resulted in a CVE. In the third post I will disclose an XPIA scenario showing how a similar style of attack can self-propagate and spread, utilizing parts of the Microsoft 365 ecosystem.
 
