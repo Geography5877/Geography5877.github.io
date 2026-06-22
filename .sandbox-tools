@@ -1,0 +1,8 @@
+# Per-project binary allowlist — extends the sandbox's default toolset.
+# One binary NAME per line; it must already be installed on the host.
+# Its Nix closure is bound read-only and it is added to PATH inside the sandbox.
+# Blank lines and lines starting with '#' are ignored.
+# Read once at launch — edits take effect on the next launch.
+# Example:
+#   git
+#   jq
