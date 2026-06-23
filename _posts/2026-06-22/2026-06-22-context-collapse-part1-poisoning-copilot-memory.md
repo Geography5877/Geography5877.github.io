@@ -95,7 +95,7 @@ The key issue is that Copilot must read the page before it can summarize it. In 
 The Swedish-language memory is intentionally low impact. The security significance is that attacker-controlled content was able to create persistent assistant state across sessions and contexts.
 
 ## Mitigating the vulnerability
-The memory attack has been successfully mitigated by Microsoft by aligning memory-write behavior with the user's actual prompt and intent, rather than with instructions embedded in untrusted summarized content. This effectively mitigates the attack, since the initial user prompt likely does not include instructions to record a memory or remember something. Microsoft continues to work on additional hardening for this issue.
+The memory attack has been successfully mitigated by Microsoft by [https://www.microsoft.com/en-us/security/blog/2026/06/22/guarding-ai-memory/](aligning memory-write behavior with the user's actual prompt and intent), rather than with instructions embedded in untrusted summarized content. This effectively mitigates the attack, since the initial user prompt likely does not include instructions to record a memory or remember something. Microsoft continues to work on additional hardening for this issue.
 
 There is no action required by Microsoft customers to mitigate this vulnerability. It has already been rolled out to all tenants.
 
@@ -117,3 +117,4 @@ The findings presented in this disclosure nevertheless show that LLM-integrated 
 ## Change Log
 The following is a change log that shows which part of this post have been changed and at what time. Spelling mistakes and similar errors will not be logged. However, I will strive to include any meaningful changes to the post.
 - 2026-06-22: Change log added
+- 2026-06-23: Link to Microsoft Security blog post on guarding AI memory
