@@ -201,7 +201,7 @@ Combined Separate Models R2: 0.5586
 Vi finner altså en $R^2$ for separate modeller som er så og si nøyaktig den samme som for den kombinerte modellen! Så har vi funnet den beste modellen da?
 
 La oss først ta en titt på residualene våre:
-![text](resdidual_plot.png)
+![text](residual_plot.png)
 _Residualene for modellene vi har trent (de to separate er kombinert i én modell (oransje) her._
 
 Nå kommer vi inn på en viktig del av OLS regressjon. I slike modeller antar vi at variansen residualene våre er lik i dataen vår. Men som vi ser av residualene over er ikke det tilfellet her. Vi har jo faktisk sett at menn har betraktelig høyere varians enn kvinner. Så en grunnleggende antakelse i modellen vår er brutt. Når vi jobber med data som ikke har lik varians i feilleddene kaller vi dataen Heteroskedastisk.
