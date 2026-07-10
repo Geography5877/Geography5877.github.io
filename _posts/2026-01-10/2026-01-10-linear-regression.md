@@ -192,7 +192,7 @@ $$
 \end{equation}
 $$
 
-Problemet her er at vi har et system med to ukjente, $\beta_0$ og $\beta_1$, men fire ligninger. Systemet er det vi kaller overdefinert og det finnes ingen eksakt løsning. Vi må derfor se på tilnærmede, approximate, løsninger. Hvis vi bruker residualer kan vi gjøre nettopp det:
+Problemet her er at vi har et system med to ukjente, $\beta_0$ og $\beta_1$, men fire ligninger. Systemet er det vi kaller overdefinert og det finnes ingen eksakt løsning. Vi må derfor se på tilnærmede, approksimate, løsninger. Hvis vi bruker residualer kan vi gjøre nettopp det:
 $$
 \begin{equation}
 \begin{aligned}
