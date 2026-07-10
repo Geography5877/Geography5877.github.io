@@ -119,7 +119,7 @@ $$
 \end{equation}
 $$
 
-Her har jeg brukt $SS_{res}$ for å representere residual kvadratsummen ($\text{Sum of Squares}_{res}$) og $SS_{tot}$ for å representere den totale kvadratsummen $\text{Sum of Squares}_{tot}$. Men vi har fortsatt ett problem. Hvis $SS_{res} = $SS_{tot}$, så blir jo dette regnestykket $1$ og hvis vi har en perfekt modell ($SS_{res} = 0$), så får blir regnestykket vårt $0$. Vi får nøyaktig det motsatte av hva vi ønsket oss. En perfekt modell får score $0$ og den verst tenkelige modellen får score $1$. Det er heldigvis lett å fikse ved å starte med $1$ og trekke fra regnestykket vårt, slik:
+Her har jeg brukt $SS_{res}_$ for å representere residual kvadratsummen, $\text{Sum of Squares}_{res}_$, og $SS_{tot}_$ for å representere den totale kvadratsummen $\text{Sum of Squares}_{tot}_$. Men vi har fortsatt ett problem. Hvis $SS_{res} = SS_{tot}$, så blir jo dette regnestykket $1$ og hvis vi har en perfekt modell ($SS_{res} = 0$), så får blir regnestykket vårt $0$. Vi får nøyaktig det motsatte av hva vi ønsket oss. En perfekt modell får score $0$ og den verst tenkelige modellen får score $1$. Det er heldigvis lett å fikse ved å starte med $1$ og trekke fra regnestykket vårt, slik:
 $$
 \begin{equation}
 R^2 = 1 - \frac{SS_{res}}{SS_{tot}}
