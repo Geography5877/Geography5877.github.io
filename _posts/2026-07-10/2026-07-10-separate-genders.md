@@ -322,7 +322,7 @@ Vi ser også at modellen vår har funnet et stigningstall: $\beta_1 = 1.0022 \ap
 
 $$
 \begin{equation}
-Y = 1 \times \text{weight}_f + 90 + 10 \times \text{is_male} +  \text{støy}$
+Y = 1 \times \text{weight}_f + 90 + 10 \times \text{is male} +  \text{støy}$
 \end{equation}
 $$
 
@@ -330,7 +330,7 @@ Og den vektede modellen vår fant
  
 $$
 \begin{equation}
-Y = 1.0022 \times \text{weight}_f + 89.97 + 11.58 \times \text{is_male} +  \text{støy}$
+Y = 1.0022 \times \text{weight}_f + 89.97 + 11.58 \times \text{is male} +  \text{støy}$
 \end{equation}
 $$
 
