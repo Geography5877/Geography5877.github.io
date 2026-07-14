@@ -1,0 +1,7 @@
+# Per-project network allowlist — extends the sandbox's built-in default domains.
+# One domain per line; subdomains of a listed domain are also allowed.
+# Blank lines and lines starting with '#' are ignored.
+# Read once at launch — edits take effect on the next launch.
+# Example:
+#   registry.npmjs.org
+#   github.com

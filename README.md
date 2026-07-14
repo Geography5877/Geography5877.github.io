@@ -33,6 +33,19 @@ Check out the [theme's docs](https://github.com/cotes2020/jekyll-theme-chirpy/wi
 
 This repository is automatically updated with new releases from the theme repository. If you encounter any issues or want to contribute to its improvement, please visit the [theme repository][chirpy] to provide feedback.
 
+## Starting local version
+```shell
+  docker run --rm -it \
+    -v "$PWD":/workspace -w /workspace \
+    -v "$HOME/Zscaler Root Cert.crt":/usr/local/share/ca-certificates/zscaler.crt:ro \
+    -v jekyll-bundle:/usr/local/bundle \
+    -p 4000:4000 -p 35729:35729 \
+    -e SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt \
+    mcr.microsoft.com/devcontainers/jekyll:2-bullseye \
+    bash -c "update-ca-certificates && bundle install && bash tools/run.sh -H 0.0.0.0"
+```
+
+
 ## License
 
 This work is published under [MIT][mit] License.
