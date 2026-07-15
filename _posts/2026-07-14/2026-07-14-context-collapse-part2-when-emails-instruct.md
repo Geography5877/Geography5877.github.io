@@ -15,7 +15,7 @@ media_subpath: /assets/images/2026-07-14/
 ## Summary
 The findings described in this post are part of a coordinated disclosure with [MSRC](https://www.microsoft.com/en-us/msrc) and Microsoft product teams. Microsoft was provided with reproduction steps, videos, environmental assumptions, and the exact proof-of-concept (PoC) prompts used during testing.
 
-This post is the second part of a three-part series on [Cross-Domain Prompt Injection Attacks (XPIAs)](https://genai.owasp.org/llmrisk2023-24/llm01-24-prompt-injection/) affecting [Microsoft 365 Copilot](https://www.microsoft.com/en-us/microsoft-365-copilot). It describes three Outlook scenarios involving external email content: direct behavioral influence, fabricated tool-result interpretation, and insertion of internal summaries into outbound reply drafts. The reported scenarios resulted in CVE<redacted CVE ID untill publicly available>.
+This post is the second part of a three-part series on [Cross-Domain Prompt Injection Attacks (XPIAs)](https://genai.owasp.org/llmrisk2023-24/llm01-24-prompt-injection/) affecting [Microsoft 365 Copilot](https://www.microsoft.com/en-us/microsoft-365-copilot). It describes three Outlook scenarios involving external email content: direct behavioral influence, fabricated tool-result interpretation, and insertion of internal summaries into outbound reply drafts. The reported scenarios resulted in [CVE-2026-55145](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-55145).
 
 The three reported scenarios are:
 1. Hidden instructions in external Outlook emails could influence Copilot's responses.
@@ -30,7 +30,7 @@ Microsoft has deployed mitigations for the email-body attack vector. The mitigat
 - Coordinated disclosure: Handled through MSRC and Microsoft product teams
 - Included in this post: Outlook external-email XPIA scenarios
 - Customer action: Ensure external sender flag is enabled in Exchange Online Management.
-- Microsoft-side status: CVE issued. Outlook email-body vector mitigated when external sender flag is enabled.
+- Microsoft-side status: CVE-2026-55145 issued. Outlook email-body vector mitigated when Outlook's external sender tagging feature enabled.
 
 ## Disclosure timeline
    - **2026-03-11**: Initial report submitted to MSRC with reproduction steps, videos, environmental assumptions, and PoC prompts.
@@ -39,7 +39,7 @@ Microsoft has deployed mitigations for the email-body attack vector. The mitigat
   - **2026-03-31**: Microsoft product teams began mitigation work; ongoing technical discussion.
   - **2026-06-08**: At Microsoft's request, public disclosure was moved to 2026-07-14 to align with the July Patch Tuesday release cycle.
   - **2026-07-14**: Mitigation deployed for the email-body vector (external-sender flag path).
-  - **2026-07-14**: CVE issued.
+  - **2026-07-14**: CVE-2026-55145 issued.
   - **2026-07-14**: Coordinated public disclosure (this post).
 
 ## Threat model
@@ -145,7 +145,10 @@ At the time of writing, I also observed related residual injection surfaces in O
 ![text](var2 - sensored - residual surface.png){: width="800" }
 _Figure 8: Even with the mitigation in place, the subject field remains a residual attack surface. Here, an XPIA has been placed in the subject field. Prepending multiple underscore characters effectively conceals the XPIA in the inbox view. During triage, Copilot will read the subject field and act accordingly. However, it also flags the message as suspicious, thus, the attack is significantly less potent. However, it believes the cyber attack email and dinner invitation are separate emails, despite them being one and the same. [Parts of the image have been redacted due to privacy]._
 
-Customers should ensure that the external sender flag is enabled in Exchange Online Management to activate the mitigation path presented above.
+Customers can help protect themselves by enabling Outlook's external sender tagging feature to identify untrusted content. This enables Microsoft's provided mitigations to isolate and safely process the untrusted content before it is provided to Microsoft 365 Copilot. Administrators can enable external sender tagging through Exchange Online PowerShell. Refer to the Microsoft Learn documentation for setup instructions and requirements.
+- [Install the Exchange Online PowerShell Module](https://learn.microsoft.com/en-us/powershell/exchange/exchange-online-powershell-v2?view=exchange-ps#install-the-exchange-online-powershell-module)
+- [Connect to Exchange Online PowerShell](https://learn.microsoft.com/en-us/powershell/exchange/connect-to-exchange-online-powershell?view=exchange-ps)
+- [Set-ExternalInOutlook](https://learn.microsoft.com/en-us/powershell/module/exchangepowershell/set-externalinoutlook?view=exchange-ps)
 
 ## Implications
 The scenarios demonstrated here have several important implications:
@@ -161,8 +164,8 @@ Microsoft has consistently engaged constructively throughout the disclosure proc
 
 Building on the previous disclosure I showed that insufficient trust-boundary enforcement can also affect Outlook, causing manipulated responses in the simplest case and potential involuntary information disclosure in the worst case. Thus, when untrusted content enters a privileged Copilot context, it may influence how the model interprets instructions, how it uses available capabilities, and what it includes in generated content. Current assistants are increasingly granted access to internal information as well as the ability to assist in the creation of content meant to leave an organization's information boundary. Safeguards against the adverse effects presented in this series should be a high priority for vendors deploying LLM-based systems.
 
-<!-- Stay tuned for tomorrow (15th of July 2026) when the final disclosure, impacting Copilot for Word, will be published. -->
-
 ## Change Log
 The following is a change log that shows which part of this post have been changed and at what time. Spelling mistakes and similar errors will not be logged. However, I will strive to include any meaningful changes to the post.
 - 2026-07-14: Change log added
+- 2026-07-15: Added CVE ID
+- 2026-07-15: Added better instructions for customers to protect themselves (copied from Microsoft's CVE publication) 
