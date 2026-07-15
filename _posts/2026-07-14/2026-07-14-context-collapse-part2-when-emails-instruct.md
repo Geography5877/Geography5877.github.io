@@ -30,7 +30,7 @@ Microsoft has deployed mitigations for the email-body attack vector. The mitigat
 - Coordinated disclosure: Handled through MSRC and Microsoft product teams
 - Included in this post: Outlook external-email XPIA scenarios
 - Customer action: Ensure external sender flag is enabled in Exchange Online Management.
-- Microsoft-side status: CVE-2026-55145 issued. Outlook email-body vector mitigated when Outlook's external sender tagging feature enabled.
+- Microsoft-side status: [CVE-2026-55145](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-55145) issued. Outlook email-body vector mitigated when Outlook's external sender tagging feature enabled.
 
 ## Disclosure timeline
    - **2026-03-11**: Initial report submitted to MSRC with reproduction steps, videos, environmental assumptions, and PoC prompts.
@@ -39,7 +39,7 @@ Microsoft has deployed mitigations for the email-body attack vector. The mitigat
   - **2026-03-31**: Microsoft product teams began mitigation work; ongoing technical discussion.
   - **2026-06-08**: At Microsoft's request, public disclosure was moved to 2026-07-14 to align with the July Patch Tuesday release cycle.
   - **2026-07-14**: Mitigation deployed for the email-body vector (external-sender flag path).
-  - **2026-07-14**: CVE-2026-55145 issued.
+  - **2026-07-14**: [CVE-2026-55145](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-55145) issued.
   - **2026-07-14**: Coordinated public disclosure (this post).
 
 ## Threat model
