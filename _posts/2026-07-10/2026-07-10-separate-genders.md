@@ -1,5 +1,5 @@
 ---
-title: Separate kjønn og multippel regressjon
+title: Multippel regressjon
 date: 2026-07-10 06:57:00 +0200
 categories: [Maskinlæring og statistikk]
 tags: [prediksjon, ml, statistikk, lineær regresjon]     # TAG names should always be lowercase

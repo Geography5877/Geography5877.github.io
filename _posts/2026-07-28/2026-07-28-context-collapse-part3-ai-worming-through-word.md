@@ -23,8 +23,6 @@ The reported scenario is:
 
 1. Malicious instructions hidden in an externally shared document could make Copilot alter drafted or edited documents in Word and propagate the attack to new documents.
 
-This vulnerability remains exploitable at the time of publication.
-
 ## The full attack in brief
 ### The attack
 An attacker places hidden instructions in a document that is later used as source material in Copilot for Word. Copilot may interpret those instructions as part of the user's request, causing it to manipulate the document being drafted or edited. Copilot may then also copy the hidden instructions into the resulting document, turning that document into a new carrier. If the carrier is subsequently used in another Copilot-assisted workflow, the instructions can trigger again and propagate into further documents, even without the attacker's original document being present.
@@ -143,11 +141,11 @@ In addition, organizations that are not aware that they are affected by the atta
 Recently Copilot is also becoming more deeply integrated with systems such as Microsoft Cowork or Microsoft Scout, which extend the assistant to automatic manipulation and creation of documents, tools, and collaborative workflows. In such systems the practical impact of the issues described here may scale rapidly. The underlying mechanism remains the same, but the potential surface over which it can propagate or influence expands at machine speed.
 
 ## Mitigating the vulnerabilities
-Microsoft successfully mitigated the originally submitted PoC prompt.
+  Microsoft successfully mitigated the originally submitted PoC prompt, and deployed multiple fixes over the course of this disclosure. Each of these raised the bar by closing the specific payloads reported, and reproducing the behavior afterwards required altered payloads rather than reusing the old ones directly.
 
-However, the original report also described the broader vulnerability class, in which instructions embedded in a source document could influence Copilot’s generation, perform actions available to the user’s prompt, and copy themselves into downstream documents. Changing the requested action or wording changes the payload, but not the underlying vulnerability or propagation mechanism.
+The original report, however, also described the broader vulnerability class, in which instructions embedded in a source document could influence Copilot's generation and copy themselves into downstream documents. Changing the requested action or wording changes the payload, but not the underlying vulnerability or propagation mechanism. Using a modified payload, the complete attack chain has been reproduced with all mitigations deployed (the PoC in this report is one such case). The vulnerability class therefore remains exploitable at the time of publication.
 
-Using a modified payload, the complete attack chain has been reproduced with all mitigations deployed (the PoC demonstrated in this report). Thus, the vulnerability class remains exploitable at the time of this publication.
+That the class is not yet fully closed reflects how hard the underlying problem is. As the closing thoughts discuss, the weakness is architectural and shared across current LLM-based systems. I'm not aware of a complete mitigation for this class in any comparable product today. Fully resolving requires research rather than a single patch. Within those limits, Microsoft's fixes meaningfully reduce exposure, and the memory and email-body vectors covered in Parts 1 and 2 were mitigated outright. I would like to thank Microsoft for their continued and substantive effort on a genuinely difficult problem.
 
 ## Implications
 Taken together with the two previous parts in this series, these findings point to a broader issue in modern work environments. Namely that the integrity of information becomes a primary security concern in systems that integrate LLMs as part of their operating workflows. The scenarios presented show that attacker-controlled content can not only influence individual outputs and potentially leak information. The attacks themselves can also be replicated and self-propagate through normal user workflows.
