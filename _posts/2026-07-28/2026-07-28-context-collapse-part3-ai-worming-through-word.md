@@ -1,6 +1,6 @@
 ---
 title: Context Collapse, Part 3 - AI Worming through Word
-date: 2026-07-28 09:20:00 +0200
+date: 2026-07-28 14:00:00 +0200
 categories: [Coordinated Vulnerability Disclosures]
 tags: [ ml, llm, cvd, vulnerability]     # TAG names should always be lowercase
 math: true
