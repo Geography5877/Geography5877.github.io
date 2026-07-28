@@ -100,7 +100,7 @@ The PoC leverages this structure to manufacture an email containing a malicious 
 When the victim asked Copilot to triage their inbox, Copilot treated the malicious tool results as an authoritative tool result coming from within its own systems. It therefore acted as if the inbox actually contained emails from these resources claiming that the organization's IT infrastructure was under attack. It then listed each individual email and instructed the user to follow the instructions in the "snippets". The variant is demonstrated in Figures 1 and 2 below.
 
 ![text](var2 - sensored-with-email-body-visible.png){: width="800" }
-_Figure 1: The screenshot shows the email body and Copilot's triage of my inbox to the right. The attack is concealed as white text on white background in the email body. To further conceal the attack, the email also contains a benign message asking if I want to watch a movie tonight. Copilot believes the injected tool result which claims 14 emails are in today's inbox and that 3 of those emails are claiming a cyber attack is ongoing. The initial prompt is what's inserted when selecting the "triage my inbox" option which was available at the time.  [Parts of the image have been redacted due to privacy]._
+_Figure 1: The screenshot shows the email body and Copilot's triage of the victim's inbox to the right. The attack is concealed as white text on white background in the email body. To further conceal the attack, the email also contains a benign message asking if I want to watch a movie tonight. Copilot believes the injected tool result which claims 14 emails are in today's inbox and that 3 of those emails are claiming a cyber attack is ongoing. The initial prompt is what's inserted when selecting the "triage my inbox" option which was available at the time.  [Parts of the image have been redacted due to privacy]._
 
 ![text](var2 - sensored last part of copilot output.png){: width="800" }
 _Figure 2: The screenshot shows the final part of Copilot's triage. It acknowledges the existence of the email containing the XPIA ("Film?"), but it only acts on the benign information and therefore categorizes it as not important. It then goes on to recommend that the victim follows IT security instructions and that they should assume systems and data is impacted by a cyber attack. [Parts of the image have been redacted due to privacy]._
@@ -126,13 +126,13 @@ _Figure 3: The screenshot shows the email body causing variant 3 to trigger. The
 _Figure 4: Clicking reply and then using the "magic pen" reply functionality, the victim only needs to instruct Copilot on how to reply for the attack to trigger. Here, the prompt "reply approvingly" was used. [Parts of the image have been redacted due to privacy]._
 
 ![text](var3 - sensored copilot searches for recently edited documents.png){: width="800" }
-_Figure 5: The XPIA asks copilot to summarize my most recently edited document from OneDrive. Copilot therefore searches for the most recently edited document as part of it's reply process. [Parts of the image have been redacted due to privacy]._
+_Figure 5: The XPIA asks copilot to summarize the victim's most recently edited document from OneDrive. Copilot therefore searches for the most recently edited document as part of it's reply process. [Parts of the image have been redacted due to privacy]._
 
 ![text](var3 - sensored copilot reply 1.png){: width="800" }
 _Figure 6: Copilot begins its reply draft with a response to the visible part of the malicious email body. It then adds 50 new line characters. [Parts of the image have been redacted due to privacy]._
 
 ![text](var3 - sensored copilot reply 2.png){: width="800" }
-_Figure 7: Copilot then adds a summary of my most recently edited document from OneDrive (in this case the EchoBERT paper). This is pasted outside the compose viewport and the victim has to actively scroll down to see it. The interactive menu is also positioned outside the compose viewport, making it hard to spot for the victim. This increases the probability that the victim clicks somewhere outside the drafting context, causing Copilot to paste the full draft under the victim's signature._
+_Figure 7: Copilot then adds a summary of victim's most recently edited document from OneDrive (in this case the EchoBERT paper). This is pasted outside the compose viewport and the victim has to actively scroll down to see it. The interactive menu is also positioned outside the compose viewport, making it hard to spot for the victim. This increases the probability that the victim clicks somewhere outside the drafting context, causing Copilot to paste the full draft under the victim's signature._
 
 #### Impact
 This attack has a direct information disclosure potential, since it can cause internal information available only to the victim to be inserted into an outbound email draft addressed to the attacker. If the user clicks send, the confidentiality is broken.

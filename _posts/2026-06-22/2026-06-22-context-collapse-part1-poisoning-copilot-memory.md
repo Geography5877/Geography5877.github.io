@@ -22,7 +22,7 @@ The scenarios demonstrated in this series illustrate a broader security challeng
 
 **Publication dates:**
 - Part 2 will be published on the 14th of July 2026
-- Part 3 will be published on the 15th of July 2026
+- Part 3 will be published on the 15th of July 2026. UPDATE: Part 3 was posponed due to more time being needed for mitigations to be published. A new date of 28th of July 2026 was agreed.
 
 I provided Microsoft with a 90-day coordination period before public disclosure. Publication dates for this series were coordinated to allow Microsoft product teams time to investigate, reproduce, and mitigate the reported issues where applicable.
 
@@ -118,3 +118,4 @@ The findings presented in this disclosure nevertheless show that LLM-integrated 
 The following is a change log that shows which part of this post have been changed and at what time. Spelling mistakes and similar errors will not be logged. However, I will strive to include any meaningful changes to the post.
 - 2026-06-22: Change log added
 - 2026-06-23: Link to Microsoft Security blog post on guarding AI memory
+- 2026-07-28: Update publication timeline of part 3.
