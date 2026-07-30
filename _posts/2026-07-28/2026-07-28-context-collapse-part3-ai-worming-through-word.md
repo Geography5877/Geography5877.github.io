@@ -61,7 +61,7 @@ I have therefore chosen to disclose at the class level rather than the payload l
   - **2026-07-15**: Successful exploit with worming reproduced using GPT-5.6, the latest available model at the time.
   - **2026-07-15**: I suggest we postpone disclosure a further two weeks to 2026-07-28, to allow time for a new mitigation.
   - **2026-07-15**: Microsoft agreed.
-  - **2026-07-28**: Attack still reproduces.
+  - **2026-07-28**: Attack class still reproduces.
   - **2026-07-28**: Coordinated public disclosure (this post).
 
 ## Threat model
@@ -176,3 +176,4 @@ For that reason, any system that integrates an LLM into a trusted workflow today
 ## Change Log
 The following is a change log that shows which part of this post have been changed and at what time. Spelling mistakes and similar errors will not be logged. However, I will strive to include any meaningful changes to the post.
 - 2026-07-28: Change log added
+- 2026-07-30: Fixed line in timeline stating that attack class reporduces.
